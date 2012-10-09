@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<biz id="UDP_R_VIEWER_PERSON_REG" name="PRPA_MT000101UV01"  versioncode="1" versionname="1.0">
+		<prop name="FIELD_PK" attributeCode="id" xpath="/RegistrationEvent/id/@extension" />
+		<prop name="FLAG" attributeCode="id" xpath="/RegistrationEvent/id/@flag" />
+		<prop name="ID_NO" attributeCode="HR01.00.002.02" xpath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/id[@root='HR01.00.002.02']/@extension" /> 
+		<prop name="PNAME" attributeCode="HR02.01.002" xpath="/RegistrationEvent/recordTarget/patientRole/code[@code='HR02.01.002']/../patient/name/@literal" /> 
+		<prop name="MEDICARE_CD" attributeCode="HR02.09.001.02" xpath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/code[@codeSystem='HR02.09.001.02']/@code" /> 
+		<prop name="MEDICAL_INSURANCE_NO" attributeCode="HR99.01.111" xpath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/id[@root='HR99.01.111']/@extension" /> 
+		<prop name="ID_NO_CD" attributeCode="HR01.00.002.01" xpath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/code[@codeSystem='HR01.00.002.01']/@code" /> 
+		<prop name="ID_NO_START_DATE" class="java.util.Date" attributeCode="HR01.00.002.03" xpath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/effectiveTime/low[@meta_id='HR01.00.002.03']/@value" /> 
+		<prop name="ID_NO_CANCEL_DATE"  class="java.util.Date" attributeCode="HR01.00.002.04" xpath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/effectiveTime/high[@meta_id='HR01.00.002.04']/@value" /> 
+		<prop name="ID_PROVIDING_ORG_CODE" attributeCode="HR99.01.009" xpath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/assigningIdentOrganization/id[@root='HR99.01.009']/@extension" /> 
+		<prop name="HR_ID" attributeCode="HR01.00.001" xpath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/id[@root='HR01.00.001']/@extension" /> 
+		<prop name="BIRTH_DATE" class="java.util.Date" attributeCode="HR30.00.001" xpath="/RegistrationEvent/recordTarget/patientRole/patient/birthTime[@meta_id='HR30.00.001']/@value" /> 
+		<prop name="GENDER_CD" attributeCode="HR02.02.001" xpath="/RegistrationEvent/recordTarget/patientRole/patient/administrativeGenderCode[@codeSystem='HR02.02.001']/@code" /> 
+		<prop name="NATIONALITY_CD" attributeCode="HR02.04.001" xpath="/RegistrationEvent/recordTarget/patientRole/patient/asCitizen/politicalNation/code[@codeSystem='HR02.04.001']/@code" /> 
+		<prop name="NATION_CD" attributeCode="HR02.05.001" xpath="/RegistrationEvent/recordTarget/patientRole/patient/raceCode[@codeSystem='HR02.05.001']/@code" /> 
+		<prop name="MARITAL_ST_CD" attributeCode="HR02.06.001" xpath="/RegistrationEvent/recordTarget/patientRole/patient/maritalStatusCode[@codeSystem='HR02.06.001']/@code" /> 
+		<prop name="WORK_DATE"  class="java.util.Date" attributeCode="HR42.02.004" xpath="/RegistrationEvent/recordTarget/patientRole/patient/asPersonEmp/effectiveTime[@meta_id='HR42.02.004']/@value" /> 
+		<prop name="OCCU_TYPE_CD" attributeCode="HR02.07.001" xpath="/RegistrationEvent/recordTarget/patientRole/patient/asPersonEmp/occupationCode[@codeSystem='HR02.07.001']/@code" /> 
+		<prop name="ED_BG_CD" attributeCode="HR02.08.001" xpath="/RegistrationEvent/recordTarget/patientRole/patient/educationLevelCode[@codeSystem='HR02.08.001']/@code" /> 
+		<prop name="AR_CD" attributeCode="HR03.00.006" xpath="/RegistrationEvent/recordTarget/patientRole/patient/serviceDeliveryLocation/location/code[@codeSystem='HR03.00.006']/@code" /> 
+		<prop name="AD_CD" attributeCode="HR03.00.003" xpath="/RegistrationEvent/recordTarget/patientRole/addr/streetNameType[@literal='HR03.00.003']/@partType" /> 
+		<prop name="CITY_NAME" attributeCode="HR03.00.004.02" xpath="" /> 
+		<prop name="AREA_NAME" attributeCode="HR03.00.004.03" xpath="" /> 
+		<prop name="STREET_ID" attributeCode="HR03.00.004.04" xpath="" /> 
+		<prop name="VILLAGE_NAME" attributeCode="HR03.00.004.05" xpath="" /> 
+		<prop name="HOUSE_NO" attributeCode="HR.03.00.004.06" xpath="" /> 
+		<prop name="POST_CD" attributeCode="HR03.00.005" xpath="/RegistrationEvent/recordTarget/patientRole/addr/postalCode[@partType='HR03.00.005']/@literal" /> 
+		<prop name="TEL_TYPE_CD" attributeCode="HR04.00.001.02" xpath="/RegistrationEvent/recordTarget/patientRole/telecom[@use='HR04.00.001.02']/@type" /> 
+		<prop name="TEL_NO" attributeCode="HR04.00.001.03" xpath="/RegistrationEvent/recordTarget/patientRole/telecom[@meta_id='HR04.00.001.03']/@value" /> 
+		<prop name="LINKMAN_REL_CD" attributeCode="HR99.01.172" xpath="/RegistrationEvent/recordTarget/patientRole/patient/personalRelationship/relationshipHolder/code[@codeSystem='HR99.01.172']/@code" /> 
+		<prop name="LM_ID_NO_CD" attributeCode="HR99.01.181" xpath="/RegistrationEvent/recordTarget/patientRole/patient/personalRelationship/relationshipHolder/asRelationPersonIdent/code[@codeSystem='HR99.01.181']/@code" /> 
+		<prop name="LM_ID_NO" attributeCode="HR99.01.182" xpath="/RegistrationEvent/recordTarget/patientRole/patient/personalRelationship/relationshipHolder/asRelationPersonIdent/id[@root='HR99.01.182']/@extension" /> 
+		<prop name="REGISTER_DATE" class="java.util.Date" attributeCode="HR42.02.002" xpath="/RegistrationEvent/effectiveTime[@meta_id='HR42.02.002']/@value" /> 
+		<prop name="RECORDER_NAME" attributeCode="HR22.01.005" xpath="/RegistrationEvent/author/assignedAuthor/assignedPerson/name/@literal" /> 
+		<prop name="REGISTER_PERSON_CODE" attributeCode="HR99.01.006" xpath="/RegistrationEvent/author/assignedAuthor/assignedPerson/assignedPersonIdent/id[@root='HR99.01.006']/@extension" /> 
+		<prop name="REGISTER_ORG_CODE" attributeCode="HR99.01.008" xpath="/RegistrationEvent/author/assignedAuthor/representedOrganization/id[@root='HR99.01.008']/@extension" /> 
+		<prop name="SEND_TIME" class="java.util.Date" attributeCode="HR99.01.162" xpath="/RegistrationEvent/activityTime[@meta_id='HR99.01.162']/@literal" /> 
+		<prop name="SEND_ORG_CODE" attributeCode="HR99.01.165" xpath="/RegistrationEvent/author/assignedAuthor/representedOrganization/id[@root='HR99.01.165']/@extension" /> 
+		<prop name="SEND_SYSTEM" attributeCode="HR99.01.166" xpath="/RegistrationEvent/author/assignedAuthor/assignedAuthoringDevice/id[@root='HR99.01.166']/@extension" /> 
+		<prop name="EMAIL_AD" attributeCode="HR04.00.002" xpath="/RegistrationEvent/recordTarget/patientRole/telecom[@meta_id='HR04.00.002']/@value" /> 
+		<prop name="LINKMAN_NAME" attributeCode="HR02.01.011" xpath="/RegistrationEvent/recordTarget/patientRole/patient/personalRelationship/relationshipHolder/name/@literal" /> 
+		<prop name="ADDR_DETAIL" attributeCode="HR03.00.004.01" xpath="/RegistrationEvent/recordTarget/patientRole/addr/streetName[@partType='HR03.00.004.01$$$HR03.00.004.02$$$HR03.00.004.03$$$HR03.00.004.04$$$HR03.00.004.05$$$HR03.00.004.06']/@literal" />
+		<prop name="PROVIENCE_NAME" attributeCode="HR03.00.004.01" xpath="/RegistrationEvent/recordTarget/patientRole/addr/streetName[@partType='HR03.00.004.01$$$HR03.00.004.02$$$HR03.00.004.03$$$HR03.00.004.04$$$HR03.00.004.05$$$HR03.00.004.06']/@literal" />
+		<prop name="SEND_ZONE_CODE" attributeCode="HR03.00.1" xpath="/RegistrationEvent/recordTarget/patientRole/addr/sendOrgArea[@literal='HR03.00.1']/@partType" />
+</biz>

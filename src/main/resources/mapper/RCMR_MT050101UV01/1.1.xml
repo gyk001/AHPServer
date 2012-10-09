@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--门诊服务 -->
+<biz id="RCMR_MT050101UV01" version="1.1" name="UDP_R_VIEWER_OUT_PATIENT_R">
+	<prop attribute="FIELD_PK" attributeCode="id" attributePath="/ClinicalDocument/id/@extension" />
+	<prop attribute="CLIN_NO" attributeCode="HR01.00.009" attributePath="/ClinicalDocument/recordTarget/patientRole/patient/asIdentifiedEntity/id[@root='HR01.00.009']/@extension" />
+	<prop attribute="EMERGENCY_MARK" attributeCode="HR99.01.114" attributePath="/ClinicalDocument/component/structuredBody/component/section/component/askObservationEvent/value[@meta_id='HR99.01.114']/@literal" />
+	<prop attribute="ATTACK_DATE_TIME" attributeCode="HR42.02.112" attributePath="/ClinicalDocument/component/structuredBody/component/section/component/askObservationEvent/value[@meta_id='HR42.02.112']/@literal" />
+	<prop attribute="VISIT_REASON" attributeCode="HR99.01.094" attributePath="/ClinicalDocument/component/structuredBody/component/section/component/askObservationEvent/value[@meta_id='HR99.01.094']/@literal" />
+	<prop attribute="SUBJECTIVE" attributeCode="HR51.01.037" attributePath="/ClinicalDocument/component/structuredBody/component/section/component/askObservationEvent/value[@meta_id='HR51.01.037']/@literal" />
+	<prop attribute="ALLE_HIS" attributeCode="HR51.01.003" attributePath="/ClinicalDocument/component/structuredBody/component/section/component/askObservationEvent/value[@meta_id='HR51.01.003']/@literal" />
+	<prop attribute="VISIT_DEPT_NAME" attributeCode="HR21.01.027" attributePath="/ClinicalDocument/referrer/associatedEntity/employerscopingOrganization/scopingOrganizationPart/partscopingOrganizationDept/name/@literal" />
+	<prop attribute="VISIT_DEPT_CODE" attributeCode="HR99.01.119" attributePath="/ClinicalDocument/referrer/associatedEntity/employerscopingOrganization/scopingOrganizationPart/partscopingOrganizationDept/id[@root='HR99.01.119']/@extension" />
+	<prop attribute="VISIT_DATE_TS" class="java.util.Date" attributeCode="HR42.02.101" attributePath="/ClinicalDocument/effectiveTime[@meta_id='HR42.02.101']/@value" />
+	<prop attribute="SERVICER_NAME" attributeCode="HR22.01.100" attributePath="/ClinicalDocument/referrer/associatedEntity/employeeassociatedPerson/name/@literal" />
+	<prop attribute="SERVICER_CODE" attributeCode="HR99.01.072" attributePath="/ClinicalDocument/referrer/associatedEntity/employeeassociatedPerson/associatedPersonIdent/id[@root='HR99.01.072']/@extension" />
+	<prop attribute="VISIT_ORG_CODE" attributeCode="HR99.01.073" attributePath="/ClinicalDocument/referrer/associatedEntity/employerscopingOrganization/id[@root='HR99.01.073']/@extension" />
+	<prop attribute="SEND_TIME" class="java.util.Date" attributeCode="HR99.01.162" attributePath="/ClinicalDocument/activityTime[@meta_id='HR99.01.162']/@literal" />
+	<prop attribute="SEND_ORG_CODE" attributeCode="HR99.01.165" attributePath="/ClinicalDocument/author/assignedAuthor/representedOrganization/id[@root='HR99.01.165']/@extension" />
+	<prop attribute="SEND_SYSTEM" attributeCode="HR99.01.166" attributePath="/ClinicalDocument/author/assignedAuthor/assignedAuthoringDevice/id[@root='HR99.01.166']/@extension" />
+	<!--门诊服务添加字段 -->
+	<prop attribute="REPORTZONE" attributeCode="ids" attributePath="/ClinicalDocument/DMaddrtype/@DMaddrtype" />
+	<prop attribute="USERID_CREATE" attributeCode="ids" attributePath="/ClinicalDocument/useridcreate/@useridcreate" />
+	<!--患者注册 -->
+	<object attribute="UDP_R_VIEWER_PERSON_REG" class="java.lang.Object">
+		<prop attribute="ID_NO" attributeCode="HR01.00.002.02" attributePath="/ClinicalDocument/recordTarget/patientRole/patient/asIdentifiedEntity/id[@root='HR01.00.002.02']/@extension" />
+		<prop attribute="PNAME" attributeCode="HR02.01.002" attributePath="/ClinicalDocument/recordTarget/patientRole/patient/name/@literal" />
+		<prop attribute="MEDICARE_CD" attributeCode="HR02.09.001.02" attributePath="/ClinicalDocument/recordTarget/patientRole/patient/asIdentifiedEntity/code[@codeSystem='HR02.09.001.02']/@code" />
+		<prop attribute="MEDICAL_INSURANCE_NO" attributeCode="HR99.01.111" attributePath="/ClinicalDocument/recordTarget/patientRole/patient/asIdentifiedEntity/id[@root='HR99.01.111']/@extension" />
+		<prop attribute="ID_NO_CD" attributeCode="HR01.00.002.01" attributePath="/ClinicalDocument/recordTarget/patientRole/patient/asIdentifiedEntity/code[@codeSystem='HR01.00.002.01']/@code" />
+		<prop attribute="HR_ID" attributeCode="HR01.00.001" attributePath="/ClinicalDocument/recordTarget/patientRole/patient/asIdentifiedEntity/id[@root='HR01.00.001']/@extension" />
+		<prop attribute="BIRTH_DATE" class="java.util.Date" attributeCode="HR30.00.001" attributePath="/ClinicalDocument/recordTarget/patientRole/patient/birthTime[@meta_id='HR30.00.001']/@value" />
+		<prop attribute="GENDER_CD" attributeCode="HR02.02.001" attributePath="/ClinicalDocument/recordTarget/patientRole/patient/administrativeGenderCode[@codeSystem='HR02.02.001']/@code" />
+	</object>
+	<!--门急诊症状 -->
+	<list id="UDP_R_VIEWER_CLIN_FRAME_T" attribute="UDP_R_VIEWER_CLIN_FRAME_T" class="java.util.HashSet" attributePath="/ClinicalDocument/component/structuredBody/component/section/component/symptomObservation/..">
+		<innerObject class="java.lang.Object">
+			<prop attribute="FIELD_PK" attributeCode="id" attributePath="symptomObservation/id/@clinframet" />
+			<prop attribute="CLIN_SYMPTOM_CD" attributeCode="HR51.99.001.02" attributePath="symptomObservation/code[@codeSystem='HR51.99.001.02']/@code" />
+			<prop attribute="CLIN_SYMPTOM_NAME" attributeCode="HR51.99.001.01" attributePath="symptomObservation/code[@meta_id='HR51.99.001.01']/@displayName" />
+			<object id="UDP_R_VIEWER_OUT_PATIENT_R" attribute="UDP_R_VIEWER_OUT_PATIENT_R" class="java.lang.Object">
+				<prop attribute="FIELD_PK" attributeCode="id" attributePath="/ClinicalDocument/id/@extension" />
+			</object>
+		</innerObject>
+	</list>
+	<!--门急诊诊疗手术记录 -->
+	<list id="UDP_R_VIEWER_CLIN_OP_RECO" attribute="UDP_R_VIEWER_CLIN_OP_RECO" class="java.util.HashSet" attributePath="/ClinicalDocument/component/structuredBody/component/section/component/procedure/..">
+		<innerObject class="java.lang.Object">
+			<prop attribute="FIELD_PK" attributeCode="id" attributePath="procedure/id/@clinopreco" />
+			<prop attribute="ANAES_WAY" attributeCode="HR52.01.042.01" attributePath="procedure/methodCode[@meta_id='HR52.01.042.01']/@displayName" />
+			<prop attribute="ANAES_WAY_CD" attributeCode="HR52.01.042.02" attributePath="procedure/methodCode[@codeSystem='HR52.01.042.02']/@code" />
+			<prop attribute="OP_NAME" attributeCode="HR52.01.009.01" attributePath="procedure/code[@meta_id='HR52.01.009.01']/@displayName" />
+			<prop attribute="OP_CD" attributeCode="HR52.01.009.02" attributePath="procedure/code[@codeSystem='HR52.01.009.02']/@code" />
+			<prop attribute="OP_PART_NAME" attributeCode="HR52.01.009.03" attributePath="procedure/targetSiteCode[@meta_id='HR52.01.009.03']/@displayName" />
+			<prop attribute="OP_PART_CD" attributeCode="HR99.01.147" attributePath="procedure/targetSiteCode[@codeSystem='HR99.01.147']/@code" />
+			<prop attribute="OP_DATE" class="java.util.Date" attributeCode="HR42.02.038" attributePath="procedure/effectiveTime[@meta_id='HR42.02.038']/@value" />
+			<prop attribute="OPERATOR_NAME" attributeCode="HR22.01.010" attributePath="procedure/performer/procedureEmploy/employeeProcedurePerson/name/@literal" />
+			<prop attribute="OPERATOR_CODE" attributeCode="HR99.01.049" attributePath="procedure/performer/procedureEmploy/employeeProcedurePerson/asProcedurePersonIdentified/id[@root='HR99.01.049']/@extension" />
+			<object id="UDP_R_VIEWER_OUT_PATIENT_R" attribute="UDP_R_VIEWER_OUT_PATIENT_R" class="java.lang.Object">
+				<prop attribute="FIELD_PK" attributeCode="id" attributePath="/ClinicalDocument/id/@extension" />
+			</object>
+		</innerObject>
+	</list>
+	<!--门急诊诊疗放射治疗记录 -->
+	<list id="UDP_R_VIEWER_CLIN_RAD_REC" attribute="UDP_R_VIEWER_CLIN_RAD_REC" class="java.util.HashSet" attributePath="/ClinicalDocument/component/structuredBody/component/section/component/radiotherapyObservation/..">
+		<innerObject class="java.lang.Object">
+			<prop attribute="FIELD_PK" attributeCode="id" attributePath="radiotherapyObservation/id/@clinradrec" />
+			<prop attribute="TREATMENT_TYPE_NAME" attributeCode="HR99.01.080" attributePath="radiotherapyObservation/code[@meta_id='HR99.01.080']/@displayName" />
+			<prop attribute="TREATMENT_TYPE_CODE" attributeCode="HR99.01.079" attributePath="radiotherapyObservation/code[@codeSystem='HR99.01.079']/@code" />
+			<prop attribute="MATERIAL_TYPE" attributeCode="HR99.01.084" attributePath="radiotherapyObservation/consumable/radioManufacturedProduct/manufacturedRadioManufacturedMaterial/code[@meta_id='HR99.01.084']/@code" />
+			<prop attribute="MATERIAL_TYPE_CODE" attributeCode="HR99.01.083" attributePath="radiotherapyObservation/consumable/radioManufacturedProduct/manufacturedRadioManufacturedMaterial/code[@codeSystem='HR99.01.083']/@displayName" />
+			<prop attribute="MATERIAL_NAME" attributeCode="HR99.01.085" attributePath="radiotherapyObservation/consumable/radioManufacturedProduct/manufacturedRadioManufacturedMaterial/name[@meta_id='HR99.01.085']/@literal" />
+			<prop attribute="TREATMENT_RESULT_DESCRIBE" attributeCode="HR99.01.082" attributePath="radiotherapyObservation/component/radiotherapyDetailObservation/value[@meta_id='HR99.01.082']/@literal" />
+			<prop attribute="TREATMENT_PROCESS_DESCRIBE" attributeCode="HR99.01.081" attributePath="radiotherapyObservation/value[@meta_id='HR99.01.081']/@literal" />
+			<prop attribute="TREATMENT_DATE" class="java.util.Date" attributeCode="HR99.01.086" attributePath="radiotherapyObservation/effectiveTime[@meta_id='HR99.01.086']/@value" />
+			<object id="UDP_R_VIEWER_OUT_PATIENT_R" attribute="UDP_R_VIEWER_OUT_PATIENT_R" class="java.lang.Object">
+				<prop attribute="FIELD_PK" attributeCode="id" attributePath="/ClinicalDocument/id/@extension" />
+			</object>
+		</innerObject>
+	</list>
+	<!--门急诊诊疗用药记录 -->
+	<list id="UDP_R_VIEWER_CLIN_DRUG_REC" attribute="UDP_R_VIEWER_CLIN_DRUG_REC" class="java.util.HashSet" attributePath="/ClinicalDocument/component/structuredBody/component/section/component/substanceAdministration/..">
+		<innerObject class="java.lang.Object">
+			<prop attribute="FIELD_PK" attributeCode="id" attributePath="substanceAdministration/id/@clindrugrec" />
+			<prop attribute="PRESCRIBE_NO" attributeCode="HR99.01.096" attributePath="substanceAdministration/subject/content/container/id[@root='HR99.01.096']/@extension" />
+			<prop attribute="DRUG_TYPE" attributeCode="HR53.01.008" attributePath="substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/code[@codeSystem='HR53.01.008']/@code" />
+			<prop attribute="DRUG_NAME" attributeCode="HR53.01.002" attributePath="substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/name/@literal" />
+			<prop attribute="DRUG_CODE" attributeCode="HR99.01.120" attributePath="substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/id[@root='HR99.01.120']/@extension" />
+			<prop attribute="UNIT" attributeCode="HR99.01.122" attributePath="substanceAdministration/consumable/manufacturedProduct/quantity[@meta_id='HR99.01.122']/@unit" />
+			<prop attribute="AMOUNT" attributeCode="HR99.01.123" attributePath="substanceAdministration/consumable/manufacturedProduct/quantity[@type='HR99.01.123']/@literal" />
+			<prop attribute="DOSE_TYPE_CD" attributeCode="HR53.01.003" attributePath="substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/formCode[@codeSystem='HR53.01.003']/@code" />
+			<prop attribute="USING_DRUG_DAYS" attributeCode="HR42.02.113" attributePath="substanceAdministration/component/drugObservationDetail/value[@meta_id='HR42.02.113']/@literal" />
+			<prop attribute="DRUG_QUIT_DATE_TS" class="java.util.Date" attributeCode="HR42.02.114" attributePath="substanceAdministration/effectiveTime/high[@meta_id='HR42.02.114']/@value" />
+			<prop attribute="USING_DRUG_FREQ" attributeCode="HR52.01.037.01" attributePath="substanceAdministration/rateQuantity[@meta_id='HR52.01.037.01']/@value" />
+			<prop attribute="DOSE_UNIT" attributeCode="HR52.01.037.02" attributePath="substanceAdministration/doseQuantity[@code='HR52.01.037.02']/@unit" />
+			<prop attribute="DOSE_SINGLE" attributeCode="HR52.01.037.03" attributePath="substanceAdministration/doseQuantity[@meta_id='HR52.01.037.03']/@value" />
+			<prop attribute="DRUG_WAY_CD" attributeCode="HR52.01.037.05" attributePath="substanceAdministration/routeCode[@codeSystem='HR52.01.037.05']/@code" />
+			<prop attribute="PRESCRIBE_DATE" class="java.util.Date" attributeCode="HR99.01.097" attributePath="substanceAdministration/effectiveTime/low[@meta_id='HR99.01.097']/@value" />
+			<prop attribute="PRESCRIBE_DOC_NAME" attributeCode="HR99.01.098" attributePath="substanceAdministration/performer/prescribeEmploy/employeePrescribePerson/name/@literal" />
+			<prop attribute="PRESCRIBE_DOC_CODE" attributeCode="HR99.01.099" attributePath="substanceAdministration/performer/prescribeEmploy/employeePrescribePerson/asPrescribePersonIdentified/id[@root='HR99.01.099']/@extension" />
+			<prop attribute="DRUG_MED_CODE" attributeCode="" attributePath="null" />
+			<prop attribute="DRUG_COST" attributeCode="" attributePath="null" />
+			<object id="UDP_R_VIEWER_OUT_PATIENT_R" attribute="UDP_R_VIEWER_OUT_PATIENT_R" class="java.lang.Object">
+				<prop attribute="FIELD_PK" attributeCode="id" attributePath="/ClinicalDocument/id/@extension" />
+			</object>
+		</innerObject>
+	</list>
+	<!--门急诊诊疗诊断记录 -->
+	<list id="UDP_R_VIEWER_CLIN_DIAG_REC" attribute="UDP_R_VIEWER_CLIN_DIAG_REC" class="java.util.HashSet" attributePath="/ClinicalDocument/component/structuredBody/component/section/component/diagObservation/..">
+		<innerObject class="java.lang.Object">
+			<prop attribute="FIELD_PK" attributeCode="id" attributePath="diagObservation/id/@clindiagrec" />
+			<prop attribute="DIAG_TYPE_CD" attributeCode="HR99.01.095" attributePath="diagObservation/value[@meta_id='HR99.01.095']/@literal" />
+			<prop attribute="DIAG_NAME" attributeCode="HR55.02.040" attributePath="diagObservation/code[@meta_id='HR55.02.040']/@displayName" />
+			<prop attribute="DIAG_CD" attributeCode="HR55.02.004" attributePath="diagObservation/code[@codeSystem='HR55.02.004']/@code" />
+			<prop attribute="DIAG_DATE" class="java.util.Date" attributeCode="HR42.02.012" attributePath="diagObservation/effectiveTime[@meta_id='HR42.02.012']/@value" />
+			<object id="UDP_R_VIEWER_OUT_PATIENT_R" attribute="UDP_R_VIEWER_OUT_PATIENT_R" class="java.lang.Object">
+				<prop attribute="FIELD_PK" attributeCode="id" attributePath="/ClinicalDocument/id/@extension" />
+			</object>
+		</innerObject>
+	</list>
+	<!--门急诊诊疗费用结算 -->
+	<list id="UDP_R_VIEWER_CLIN_COST" attribute="UDP_R_VIEWER_CLIN_COST" class="java.util.HashSet" attributePath="/ClinicalDocument/component/structuredBody/component/section/component/accountEvent/..">
+		<innerObject class="java.lang.Object">
+			<prop attribute="FIELD_PK" attributeCode="id" attributePath="accountEvent/id/@clincost" />
+			<prop attribute="CLIN_COST_TYPE" attributeCode="HR56.00.001.01" attributePath="accountEvent/code[@meta_id='HR56.00.001.01']/@displayName" />
+			<prop attribute="CLIN_COST_CD" attributeCode="HR56.00.001.02" attributePath="accountEvent/code[@codeSystem='HR56.00.001.02']/@code" />
+			<prop attribute="CLIN_COST" attributeCode="HR56.00.001.03" attributePath="accountEvent/balanceAmt[@meta_id='HR56.00.001.03']/@value" />
+			<prop attribute="CLIN_COST_PAY_CD" attributeCode="HR56.00.001.04" attributePath="accountEvent/currencyCode[@codeSystem='HR56.00.001.04']/@code" />
+			<object id="UDP_R_VIEWER_OUT_PATIENT_R" attribute="UDP_R_VIEWER_OUT_PATIENT_R" class="java.lang.Object">
+				<prop attribute="FIELD_PK" attributeCode="id" attributePath="/ClinicalDocument/id/@extension" />
+			</object>
+		</innerObject>
+	</list>
+	<!--门急诊诊疗输血记录 -->
+	<list id="UDP_R_VIEWER_CLIN_TRANSFU" attribute="UDP_R_VIEWER_CLIN_TRANSFU" class="java.util.HashSet" attributePath="/ClinicalDocument/component/structuredBody/component/section/component/transfuseObservation/..">
+		<innerObject class="java.lang.Object">
+			<prop attribute="FIELD_PK" attributeCode="id" attributePath="transfuseObservation/id/@extension" />
+			<prop attribute="TRANSFUSION_WAY" attributeCode="HR52.01.102" attributePath="transfuseObservation/methodCode[@codeSystem='HR52.01.102']/@code" />
+			<prop attribute="TRANSFUSE_CD" attributeCode="HR53.02.001.01" attributePath="transfuseObservation/code[@codeSystem='HR53.02.001.01']/@code" />
+			<prop attribute="TRANSFUSE_AMOUNT_UNIT" attributeCode="HR53.02.001.03" attributePath="transfuseObservation/value[@type='HR53.02.001.03']/@unit" />
+			<prop attribute="TRANSFUSE_AMOUNT" attributeCode="HR53.02.001.02" attributePath="transfuseObservation/value[@meta_id='HR53.02.001.02']/@literal" />
+			<prop attribute="TRANSFUSION_DATE_TIME" class="java.util.Date" attributeCode="HR42.02.200" attributePath="transfuseObservation/effectiveTime[@meta_id='HR42.02.200']/@value" />
+			<prop attribute="TRANSFUSE_REACTION_MARK" attributeCode="HR55.02.050" attributePath="transfuseObservation/component/transfuseReactionObservation/value[@meta_id='HR55.02.050']/@literal" />
+			<object id="UDP_R_VIEWER_OUT_PATIENT_R" attribute="UDP_R_VIEWER_OUT_PATIENT_R" class="java.lang.Object">
+				<prop attribute="FIELD_PK" attributeCode="id" attributePath="/ClinicalDocument/id/@extension" />
+			</object>
+		</innerObject>
+	</list>
+	<!--门急诊诊疗死亡记录 -->
+	<list id="UDP_R_VIEWER_CLIN_DEATH" attribute="UDP_R_VIEWER_CLIN_DEATH" class="java.util.HashSet" attributePath="/ClinicalDocument/component/structuredBody/component/section/component/deadObservation/..">
+		<innerObject class="java.lang.Object">
+			<prop attribute="FIELD_PK" attributeCode="id" attributePath="deadObservation/id/@clindeath" />
+			<prop attribute="DEATH_REASON_CD" attributeCode="HR85.00.003" attributePath="deadObservation/code[@codeSystem='HR85.00.003']/@code" />
+			<prop attribute="DEATH_DA_TS" class="java.util.Date" attributeCode="HR85.00.002" attributePath="deadObservation/effectiveTime[@meta_id='HR85.00.002']/@value" />
+			<object id="UDP_R_VIEWER_OUT_PATIENT_R" attribute="UDP_R_VIEWER_OUT_PATIENT_R" class="java.lang.Object">
+				<prop attribute="FIELD_PK" attributeCode="id" attributePath="/ClinicalDocument/id/@extension" />
+			</object>
+		</innerObject>
+	</list>
+	<!--门急诊诊疗转诊记录 -->
+	<list id="UDP_R_VIEWER_CLIN_TRA_REC" attribute="UDP_R_VIEWER_CLIN_TRA_REC" class="java.util.HashSet" attributePath="/ClinicalDocument/component/structuredBody/component/section/component/transferObservation/..">
+		<innerObject class="java.lang.Object">
+			<prop attribute="FIELD_PK" attributeCode="id" attributePath="transferObservation/id/@clintrarec" />
+			<prop attribute="TRANSFER_APPLYING_NOTE_NO" attributeCode="HR99.01.028" attributePath="transferObservation/subject/content/container/id[@root='HR99.01.028']/@extension" />
+			<prop attribute="TRANSFER_REASON" attributeCode="HR52.02.044" attributePath="transferObservation/component/transferDetailObservation/value[@meta_id='HR52.02.044']/@literal" />
+			<prop attribute="TRANSFER" attributeCode="HR52.02.027" attributePath="transferObservation/component/transferDetailObservation/value[@meta_id='HR52.02.027']/@literal" />
+			<prop attribute="TRANSFER_DOC_NAME" attributeCode="HR99.01.117" attributePath="transferObservation/performer/transferEmploy/employeeTransferPerson/name/@literal" />
+			<prop attribute="TRANSFER_DOC_CODE" attributeCode="HR99.01.032" attributePath="transferObservation/performer/transferEmploy/employeeTransferPerson/asTransferPersonIdentified/id[@root='HR99.01.032']/@extension" />
+			<prop attribute="TRANSFER_HOSPITAL_CODE" attributeCode="HR99.01.033" attributePath="transferObservation/performer/transferEmploy/employerTransferOrganization/id[@root='HR99.01.033']/@extension" />
+			<prop attribute="TRANSFER_DATE" class="java.util.Date" attributeCode="HR42.02.026" attributePath="transferObservation/effectiveTime/low[@meta_id='HR42.02.026']/@value" />
+			<prop attribute="TRANSFER_STATE" attributeCode="HR99.01.035" attributePath="transferObservation/component/transferDetailObservation/value[@meta_id='HR99.01.035']/@literal" />
+			<prop attribute="ACCEPT_DOC_NAME" attributeCode="HR99.01.118" attributePath="transferObservation/performer/transferEmploy/code[@code='HR99.01.118']/@codeSystem" />
+			<prop attribute="ACCEPT_DOC_CODE" attributeCode="HR99.01.036" attributePath="transferObservation/performer/transferEmploy/employeeTransferPerson/asTransferPersonIdentified/id[@root='HR99.01.036']/@extension" />
+			<prop attribute="ACCEPT_ORG_CODE" attributeCode="HR99.01.037" attributePath="transferObservation/performer/transferEmploy/employerTransferOrganization/id[@root='HR99.01.037']/@extension" />
+			<prop attribute="ACCEPT_TIME" attributeCode="HR99.01.038" attributePath="transferObservation/effectiveTime/high[@meta_id='HR99.01.038']/@value" />
+			<object id="UDP_R_VIEWER_OUT_PATIENT_R" attribute="UDP_R_VIEWER_OUT_PATIENT_R" class="java.lang.Object">
+				<prop attribute="FIELD_PK" attributeCode="id" attributePath="/ClinicalDocument/id/@extension" />
+			</object>
+		</innerObject>
+	</list>
+</table>
+

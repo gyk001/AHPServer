@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false"  scan="true" scanPeriod="30 seconds" >
+	<substitutionProperty name="log.base" value="D:/logs/ahpServer" />
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder charset="utf-8">
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="logFile" class="ch.qos.logback.core.FileAppender">
+		<file>${log.base}/log.log</file>
+		<encoder charset="UTF-8">
+			<pattern>%d{HH:mm:ss.SSS} %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">  
+            <level>INFO</level>  
+        </filter> 		
+	</appender>
+	
+
+	<root level="INFO">
+		<appender-ref ref="stdout" />
+	</root>
+	<logger name="org" level="ERROR" />
+	<logger name="ch" level="ERROR" />
+</configuration>

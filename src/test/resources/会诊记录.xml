@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="F:\工作\HL7 - v3ballot_fullsite_2009may\html\infrastructure\cda\CDA.xsd">
+	<realmCode code="CN"/>
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_MT000040"/>
+	<templateId xsi:type="II" root="SD.10.1" assigningAuthorityName="会诊记录" extension="DT20120003V1"/>
+	<id root="SD.1.2" extension="D2011000001" displayable="true" xsi:type="II"/>
+	<code code="A0003" codeSystem="SD.6.3" codeSystemName="卫生信息共享文档分类编码系统" displayName="会诊记录"/>
+	<title>会诊记录</title>
+	<effectiveTime xsi:type="TS" value="20111231154823"/>
+	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="一般保密级别"/>
+	<languageCode code="zh-cn"/>
+	<versionNumber value="2" xsi:type="INT"/>
+	<!--文档记录对象-->
+	<recordTarget typeCode="RCT" contextControlCode="OP">
+		<patientRole classCode="PAT">
+		<!--健康档案标识号-->
+			<id root="SD.4.1" extension="HR201102113366666"/>
+			<!--患者地址-->
+			<addr use="H">
+				<houseNumber partType="DE02.01.009.06" literal="xx号xx小区xx栋xx单元xx号">xx号xx小区xx栋xx单元xx号</houseNumber>
+				<streetName partType="DE02.01.009.05" literal="中山大道">中山大道</streetName>
+				<county partType="DE02.01.009.03" literal="天河区">天河区</county>
+				<city partType="DE02.01.009.02" literal="广州市">广州市</city>
+				<state partType="DE02.01.009.01" literal="广东省">广东省</state>
+				<postalCode partType="DE02.01.047.00" literal="510000">510000</postalCode>
+			</addr>
+			<!--患者通信地址 包括邮箱和电话-->
+			<telecom>
+				<code code="DE02.01.010.00" displayName="电话号码"/>
+				<value value="020-87815102"/>
+				<asTelecomType>
+					<code code="DE02.01.011.00" displayName="电话类别"/>
+					<value>电话类别</value>
+				</asTelecomType>
+			</telecom>
+			<!--患者详细信息-->
+			<patient classCode="PSN" determinerCode="INSTANCE">
+				<!--患者身份标识号-->
+				<id root="SD.4.2" extension="ID420106201101011919"/>
+				<administrativeGenderCode code="1" codeSystem="SD.11.3.4" codeSystemName="生理性别代码表（GB/T 2261.1）"/>
+				<birthTime xsi:type="TS" value="20080101"/>
+				<maritalStatusCode code="10" displayName="未婚" codeSystem="SD.11.3.5" codeSystemName="婚姻状况代码表（GB/T 2261.2）"/>
+				<ethnicGroupCode code="01" displayName="汉族" codeSystem="SD.11.3.3" codeSystemName="民族类别代码表（GB 3304）"/>
+				<birthplace>
+					<place classCode="PLC" determinerCode="INSTANCE">
+						<addr>
+							<city partType="DE02.01.009.02">广州市</city>
+						</addr>
+					</place>
+				</birthplace>
+				<!--扩展节点，医疗保险号，国籍等-->
+				<!--患者学历-->
+				<asEducationLevelCode classCode="EDLEV">
+					<code code="DE02.01.041.00" displayName="学历代码"/>
+					<value code="17" codeSystem="SD.11.3.6" codeSystemName="学历代码表(GB/T 4658)" displayName="研究生班毕业"/>
+				</asEducationLevelCode>
+				<!--患者医疗保险号-->
+				<asMedicalInsuranceCode code="DE999999999999" codeSystem="SD.4.14" displayName="医保卡号标识" nullFlavor="UNK"/>
+				<!--患者国籍-->
+				<asNationality classCode="CIT">
+					<code code="DE02.Ol.015.00" displayName="中国"/>
+				</asNationality>
+				<!--患者职业-->
+				<occupationCode>
+					<code code="DE02.01.052.00" displayName="职业类别代码"/>
+					<value code="010" codeSystem="SD.11.3.7" codeSystemName="职业类别代码表（GB/T 6565）" displayName="高等学校教师"/>
+				</occupationCode>
+				<!--患者所在地行政区划-->
+				<asServiceDeliveryLocation classCode="SDLOC">
+					<location classCode="PLC" determinerCode="INSTANCE">
+						<code code="DE02.01.038.00" displayName="行政区划"/>
+					</location>
+				</asServiceDeliveryLocation>
+			</patient>
+		</patientRole>
+	</recordTarget>
+	<!--文档作者-->
+	<author typeCode="AUT" contextControlCode="OP">
+		<time xsi:type="TS" value="20120404"/>
+		<assignedAuthor classCode="ASSIGNED">
+			<assignedAuthorChoice>
+				<assignedPerdon>
+					<code code="DE99999999999" displayName="会诊医生"/>
+					<name literal="会诊医生姓名">会诊医生姓名</name>
+					<assignedPersonCode>
+						<code code="DE999999999999" displayName="会诊医生代码"/>
+					</assignedPersonCode>
+				</assignedPerdon>
+			</assignedAuthorChoice>
+			<representedOrganization>
+				<code codeSystem="SD.4.4" code="01" codeSystemName="医疗卫生服务机构标识"/>
+				<name literal="人民医院">人民医院</name>
+				<addr use="WP">
+					<streetName partType="DE02.01.009.05" literal="中山大道">中山大道</streetName>
+				</addr>
+			</representedOrganization>
+		</assignedAuthor>
+	</author>
+	<!--文档管理机构-->
+	<custodian typeCode="CST">
+		<assignedCustodian classCode="ASSIGNED">
+			<representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+				<code code="EHR管理机构编号" codeSystem="SD.4.5"/>
+				<name>卫生局健康档案管理中心</name>
+				<telecom>
+					<code code="DE02.01.010.00" displayName="电话号码"/>
+					<value value="020-87815102"/>
+					<asTelecomType>
+						<code code="DE02.01.011.00" displayName="电话类别"/>
+						<value>电话类别</value>
+					</asTelecomType>
+				</telecom>
+				<addr>
+					<city partType="DE02.01.009.02" literal="北京市">北京市</city> 
+				</addr>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	<!--文档头关联活动-->
+	<relatedDocument typeCode="APND">
+		<parentDocument classCode="DOCCLIN" moodCode="EVN">
+			<code code="DT20120001V1" codeSystem="SD.1.1.4"/>
+			<setId xsi:type="II" root="1.2.345.6789.33" extension="S001"/>
+			<versionNumber value="1"/>
+		</parentDocument>
+	</relatedDocument>
+	<!--文档体-->
+	<component>
+		<structuredBody>
+		<!--会诊原因章节 -->
+			<component>
+				<section>
+					<code nullFlavor="UNK" displayName="会诊原因"/>
+					<text/>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE06.00.039.00" displayName="会诊原因"/>
+							<value xsi:type="ED" mediaType="text/plain">会诊原因</value>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--会诊意见章节-->
+			<component>
+				<section>
+					<code nullFlavor="UNK" displayName="会诊意见"/>
+					<text/>
+					<entry>
+						<observation classCode="OBS" moodCode="PRP">
+							<code code="DE06.00.038.00" displayName="会诊意见"/>
+							<value xsi:type="ED" mediaType="text/plain"></value>
+							<performer>
+								<time value="20120908">会诊时间</time>
+								<assignedEntity>
+									<assignedPerson>
+										<code cod="DE02.01.039.00" displayName="会诊医生姓名"/>
+										<name literal="会诊医生姓名">会诊医生姓名</name>
+										<assignedPersonCode>
+											<code code="DE999999999999" displayName="会诊医生代码"/>
+										</assignedPersonCode>
+									</assignedPerson>
+									<representedOrganization>
+										<code code="DE99999999999" displayName="会诊科室名称"/>
+										<name/>
+										<assignedOrganizationCode>
+											<code code="DE999999999999" displayName="检查科室代码"/>
+										</assignedOrganizationCode>
+										<asOrganizationPartOf>
+											<!-- 会诊医生所在医疗机构名称 -->
+											<wholeOrganization>
+												<code code="DE08.10.013.00" displayName="会诊医院名称"/>
+												<name literal="会诊医院名称">会诊医院名称</name>
+												<assignedWholeOrganizationCode>
+													<code code="DE08.10.052.00" displayName="会诊医院代码"/>
+												</assignedWholeOrganizationCode>
+											</wholeOrganization>
+										</asOrganizationPartOf>
+									</representedOrganization>
+								</assignedEntity>
+							</performer>
+						</observation>
+					</entry>
+				</section>
+			</component>
+		</structuredBody>
+	</component>
+</ClinicalDocument>
