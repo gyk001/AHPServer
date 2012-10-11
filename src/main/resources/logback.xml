@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false"  scan="true" scanPeriod="30 seconds" >
-	<substitutionProperty name="log.base" value="D:/logs/ahpServer" />
+	<substitutionProperty name="log.base" value="/tmp/logs/ahpServer" />
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder charset="utf-8">
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n
@@ -19,9 +19,10 @@
 	</appender>
 	
 
-	<root level="INFO">
+	<root level="DEBUG">
 		<appender-ref ref="stdout" />
 	</root>
 	<logger name="org" level="ERROR" />
 	<logger name="ch" level="ERROR" />
+	<logger name="net" level="ERROR" />
 </configuration>

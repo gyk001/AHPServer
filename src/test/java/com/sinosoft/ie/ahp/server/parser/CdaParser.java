@@ -56,9 +56,7 @@ public class CdaParser  {
 				db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 				xpath = XPathFactory.newInstance().newXPath();
 			} catch (ParserConfigurationException e) {
-				// TODO Auto-generated catch block
-				
-				e.printStackTrace();
+				throw new RuntimeException(e);
 			}
 
 	}
