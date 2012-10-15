@@ -82,7 +82,7 @@ public class XmlParserTest {
 	}
 
 	// =================================================
-	@Test(enabled=true)
+	@Test(enabled=false)
 	public void testMutiThreadStAX() {
 		ExecutorService executor = Executors.newFixedThreadPool(100);// .newCachedThreadPool();
 		int waitTime = 20;
@@ -107,7 +107,7 @@ public class XmlParserTest {
 		public Object call() throws Exception {
 			// TODO Auto-generated method stub
 			// logger.info("parse");
-			XmlParser.parse(xmlContent);
+			//XmlParser.parse(xmlContent);
 			return 1;
 		}
 

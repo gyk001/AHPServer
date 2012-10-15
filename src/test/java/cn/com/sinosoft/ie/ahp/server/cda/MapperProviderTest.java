@@ -1,7 +1,5 @@
 package cn.com.sinosoft.ie.ahp.server.cda;
 
-import java.util.Vector;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
@@ -41,8 +39,8 @@ public class MapperProviderTest {
 		ClassMapInfo oldMap = ClassConfig.getClassMapInfo(msgType);
 		//现在的配置
 		ClassMapInfo newMap =  MapperProvider.get(msgType, "1");
-		logger.debug("old:{}"+ oldMap);
-		logger.debug("new:{}"+ newMap);
+		logger.trace("old:{}"+ oldMap);
+		logger.trace("new:{}"+ newMap);
 		assert newMap.equals( oldMap ): msgType+"配置结果和原来不一致！";
 	}
 	

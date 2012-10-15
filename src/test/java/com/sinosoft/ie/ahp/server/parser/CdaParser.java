@@ -24,7 +24,6 @@ import com.sinosoft.ie.ahp.server.spi.AttributeMapInfo;
 import com.sinosoft.ie.ahp.server.spi.ClassConfig;
 import com.sinosoft.ie.ahp.server.spi.ClassMapInfo;
 import com.sinosoft.ie.ahp.server.spi.CollectionMapInfo;
-import com.sinosoft.ie.ahp.server.spi.EntityBean;
 import com.sinosoft.ie.ahp.server.util.DateUtil;
 import com.sun.org.apache.xml.internal.dtm.ref.DTMNodeList;
 
@@ -225,10 +224,5 @@ public class CdaParser  {
 		// 把对象赋予目标对象
 		map.put(clazzName, beanMap);
 	}
-
-	public String formCDA(EntityBean entityBean, String msgType) {
-		return null;
-	}
-
 
 }

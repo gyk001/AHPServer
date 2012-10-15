@@ -11,8 +11,6 @@ import org.dom4j.DocumentException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cn.com.sinosoft.ie.ahp.server.app.AhpServerMain;
-
 import com.sinosoft.ie.ahp.server.spi.ClassMapInfo;
 
 public class MapperProvider {
@@ -26,7 +24,7 @@ public class MapperProvider {
 	
 	
 	public static void init(){
-		URL url = AhpServerMain.class.getResource("/ehcache.xml");
+		URL url = MapperProvider.class.getResource("/ehcache.xml");
 		manager = CacheManager.newInstance(url);
 		logger.debug("caches:{}",Arrays.asList(manager.getCacheNames()));
 		cache = manager.getCache(CDA_MAPPER_CACHE);
@@ -37,10 +35,10 @@ public class MapperProvider {
 	}
 	
 	public static ClassMapInfo get(String bizType, String version){
-		
-		final Element mapper = cache.get(bizType);
+		final CdaKey cdaKey = new CdaKey(bizType, version);
+		final Element mapper = cache.get( cdaKey );
 		if(mapper!=null){
-			logger.debug("item found:{}",bizType);
+			logger.debug("item found:{}", cdaKey);
 			try{
 				return ((ClassMapInfo) mapper.getValue());
 			}catch(Exception e){
@@ -49,15 +47,15 @@ public class MapperProvider {
 			}
 		}else{
 			logger.debug("item not found:{}",bizType);
-			ClassMapInfo a = loadMapper( bizType, version );// ClassConfig.getClassMapInfo("RCMR_MT050101UV01");
-			cache.putIfAbsent(new Element(bizType,a));
+			ClassMapInfo a = loadMapper( cdaKey );
+			cache.putIfAbsent(new Element(cdaKey, a));
 			return a;
 		}
 	}
 	
-	private static ClassMapInfo loadMapper(String type, String version){
+	private static ClassMapInfo loadMapper(CdaKey cdaKey){
 		try {
-			return MapLoader.loadMapper(type, version);
+			return MapLoader.loadMapper(cdaKey.getBizType(), cdaKey.getVersion());
 		} catch (DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
