@@ -28,9 +28,9 @@ public class MapperCdaParserTest {
 	private static final String demoDir = File.separator+"cda"+File.separator;
 	@BeforeClass
 	public void beforeClass() throws IOException {
-		//新解析器
+		//新解析器需要初始化这个
 		MapperProvider.init();
-		//老解析器
+		//老解析器需要初始化这个
 		ClassConfig.initClassConfig();
 		
 	}
@@ -39,28 +39,7 @@ public class MapperCdaParserTest {
 	public void afterClass() {
 		MapperProvider.destory();
 	}
-	
-	
-	private String loadTestXml(String demoFile) throws IOException{
-		logger.trace("load xml {}",demoFile);
-		//样例xml
-		InputStream input = this.getClass().getResourceAsStream(demoFile);
 
-		BufferedReader bf = new BufferedReader(new InputStreamReader(input));
-		StringBuilder sb = new StringBuilder();
-		String content = "";
-		while (content != null) {
-			content = bf.readLine();
-			if (content == null) {
-				break;
-			}
-			sb.append(content.trim()).append(
-					System.getProperty("line.separator"));
-		}
-
-		bf.close();
-		return sb.toString();
-	}
 	
 	@DataProvider(name = "cda-demos")
 	public Object[][] dataValues() {
@@ -74,10 +53,14 @@ public class MapperCdaParserTest {
 			res[i++]=name;
 		}
 		return res;
-		
-		
 	}
 
+	/**
+	 * 测试新旧解析器的解析结果是否一致<br/>
+	 * 会测试/src/test/resources/cda文件夹下的所有文件
+	 * @param demo
+	 * @throws Exception
+	 */
 	@Test(dataProvider="cda-demos")
 	public void parserCDA(String demo) throws Exception {
 		String xmlContent = loadTestXml(demoDir+demo);
@@ -105,5 +88,34 @@ public class MapperCdaParserTest {
 		for (String e : newMap.keySet()) {
 		    assert false : "键["+e+"]多余:"+newMap.get(e);
 		}
+	}
+	
+	
+	
+	/**
+	 * 返回demoFile的文件内容为字符串
+	 * @param demoFile
+	 * @return
+	 * @throws IOException
+	 */
+	private String loadTestXml(String demoFile) throws IOException{
+		logger.trace("load xml {}",demoFile);
+		//样例xml
+		InputStream input = this.getClass().getResourceAsStream(demoFile);
+
+		BufferedReader bf = new BufferedReader(new InputStreamReader(input));
+		StringBuilder sb = new StringBuilder();
+		String content = "";
+		while (content != null) {
+			content = bf.readLine();
+			if (content == null) {
+				break;
+			}
+			sb.append(content.trim()).append(
+					System.getProperty("line.separator"));
+		}
+
+		bf.close();
+		return sb.toString();
 	}
 }

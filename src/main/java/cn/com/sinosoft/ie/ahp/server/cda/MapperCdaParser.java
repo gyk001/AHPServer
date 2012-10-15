@@ -52,7 +52,9 @@ public class MapperCdaParser  {
 			String bizType=templatteNode.getAttribute("extension");
 			//取得该业务类型对应的配置
 			ClassMapInfo claaMapInf = MapperProvider.get( bizType );
-			
+			if(claaMapInf==null){
+				throw new NullPointerException("mapper不能为空！");
+			}
 			// 属性赋值
 			foundAttributes( rootNode, claaMapInf.getAttributes(),map);
 			for (ClassMapInfo classMapInfo : claaMapInf.getAtributeObjects()) {
