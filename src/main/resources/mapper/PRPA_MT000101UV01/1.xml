@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 公民注册 -->
+<table id="UDP_R_VIEWER_PERSON_REG" name="PRPA_MT000101UV01" class="java.lang.Object">
+	<column attribute="FIELD_PK" attributeCode="id" attributePath="/RegistrationEvent/id/@extension" />
+	<column attribute="FLAG" attributeCode="id" attributePath="/RegistrationEvent/id/@flag" />
+	<column attribute="ID_NO" attributeCode="HR01.00.002.02" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/id[@root='HR01.00.002.02']/@extension" />
+	<column attribute="PNAME" attributeCode="HR02.01.002" attributePath="/RegistrationEvent/recordTarget/patientRole/code[@code='HR02.01.002']/../patient/name/@literal" />
+	<column attribute="MEDICARE_CD" attributeCode="HR02.09.001.02" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/code[@codeSystem='HR02.09.001.02']/@code" />
+	<column attribute="MEDICAL_INSURANCE_NO" attributeCode="HR99.01.111" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/id[@root='HR99.01.111']/@extension" />
+	<column attribute="ID_NO_CD" attributeCode="HR01.00.002.01" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/code[@codeSystem='HR01.00.002.01']/@code" />
+	<column attribute="ID_NO_START_DATE" class="java.util.Date" attributeCode="HR01.00.002.03" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/effectiveTime/low[@meta_id='HR01.00.002.03']/@value" />
+	<column attribute="ID_NO_CANCEL_DATE" class="java.util.Date" attributeCode="HR01.00.002.04" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/effectiveTime/high[@meta_id='HR01.00.002.04']/@value" />
+	<column attribute="ID_PROVIDING_ORG_CODE" attributeCode="HR99.01.009" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/assigningIdentOrganization/id[@root='HR99.01.009']/@extension" />
+	<column attribute="HR_ID" attributeCode="HR01.00.001" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/asIdentifiedEntity/id[@root='HR01.00.001']/@extension" />
+	<column attribute="BIRTH_DATE" class="java.util.Date" attributeCode="HR30.00.001" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/birthTime[@meta_id='HR30.00.001']/@value" />
+	<column attribute="GENDER_CD" attributeCode="HR02.02.001" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/administrativeGenderCode[@codeSystem='HR02.02.001']/@code" />
+	<column attribute="NATIONALITY_CD" attributeCode="HR02.04.001" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/asCitizen/politicalNation/code[@codeSystem='HR02.04.001']/@code" />
+	<column attribute="NATION_CD" attributeCode="HR02.05.001" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/raceCode[@codeSystem='HR02.05.001']/@code" />
+	<column attribute="MARITAL_ST_CD" attributeCode="HR02.06.001" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/maritalStatusCode[@codeSystem='HR02.06.001']/@code" />
+	<column attribute="WORK_DATE" class="java.util.Date" attributeCode="HR42.02.004" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/asPersonEmp/effectiveTime[@meta_id='HR42.02.004']/@value" />
+	<column attribute="OCCU_TYPE_CD" attributeCode="HR02.07.001" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/asPersonEmp/occupationCode[@codeSystem='HR02.07.001']/@code" />
+	<column attribute="ED_BG_CD" attributeCode="HR02.08.001" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/educationLevelCode[@codeSystem='HR02.08.001']/@code" />
+	<column attribute="AR_CD" attributeCode="HR03.00.006" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/serviceDeliveryLocation/location/code[@codeSystem='HR03.00.006']/@code" />
+	<column attribute="AD_CD" attributeCode="HR03.00.003" attributePath="/RegistrationEvent/recordTarget/patientRole/addr/streetNameType[@literal='HR03.00.003']/@partType" />
+	<column attribute="CITY_NAME" attributeCode="HR03.00.004.02" attributePath="" />
+	<column attribute="AREA_NAME" attributeCode="HR03.00.004.03" attributePath="" />
+	<column attribute="STREET_ID" attributeCode="HR03.00.004.04" attributePath="" />
+	<column attribute="VILLAGE_NAME" attributeCode="HR03.00.004.05" attributePath="" />
+	<column attribute="HOUSE_NO" attributeCode="HR.03.00.004.06" attributePath="" />
+	<column attribute="POST_CD" attributeCode="HR03.00.005" attributePath="/RegistrationEvent/recordTarget/patientRole/addr/postalCode[@partType='HR03.00.005']/@literal" />
+	<column attribute="TEL_TYPE_CD" attributeCode="HR04.00.001.02" attributePath="/RegistrationEvent/recordTarget/patientRole/telecom[@use='HR04.00.001.02']/@type" />
+	<column attribute="TEL_NO" attributeCode="HR04.00.001.03" attributePath="/RegistrationEvent/recordTarget/patientRole/telecom[@meta_id='HR04.00.001.03']/@value" />
+	<column attribute="LINKMAN_REL_CD" attributeCode="HR99.01.172" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/personalRelationship/relationshipHolder/code[@codeSystem='HR99.01.172']/@code" />
+	<column attribute="LM_ID_NO_CD" attributeCode="HR99.01.181" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/personalRelationship/relationshipHolder/asRelationPersonIdent/code[@codeSystem='HR99.01.181']/@code" />
+	<column attribute="LM_ID_NO" attributeCode="HR99.01.182" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/personalRelationship/relationshipHolder/asRelationPersonIdent/id[@root='HR99.01.182']/@extension" />
+	<column attribute="REGISTER_DATE" class="java.util.Date" attributeCode="HR42.02.002" attributePath="/RegistrationEvent/effectiveTime[@meta_id='HR42.02.002']/@value" />
+	<column attribute="RECORDER_NAME" attributeCode="HR22.01.005" attributePath="/RegistrationEvent/author/assignedAuthor/assignedPerson/name/@literal" />
+	<column attribute="REGISTER_PERSON_CODE" attributeCode="HR99.01.006" attributePath="/RegistrationEvent/author/assignedAuthor/assignedPerson/assignedPersonIdent/id[@root='HR99.01.006']/@extension" />
+	<column attribute="REGISTER_ORG_CODE" attributeCode="HR99.01.008" attributePath="/RegistrationEvent/author/assignedAuthor/representedOrganization/id[@root='HR99.01.008']/@extension" />
+	<column attribute="SEND_TIME" class="java.util.Date" attributeCode="HR99.01.162" attributePath="/RegistrationEvent/activityTime[@meta_id='HR99.01.162']/@literal" />
+	<column attribute="SEND_ORG_CODE" attributeCode="HR99.01.165" attributePath="/RegistrationEvent/author/assignedAuthor/representedOrganization/id[@root='HR99.01.165']/@extension" />
+	<column attribute="SEND_SYSTEM" attributeCode="HR99.01.166" attributePath="/RegistrationEvent/author/assignedAuthor/assignedAuthoringDevice/id[@root='HR99.01.166']/@extension" />
+	<column attribute="EMAIL_AD" attributeCode="HR04.00.002" attributePath="/RegistrationEvent/recordTarget/patientRole/telecom[@meta_id='HR04.00.002']/@value" />
+	<column attribute="LINKMAN_NAME" attributeCode="HR02.01.011" attributePath="/RegistrationEvent/recordTarget/patientRole/patient/personalRelationship/relationshipHolder/name/@literal" />
+	<column attribute="ADDR_DETAIL" attributeCode="HR03.00.004.01" attributePath="/RegistrationEvent/recordTarget/patientRole/addr/streetName[@partType='HR03.00.004.01$$$HR03.00.004.02$$$HR03.00.004.03$$$HR03.00.004.04$$$HR03.00.004.05$$$HR03.00.004.06']/@literal" />
+	<column attribute="PROVIENCE_NAME" attributeCode="HR03.00.004.01" attributePath="/RegistrationEvent/recordTarget/patientRole/addr/streetName[@partType='HR03.00.004.01$$$HR03.00.004.02$$$HR03.00.004.03$$$HR03.00.004.04$$$HR03.00.004.05$$$HR03.00.004.06']/@literal" />
+	<column attribute="SEND_ZONE_CODE" attributeCode="HR03.00.1" attributePath="/RegistrationEvent/recordTarget/patientRole/addr/sendOrgArea[@literal='HR03.00.1']/@partType" />
+</table>
