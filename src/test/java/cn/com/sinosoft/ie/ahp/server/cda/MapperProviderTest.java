@@ -33,8 +33,17 @@ public class MapperProviderTest {
 	public void afterTest() {
 	}
 
+	@DataProvider(name = "cda-type")
+	 public Object[][] dataValues(){
+	  return new Object[][]{
+			  {new String("PRPA_MT000101UV01")},
+			  {new String("PRPA_MT000101UV01")},
+			  {"RCMR_MT050101UV01"}
+	  };
+	 }
+
 	@Test(dataProvider="cda-type")
-	public void get(String msgType) {
+	public void testGet(String msgType) {
 		//原来的配置
 		ClassMapInfo oldMap = ClassConfig.getClassMapInfo(msgType);
 		//现在的配置
@@ -43,13 +52,5 @@ public class MapperProviderTest {
 		logger.trace("new:{}"+ newMap);
 		assert newMap.equals( oldMap ): msgType+"配置结果和原来不一致！";
 	}
-	
-	@DataProvider(name = "cda-type")
-	 public Object[][] dataValues(){
-	  return new Object[][]{
-			  {"PRPA_MT000101UV01"},
-			  {"RCMR_MT050101UV01"}
-	  };
-	 }
 	
 }
