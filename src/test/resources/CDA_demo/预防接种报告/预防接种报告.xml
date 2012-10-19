@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="F:\工作\HL7 - v3ballot_fullsite_2009may\html\infrastructure\cda\CDA.xsd">
+	<!--地域代码 "CN" 代表中国-->
+	<realmCode code="CN"/>
+	<!--文档信息模型类别-->
+	<!--root="2.16.840.1.113883.1.3" 表示HL7 注册模型的编码系统OID ，extension="POCD_HD000040" 表示相应编码系统下的CDA R2 采用的临床文档架构信息模型是POCD_HD0000400-->
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_MT000040"/>
+	<!--文档模板-->
+	<templateId xsi:type="II" root="SD.10.1" assigningAuthorityName="预防接种报告" extension="DT20120011V1"/>
+	<!--文档编号 [1..1] -->
+	<id root="SD.1.1.3" displayName="疾病控制" extension="D2011000001" displayable="true" xsi:type="II"/>
+	<!--文档类别代码-->
+	<code code="A010401" codeSystem="SD.6.3" codeSystemName="卫生信息共享文档分类编码系统" displayName="预防接种报告"/>
+	<title>预防接种报告</title>
+	<!--文档生效时间 [1..1]-->
+	<effectiveTime xsi:type="TS" value="2011-12-31 15:48:23"/>
+	<!--文档密级 默认值 [1..1] -->
+	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="一般保密级别"/>
+	<!--文档语言 [1..1] 默认值 code="zh-cn" 含义：中文字符编码-->
+	<languageCode code="zh-cn"/>
+	<!--文档版本号-->
+	<versionNumber value="2" xsi:type="INT"/>
+	<!--文档记录对象-->
+	<recordTarget contextControlCode="OP">
+		<patientRole>
+			<!--患者唯一标识-->
+			<id root="唯一标识" extension="唯一标识"/>
+			<!--患者通信地址 包括邮箱和电话-->
+			<telecom>
+				<code code="DE02.01.010.00" displayName="电话号码"/>
+				<value value="020-87815102"/>
+				<asTelecomType>
+					<code code="DE02.01.011.00" displayName="电话类别"/>
+					<value>电话类别</value>
+				</asTelecomType>
+			</telecom>
+			<telecom code="DE02.0l.012.00" displayName="邮箱" value="niming@163.com"/>
+			<!--患者住址 通过use属性区别住址类型，如use="H"表示家庭住址，use="WP"表示工作地址-->
+			<addr use="H">
+				<houseNumber partType="DE02.01.009.06" literal="xx号xx小区xx栋xx单元xx号">xx号xx小区xx栋xx单元xx号</houseNumber>
+				<streetName partType="DE02.01.009.05" literal="中山大道">中山大道</streetName>
+				<county partType="DE02.01.009.03" literal="天河区">天河区</county>
+				<city partType="DE02.01.009.02" literal="广州市">广州市</city>
+				<state partType="DE02.01.009.01" literal="广东省">广东省</state>
+				<postalCode partType="DE02.01.047.00" literal="510000">510000</postalCode>
+			</addr>
+			<!--患者详细信息 包括身份证，姓名，性别，出生日期，婚姻状况等-->
+			<patient classCode="PSN" determinerCode="INSTANCE">
+				<!--患者标识号，可以是身份证，护照，军官证等-->
+				<id root="SD.4.2" extension="ID420106201101011919"/>
+				<name literal="贾小明">贾小明</name>
+				<!--患者性别-->
+				<administrativeGenderCode code="1" displayName="男性" codeSystem="SD.11.3.4" codeSystemName="生理性别代码表（GB/T 2261.1）"/>
+				<!--患者出生日期-->
+				<birthTime xsi:type="TS" value="2012-05-08"/>
+				<!--患者婚姻状况-->
+				<maritalStatusCode code="10" displayName="未婚" codeSystem="SD.11.3.5" codeSystemName="婚姻状况代码表（GB/T 2261.2）"/>
+				<!--患者民族类别-->
+				<ethnicGroupCode code="15" displayName="土家族" codeSystem="SD.11.3.3" codeSystemName="民族类别代码表（GB 3304）"/>
+				<!--扩展节点，医疗保险号，国籍等-->
+				<!--患者医疗保险号-->
+				<asMedicalInsuranceCode code="DE99999999999" codeSystem="SD.4.14" displayName="医保卡号标识" nullFlavor="UNK"/>
+				<!--患者职业-->
+				<occupationCode>
+					<code code="DE02.01.007.00" displayName="职业类别代码"/>
+					<value code="04" codeSystem="SD.11.1.6" codeSystemName="传染病患者职业代码表" displayName="教师"/>
+				</occupationCode>
+				<!--患者工作单位-->
+				<asEmployeeJob>
+					<code code="DE08.10.007.00" displayName="患者工作单位名称代码"/>
+					<name>患者工作单位名称</name>
+				</asEmployeeJob>
+				<!--患者所在地行政区划-->
+				<asServiceDeliveryLocation classCode="SDLOC">
+					<location classCode="PLC" determinerCode="INSTANCE">
+						<code code="DE02.01.038.00" displayName="行政区划"/>
+					</location>
+				</asServiceDeliveryLocation>
+				<guardian>
+					<asGuardian>
+						<code code="51" codeSystem="SD.11.3.8" codeSystemName="家庭关系代码表" displayName="父亲"/>
+						<addr use="WP">
+							<streetName partType="DE02.01.009.05" literal="父亲工作单位地址">阜成门内大街</streetName>
+						</addr>
+						<telecom>
+							<code code="DE02.01.010.00" displayName="电话号码"/>
+							<value value="010-87815102"/>
+							<asTelecomType>
+								<code code="DE02.01.011.00" displayName="电话类别"/>
+								<value>电话类别</value>
+							</asTelecomType>
+						</telecom>
+						<guardianChoice>
+							<guardianPerson>
+								<name literal="父亲姓名">父亲姓名</name>
+								<asGuardianBirthTime xsi:type="TS" value="1982-02-12" displayName="父亲出生日期"/>
+								<asRelationPersonEmploy>
+									<occupationCode code="DE9999999999999" codeSystem="父亲职业类型代码（国际）"/>
+								</asRelationPersonEmploy>
+								<asEmployeeJob>
+									<code code="DE08.10.007.00" displayName="父亲工作单位代码"/>
+									<name literal="父亲工作单位名称">父亲工作单位名称</name>
+								</asEmployeeJob>
+								<asRelationPersonIdent classCode="IDENT">
+									<code code="ID9380430248302483208" displayName="父亲身份证号码"/>
+								</asRelationPersonIdent>
+							</guardianPerson>
+						</guardianChoice>
+					</asGuardian>
+				</guardian>
+					<!--监护人-->
+					<guardian>
+					<asGuardian>
+						<code code="50" codeSystem="SD.11.3.8" codeSystemName="家庭关系代码" displayName="母亲"/>
+						<addr use="WP">
+							<streetName partType="DE02.01.009.05" literal="海淀区学院路">海淀区学院路</streetName>
+						</addr>
+						<telecom>
+							<code code="DE02.01.010.00" displayName="电话号码"/>
+							<value value="020-87815102"/>
+							<asTelecomType>
+								<code code="DE02.01.011.00" displayName="电话类别"/>
+								<value>电话类别</value>
+							</asTelecomType>
+						</telecom>
+						<guardianChoice>
+							<guardianPerson>
+								<name literal="母亲姓名">母亲姓名</name>
+								<asGuardianBirthTime xsi:type="TS" value="1984-07-20" displayName="母亲出生日期"/>
+								<asRelationPersonEmploy>
+									<occupationCode code="DE999999999999" codeSystem="母亲职业类型代码（国际）"/>
+								</asRelationPersonEmploy>
+								<asEmployeeJob>
+									<code code="DE08.10.007.00" displayName="母亲工作单位代码"/>
+									<name literal="母亲工作单位名称">母亲工作单位名称</name>
+								</asEmployeeJob>
+								<asRelationPersonIdent classCode="IDENT">
+									<code code="ID9483948324832040" displayName="母亲身份证号码"/>
+								</asRelationPersonIdent>
+							</guardianPerson>
+						</guardianChoice>
+						</asGuardian>
+					</guardian>
+
+				
+			</patient>
+		</patientRole>
+	</recordTarget>
+	<!--文档作者-->
+	<author typeCode="AUT" contextControlCode="OP">
+		<!--文档创建时间-->
+		<time xsi:type="TS" value="20120804"/>
+		<!--报告医师-->
+		<!--ASSIGNED属性表示表达角色是由某个具有合法登记注册的人或机构扮演-->
+		<assignedAuthor classCode="ASSIGNED">
+			<!--报告医师姓名-->
+			<assignedAuthorChoice>
+				<assignedPerson>
+					<code code="DEO2.01.039.00" displayName="报告医师"/>
+					<name literal="报告医师姓名">报告医师姓名</name>
+					<assignedPersonCode>
+						<code code="DE99999999999" displayName="报告医师代码"/>
+					</assignedPersonCode>
+				</assignedPerson>
+			</assignedAuthorChoice>
+			<!--报告医生科室-->
+			<representedOrganization>
+				<code code="DE08.10.026.00" displayName="报告科室代码"/>
+				<name literal="报告科室名称">报告科室</name>
+				<assignedOrganizationCode>
+					<code code="DE999999999999" displayName="报告科室代码"/>
+				</assignedOrganizationCode>
+			</representedOrganization>
+		</assignedAuthor>
+	</author>
+	<!--文档上报机构-->
+	<author typeCode="AUT" contextControlCode="OP">
+		<assignedAuthor classCode="ASSIGNED">
+			<assignedAuthoringDevice classCode="DEV" determinerCode="INSTANCE">
+				<code code="DE999999999999" extension="上报系统"/>
+			</assignedAuthoringDevice>
+			<!--ORG属性表示由人类组成的合法的社会团体-->
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<code code="DE9999999999" displayName="上报机构名称"/>
+				<name literal="人民医院"/>
+				<assignedOrganizationCode>
+					<code code="DE08.10.052.00" displayName="上报机构代码"/>
+				</assignedOrganizationCode>
+				<addr use="WP">
+					<streetName partType="DE02.01.009.05" literal="西直门外大街"/>
+				</addr>
+			</representedOrganization>
+		</assignedAuthor>
+	</author>
+	<!--文档管理机构-->
+	<custodian typeCode="CST">
+		<assignedCustodian classCode="ASSIGNED">
+			<representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+				<!--SD.4.5表示医疗卫生管理机构标识-->
+				<code root="SD.4.5" extension="EHR管理机构编号"/>
+				<name literal="卫生局健康档案管理中心">卫生局健康档案管理中心</name>
+				<telecom>
+					<code code="DE02.01.010.00" displayName="电话号码"/>
+					<value value="010-87815102"/>
+					<asTelecomType>
+						<code code="DE02.01.011.00" displayName="电话类别"/>
+						<value>电话类别</value>
+					</asTelecomType>
+				</telecom>
+				<addr>
+					<city partType="DE02.01.009.02" literal="北京市">北京市</city>
+				</addr>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	<!--文档体-->
+	<component>
+		<structuredBody>
+			<!-- 搬迁信息 -->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<code nullFlavor="UNK" displayName="搬迁信息"/>
+					<title>搬迁信息</title>
+					<text/>
+					<!-- 迁入时间 -->
+					<entry typeCode="COMP" contextConductionInd="true">
+						<asRelocation>
+							<asIn>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE02.01.029.00" displayName="迁入日期"/>
+									<value xsi:type="TS" value="2012-02-09"/>
+								</observation>
+							</asIn>	
+							<asOut>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE02.01.027.00" displayName="迁出日期"/>
+									<value xsi:type="TS" value="2012-09-08"/>
+								</observation>
+							</asOut>
+							<asOutReason>
+								<observation classCode="OBS" moodCode="EVN">	
+									<code code="DE02.01.028.00" displayName="迁出原因"/>
+									<value xsi:type="ED" mediaType="text/plain">工作调动</value>
+									
+								</observation>							
+							</asOutReason>
+						</asRelocation>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<asRelocation>
+							<asIn>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE02.01.029.00" displayName="迁入日期"/>
+									<value xsi:type="TS" value="2012-09-09"/>
+								</observation>
+							</asIn>	
+							<asOut>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE02.01.027.00" displayName="迁出日期"/>
+									<value xsi:type="TS" value="2012-12-08"/>
+								</observation>
+							</asOut>
+							<asOutReason>
+								<observation classCode="OBS" moodCode="EVN">	
+									<code code="DE02.01.028.00" displayName="迁出原因"/>
+									<value xsi:type="ED" mediaType="text/plain">孩子上学</value>	
+								</observation>				
+							</asOutReason>
+						</asRelocation>
+					</entry>	
+				</section>
+			</component>
+			<!-- 新生儿过往史信息 -->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section>
+					<code nullFlavor="UNK" displayName="新生儿过往史信息"/>
+					
+					<text/>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<asNeonatalHis>
+							<!-- 疫苗异常反应史 -->
+							<asVaccineReaction>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.01.103.00" displayName="疫苗异常反应史"/>
+									<text xsi:type="ED" mediaType="text/plain">无</text>
+								</observation>
+							</asVaccineReaction>
+							<!-- 接种禁忌 -->
+							<asVaccinationContrain>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code=" DE06.00.054.00" displayName="接种禁忌"/>
+									<text xsi:type="ED" mediaType="text/plain">无</text>
+								</observation>
+							</asVaccinationContrain>
+							<!-- 传染病史 -->
+							<asInfectiousHis>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE02.10.008.00" displayName="传染病史"/>
+									<text xsi:type="ED" mediaType="text/plain">无</text>
+								</observation>
+							</asInfectiousHis>
+						</asNeonatalHis>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<asNeonatalHis>
+							<!-- 疫苗异常反应史 -->
+							<asVaccineReaction>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.01.103.00" displayName="疫苗异常反应史"/>
+									<text xsi:type="ED" mediaType="text/plain">无</text>
+								</observation>
+							</asVaccineReaction>
+							<!-- 接种禁忌 -->
+							<asVaccinationContrain>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code=" DE06.00.054.00" displayName="接种禁忌"/>
+									<text xsi:type="ED" mediaType="text/plain">无</text>
+								</observation>
+							</asVaccinationContrain>
+							<!-- 传染病史 -->
+							<asInfectiousHis>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE02.10.008.00" displayName="传染病史"/>
+									<text xsi:type="ED" mediaType="text/plain">无</text>
+								</observation>
+							</asInfectiousHis>
+						</asNeonatalHis>
+					</entry>
+				</section>
+			</component>
+			<!-- 接种信息 -->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<code nullFlavor="UNK" displayName="接种信息"/>
+					<title>接种记录</title>
+					<text/>
+					<!-- 接种信息 -->
+					<entry typeCode="COMP" contextConductionInd="true">
+						<procedure classCode="PROC" moodCode="EVN">
+							<code nullFlavor="UNK"/>
+							<!-- 接种状态 -->
+							<statusCode nullFlavor="UNK"/>
+							<!-- 接种剂次 -->
+							<priorityCode nullFlavor="UNK"/>
+							<!-- 接种部位 -->
+							<targetSiteCode nullFlavor="UNK"/>
+							<!-- 接种医生 -->
+							<performer typeCode="PRF">
+								<assignedEntity classCode="ASSIGNED">
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<code code="DE02.01.039.00" displayName="接种医生姓名代码"/>
+										<!-- 接种医生名称 -->
+										<name literal="接种医生姓名">接种医生姓名</name>
+										<assignedPersonCode>
+											<code code="DE999999999999" displayName="接种医生编码"/>
+										</assignedPersonCode>
+									</assignedPerson>
+									<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+										<!-- 接种机构编号 -->
+										<code code="DE08.50.015.00" displayName="接种机构代码"/>
+										<!-- 接种机构名称 -->
+										<name literal="接种机构名称">接种机构名称</name>
+									</representedOrganization>
+								</assignedEntity>
+							</performer>
+						</procedure>
+					</entry>
+					<!-- 接种药物信息 -->
+					<entry typeCode="COMP" contextConductionInd="true">
+						<substanceAdministration classCode="SBADM" moodCode="EVN">
+							<!-- 疫苗编号 -->
+							<code code="DE9999999999999" displayName="疫苗编号"/>
+							<!-- 疫苗主要成分名称、编码 -->
+							<code code="DE08.50.004.00" displayName="疫苗名称编码"/>
+							<name>疫苗名称</name>
+							<!-- 疫苗有效期 -->
+							<effectiveTime xsi:type="TS" value="2015-01-03"/>
+							<consumable typeCode="CSM">
+								<manufacturedProduct classCode="MANU">
+									<!-- 疫苗批号 -->
+									<code code="DE08.50.017.00" displayName="疫苗批号"/>
+									<manufacturedDrugOrOtherMaterial>
+										<manufacturedLabeledDrug>
+											<manufacturerOrganization classCode="ORG" determinerCode="INSTANCE">
+												<!--疫苗生产厂商编号-->
+												<code code="DE999999999999" displayName="疫苗生产厂家编码"/>
+												<!-- 疫苗生产厂商名称 -->
+												<name literal="疫苗生产厂商名称">疫苗生产厂商名称</name>
+											</manufacturerOrganization>
+										</manufacturedLabeledDrug>
+									</manufacturedDrugOrOtherMaterial>
+								</manufacturedProduct>
+							</consumable>
+						</substanceAdministration>
+					</entry>
+				</section>
+			</component>
+			<!-- 接种不良反应信息 -->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<code nullFlavor="UNK" displayName="接种不良反应信息"/>
+					<title>接种副反应信息</title>
+					<text/>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<asInoculatedAdverseInfor>
+							<!-- 不良反应诊断代码 -->
+							<asAdverseCode typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE05.01.052.00" displayName="预防接种后不良反应临床诊断代码"/>
+									<value xsi:type="CD" code="T88.100" codeSystem="SD.11.4.3" codeSystemName="诊断代码表（ICD-10）" displayName="免疫接种后特指并发症"/>
+								</observation>
+							</asAdverseCode>
+							<!-- 不良反应发生日期 -->
+							<asAdverseDate typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE06.00.051.00" displayName="预防接种后不良反应发生日期"/>
+									<value xsi:type="TS" value="2012-09-08"/>
+								</observation>
+							</asAdverseDate>
+							<!-- 不良反应处理结果 -->
+							<asAdverseResult typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code=" DE06.00.150.00" displayName="预防接种后不良反应处理结果"/>
+									<value xsi:type="ED" mediaType="text/plain">无</value>
+								</observation>
+							</asAdverseResult>
+							<!-- 引起预防接种后不良反应的可疑疫苗名称代码 -->
+							<adInoculatedAdverseCode typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE08.50.018.00" displayName="引起预防接种后不良反应的可疑疫苗名称代码"/>
+									<value xsi:type="ED" mediaType="text/plain">飒飒</value>
+								</observation>
+							</adInoculatedAdverseCode>
+						</asInoculatedAdverseInfor>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<asInoculatedAdverseInfor>
+							<!-- 不良反应诊断代码 -->
+							<asAdverseCode typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE05.01.052.00" displayName="预防接种后不良反应临床诊断代码"/>
+									<value xsi:type="CD" code="T88.100" codeSystem="SD.11.4.3" codeSystemName="诊断代码表（ICD-10）" displayName="免疫接种后特指并发症"/>
+								</observation>
+							</asAdverseCode>
+							<!-- 不良反应发生日期 -->
+							<asAdverseDate typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE06.00.051.00" displayName="预防接种后不良反应发生日期"/>
+									<value xsi:type="TS" value="2012-10-08"/>
+								</observation>
+							</asAdverseDate>
+							<!-- 不良反应处理结果 -->
+							<asAdverseResult typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code=" DE06.00.150.00" displayName="预防接种后不良反应处理结果"/>
+									<value xsi:type="ED" mediaType="text/plain">撒旦撒旦王</value>
+								</observation>
+							</asAdverseResult>
+							<!-- 引起预防接种后不良反应的可疑疫苗名称代码 -->
+							<adInoculatedAdverseCode typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE08.50.018.00" displayName="引起预防接种后不良反应的可疑疫苗名称代码"/>
+									<value xsi:type="ED" mediaType="text/plain">飒大声道飒</value>
+								</observation>
+							</adInoculatedAdverseCode>
+						</asInoculatedAdverseInfor>
+					</entry>
+				</section>
+			</component>
+		</structuredBody>
+	</component>
+</ClinicalDocument>

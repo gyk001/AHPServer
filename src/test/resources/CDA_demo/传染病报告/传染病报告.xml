@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="F:\工作\HL7 - v3ballot_fullsite_2009may\html\infrastructure\cda\CDA.xsd">
+	<!--地域代码 "CN" 代表中国-->
+	<realmCode code="CN"/>
+	<!--文档信息模型类别-->
+	<!--root="2.16.840.1.113883.1.3" 表示HL7 注册模型的编码系统OID ，extension="POCD_HD000040" 表示相应编码系统下的CDA R2 采用的临床文档架构信息模型是POCD_HD0000400-->
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_MT000040"/>
+	<!--文档模板-->
+	<templateId xsi:type="II" root="SD.10.1" assigningAuthorityName="传染病报告" extension="DT20120010V1"/>
+	<!--文档编号 [1..1] -->
+	<id root="SD.1.1.3" displayName="疾病控制" extension="D2011000001" displayable="true" xsi:type="II"/>
+	<!--文档类别代码-->
+	<code code="A010401" codeSystem="SD.6.3" codeSystemName="卫生信息共享文档分类编码系统" displayName="传染病报告"/>
+	<title>传染病报告</title>
+	<!--文档生效时间 [1..1]-->
+	<effectiveTime xsi:type="TS" value="2011-12-31 15:48:23"/>
+	<!--文档密级 默认值 [1..1] -->
+	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="一般保密级别"/>
+	<!--文档语言 [1..1] 默认值 code="zh-cn" 含义：中文字符编码-->
+	<languageCode code="zh-cn"/>
+	<!--文档版本号-->
+	<versionNumber value="2" xsi:type="INT"/>
+	<!--文档记录对象-->
+	<recordTarget contextControlCode="OP">
+		<patientRole>
+		<!--患者唯一标识-->
+			<id root="唯一标识" extension="唯一标识"/>
+			<!--患者通信地址 包括邮箱和电话-->
+			<telecom>
+				<code code="DE02.01.010.00" displayName="电话号码"/>
+				<value value="020-87815102"/>
+				<asTelecomType>
+					<code code="DE02.01.011.00" displayName="电话类别"/>
+					<value>电话类别</value>
+				</asTelecomType>
+			</telecom>
+			<telecom code="DE02.0l.012.00" displayName="邮箱" value="niming@163.com" />
+			<!--患者住址 通过use属性区别住址类型，如use="H"表示家庭住址，use="WP"表示工作地址-->
+				<!--患者住址 通过use属性区别住址类型，如use="H"表示家庭住址，use="WP"表示工作地址-->
+			<addr use="H">
+				<houseNumber partType="DE02.01.009.06" literal="xx号xx小区xx栋xx单元xx号">xx号xx小区xx栋xx单元xx号</houseNumber>
+				<streetName partType="DE02.01.009.05" literal="中山大道">中山大道</streetName>
+				<county partType="DE02.01.009.03" literal="天河区">天河区</county>
+				<city partType="DE02.01.009.02" literal="广州市">广州市</city>
+				<state partType="DE02.01.009.01" literal="广东省">广东省</state>
+				<postalCode partType="DE02.01.047.00" literal="510000">510000</postalCode>	
+			</addr>
+			<!--患者详细信息 包括身份证，姓名，性别，出生日期，婚姻状况等-->
+			<patient classCode="PSN" determinerCode="INSTANCE">
+				<!--患者标识号，可以是身份证，护照，军官证等-->
+				<id root="SD.4.2" extension="ID420106201101011919"/>
+				<name literal="贾小明">贾小明</name>
+				<!--患者性别-->
+				<administrativeGenderCode code="1" displayName="男性" codeSystem="SD.11.3.4" codeSystemName="生理性别代码表（GB/T 2261.1）"/>
+				<!--患者出生日期-->
+				<birthTime xsi:type="TS" value="1964-01-01"/>
+				<!--患者婚姻状况-->
+				<maritalStatusCode code="10" displayName="未婚" codeSystem="SD.11.3.5" codeSystemName="婚姻状况代码表（GB/T 2261.2）"/>
+				<!--患者民族类别-->
+				<ethnicGroupCode code="15" displayName="土家族" codeSystem="SD.11.3.3" codeSystemName="民族类别代码表（GB 3304）"/>
+				<!--扩展节点，医疗保险号，国籍等-->
+				<!--患者医疗保险号-->
+				<asMedicalInsuranceCode code="DE9999999999999" codeSystem="SD.4.14" displayName="医保卡号标识" nullFlavor="UNK"/>
+				<!--患者职业-->
+				<occupationCode>
+					<code code="DE02.01.007.00" displayName="职业类别代码"/>
+					<value code="04" codeSystem="SD.11.1.6" codeSystemName="传染病患者职业代码表" displayName="教师"/>
+				</occupationCode>
+				<!--患者工作单位-->
+				<asEmployeeJob>
+					<code code="DE08.10.007.00" displayName="患者工作单位名称代码"/>
+					<name>患者工作单位名称</name>
+				</asEmployeeJob>
+				<!--患者所在地行政区划-->
+				<asServiceDeliveryLocation classCode="SDLOC">
+					<location classCode="PLC" determinerCode="INSTANCE">
+						<code code="DE02.01.038.00" displayName="行政区划"/>
+					</location>
+				</asServiceDeliveryLocation>
+				<!--监护人-->
+				<guardian>
+					<asGuardian>
+						<code code="51" codeSystem="SD.11.3.8" codeSystemName="家庭关系代码" displayName="父亲"/>
+						<telecom>
+							<code code="DE02.01.010.00" displayName="电话号码"/>
+							<value value="010-87815102"/>
+							<asTelecomType>
+								<code code="DE02.01.011.00" displayName="电话类别"/>
+								<value>电话类别</value>
+							</asTelecomType>
+						</telecom>
+						<guardianChoice>
+							<guardianPerson>
+								<name literal="父亲姓名">父亲姓名</name>
+							</guardianPerson>
+						</guardianChoice>
+					</asGuardian>
+				</guardian>
+			
+			</patient>
+		</patientRole>
+	</recordTarget>
+	<!--文档作者-->
+	<author typeCode="AUT" contextControlCode="OP">
+		<!--文档创建时间-->
+		<time xsi:type="TS" value="20120804"/>
+		<!--报告医师-->
+		<!--ASSIGNED属性表示表达角色是由某个具有合法登记注册的人或机构扮演-->
+		<assignedAuthor classCode="ASSIGNED">
+			<!--报告医师姓名-->
+			<assignedAuthorChoice>
+				<assignedPerson>
+					<code code="DEO2.01.039.00" displayName="报告医师"/>
+					<name literal="报告医师姓名">王医生</name>
+					<assignedPersonCode>
+						<code code="DE99999999999" displayName="报告医师代码"/>
+					</assignedPersonCode>
+				</assignedPerson>
+			</assignedAuthorChoice>
+			<!--报告医师科室-->
+			<representedOrganization>
+				<code code="DE08.10.026,00" displayName="报告科室代码"/>
+				<name literal="报告科室名称">报告科室</name>
+				<assignedOrganizationCode>
+					<code code="DE99999999999" displayName="报告科室代码"/>
+				</assignedOrganizationCode>
+			</representedOrganization>
+		</assignedAuthor>
+	</author>
+	<!--文档上报机构-->
+	<author typeCode="AUT" contextControlCode="OP">
+		<assignedAuthor classCode="ASSIGNED">
+			<assignedAuthoringDevice classCode="DEV" determinerCode="INSTANCE">
+				<code code="" extension="上报系统"/>
+			</assignedAuthoringDevice>
+			<!--ORG属性表示由人类组成的合法的社会团体-->
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<code code="DE08.10.013.00" displayName="上报机构名称"/>
+				<name literal="人民医院"></name>
+				<assignedOrganizationCode>
+					<code code="DE08.10.052.00" displayName="上报机构代码"/>
+				</assignedOrganizationCode>
+				<addr use="WP">
+					<streetName partType="DE02.01.009.05" literal="西直门外大街"></streetName>
+				</addr>
+			</representedOrganization>
+		</assignedAuthor>
+	</author>
+	<!--文档管理机构-->
+	<custodian typeCode="CST">
+		<assignedCustodian classCode="ASSIGNED">
+			<representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+				<!--SD.4.5表示医疗卫生管理机构标识-->
+				<code root="SD.4.5" extension="EHR管理机构编号"/>
+				<name literal="卫生局健康档案管理中心">卫生局健康档案管理中心</name>
+				<telecom>
+					<code code="DE02.01.010.00" displayName="电话号码"/>
+					<value value="020-87815102"/>
+					<asTelecomType>
+						<code code="DE02.01.011.00" displayName="电话类别"/>
+						<value>电话类别</value>
+					</asTelecomType>
+				</telecom>
+				<addr>
+					<city partType="DE02.01.009.02" literal="北京市">北京市</city>
+				</addr>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	<!--文档体-->
+	<component>
+		<structuredBody>
+			<!-- 传染病首次出现症状日期 -->
+			<component>
+				<section classCode="DOCSECT" moodCode="EVN">
+					<text/>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.01.005.00" displayName="首次出现症状日期"/>
+							<!-- 传染病首次出现症状日期 -->
+							<value xsi:type="TS" value="2012-09-08"></value>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--传染病病例诊断章节-->
+			<component>
+				<section classCode="DOCSECT" moodCode="EVN" >
+					<code nullFlavor="UNK" displayName="传染病诊断信息"/>
+					<text/>
+					<!-- 传染病病例诊断类别信息 -->
+					<entry>
+						<asInfectiousDiseasesDiagnos>
+							<asInfectiousDiseasesDiagnosCode typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE05.01.060.00" displayName="诊断状态代码"/>
+									<!-- 传染病病例诊断类别信息代码 -->
+									<value xsi:type="CD" code="" codeSystem="SD.11.4.3" codeSystemName="诊断代码表（ICD-10）"/>
+								</observation>
+							</asInfectiousDiseasesDiagnosCode>
+							<!-- 急性、慢性 -->
+							<asInfectiousDiseasesDiagnosType typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE05.10.015.00" displayName="传染病发病类别代码"/>
+									<!-- 传染病急性、慢性代码 -->
+									<value xsi:type="CD" code="" codeSystem="SD.11.2.21" codeSystemName="传染病发病类别代码表"/>
+								</observation>
+							</asInfectiousDiseasesDiagnosType>
+							<!--诊断日期-->
+							<asInfectiousDiseasesDiagnosDate typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE02.01.035.00" displayName="诊断日期"/>
+									<!-- 传染病诊断日期 -->
+									<value xsi:type="TS" value="2012-09-08"></value>
+								</observation>
+							</asInfectiousDiseasesDiagnosDate>
+							<!-- 传染病类型 -->
+							<asInfectiousDiseasesDiagnosName typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code=" DE05.01.012.00" displayName="传染病名称代码"/>
+									<!-- 传染病类型代码 -->
+									<value xsi:type="CD" code="1" codeSystem="SD.11.4.3" codeSystemName="诊断代码表（ICD-10）"/>
+								</observation>
+							</asInfectiousDiseasesDiagnosName>
+							<!--其他法定传染病名称-->
+							<asOtherInfectiousDiseasesDiagnosName typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE99999999999" displayName="传染病名称代码"/>
+									<!-- 传染病类型代码 -->
+									<value xsi:type="CD" code="B99" codeSystem="SD.11.4.3" codeSystemName="诊断代码表（ICD-10）" displayName="其他和未特指的传染病"/>
+								</observation>
+							</asOtherInfectiousDiseasesDiagnosName>
+							<!-- 订正病名 -->
+							<asCorrectName typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE05.01.013.00" displayName="订正诊断"/>
+									<value xsi:type="CD" code="1" codeSystem="SD.11.4.3" codeSystemName="诊断代码表（ICD-10）"/>
+								</observation>
+							</asCorrectName>
+						</asInfectiousDiseasesDiagnos>
+					</entry>
+				</section>
+			</component>
+			<!-- 传染病死亡信息-->
+			<component>
+				<section classCode="DOCSECT" moodCode="EVN">
+					<entry typeCode="COMP" contextConductionInd="true">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE02.01.035.00" displayName="诊断日期"/>
+							<!--传染病死亡日期-->
+							<value xsi:type="TS" value="2012-09-07 18:08:24"></value>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--退卡信息-->
+			<component>
+				<section classCode="DOCSECT" moodCode="EVN">
+					<entry typeCode="COMP" contextConductionInd="true">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE999999999999" displayName="退卡原因"/>
+							<value literal="退卡原因">退卡原因</value>
+						</observation>
+					</entry>
+				</section>
+			</component>
+		</structuredBody>
+	</component>
+</ClinicalDocument>

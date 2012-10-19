@@ -1,0 +1,50 @@
+.divMainRight {
+	width: auto;
+	margin: 0;
+	padding: 1px;
+	border: 0;
+	color: #363636;
+	float: left;
+}
+
+.divLeftBar {
+	width: 300px;
+	margin-right: 10px;
+	padding: 0;
+	border: 0;
+	color: #363636;
+	background-color: #eee;
+	border: 1px dashed #630;
+	float: left;
+	overflow-x: scroll;
+	min-height:260px
+}
+
+.table_div {
+	float: left;
+	width: auto;
+	background-color: #eee;
+	border: 1px dashed #630;
+}
+
+.table_div table {
+	background-color: #EEEEFF;
+	border-collapse: collapse;
+}
+
+.table_div table,td,th {
+	border: 1px solid black;
+	white-space: nowrap;
+}
+
+.table_div table thead {
+	background-color: #AAAAAA;
+}
+
+.table_div table tbody tr:nth-child(2n) {
+	background-color: #FFFFFF;
+}
+
+.jstree>ul>li:nth-child(2n) {
+	background-color: #eef;
+}

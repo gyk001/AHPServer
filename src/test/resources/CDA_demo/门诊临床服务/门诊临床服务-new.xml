@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="F:\工作\HL7 - v3ballot_fullsite_2009may\html\infrastructure\cda\CDA.xsd">
+	<!--地域代码，"CN"代表中国-->
+	<realmCode code="CN"/>
+	<!--文档信息模型类别-->
+	<!--root="2.16.840.1.113883.1.3" 表示HL7 注册模型的编码系统OID ，extension="POCD_HD000040" 表示相应编码系统下的CDA R2 采用的临床文档架构信息模型是POCD_HD0000400-->
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_MT000040"/>
+	<!--文档模板 SD.10.1表示文档模板的根-->
+	<templateId xsi:type="II" root="SD.10.1" assigningAuthorityName="门诊临床服务" extension="DT20120099V1"/>
+	<!--文档编号 [1..1] -->
+	<id root="SD.1.2" displayaName="医疗服务" extension="D2011000001" displayable="true" xsi:type="II"/>
+	<!--文档类别代码-->
+	<code code="A010401" codeSystem="SD.6.3" codeSystemName="卫生信息共享文档分类编码系统" displayName="门诊临床服务"/>
+	<title>门诊临床服务</title>
+	<!--文档生效时间 [1..1]-->
+	<effectiveTime xsi:type="TS" value="2012-08-07"/>
+	<!--文档密级 默认值 [1..1] -->
+	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="一般保密级别"/>
+	<!--文档语言 [1..1] 默认值 code="zh-cn" 含义：中文字符编码-->
+	<languageCode code="zh-cn"/>
+	<!--文档版本号-->
+	<versionNumber value="1" xsi:type="INT"/>
+	<!--文档记录对象-->
+	<!--contextControlCode属性为"OP"表示信息可以被重载实用到其他地方-->
+	<recordTarget typeCode="RCT" contextControlCode="OP">
+		<patientRole classCode="PAT">
+			<id root="SD.4.10" extension="唯一标识"/>
+			<!--患者通信地址 包括邮箱和电话-->
+			<telecom>
+				<code code="DE02.01.010.00" displayName="电话号码"/>
+				<value value="010-87815102"/>
+				<asTelecomType>
+					<code code="DE02.01.011.00" displayName="电话类别"/>
+					<value>电话类别</value>
+				</asTelecomType>
+			</telecom>
+			<telecom code="DE02.0l.012.00" displayName="邮箱" value="niming@163.com" />
+			<patient>
+				<!--患者身份标识号-->
+				<id root="SD.4.2" extension="ID420106201101011919"/>
+				<!--患者姓名-->
+				<name literal="贾一民">贾一民</name>
+				<!--患者性别-->
+				<administrativeGenderCode code="2" displayName="女性" codeSystem="SD.11.3.4" codeSystemName="生理性别代码表（GB/T 2261.1）"/>
+				<!--患者出生日期-->
+				<birthTime xsi:type="TS" value="2008-01-01"/>
+				<!--患者婚姻状况-->
+				<maritalStatusCode code="10" displayName="未婚" codeSystem="SD.11.3.5" codeSystemName="婚姻状况代码表（GB/T 2261.2）"/>
+				<!--患者民族类别-->
+				<ethnicGroupCode code="01" displayName="汉族" codeSystem="SD.11.3.3" codeSystemName="民族类别代码表（GB 3304）"/>
+				<!--扩展节点-->
+				<!--患者医疗保险号-->
+				<asMedicalInsuranceCode code="DE999999999999999" codeSystem="SD.4.14" codeSystemName="医疗保险号" nullFlavor="UNK"/>
+				<!--门诊号-->
+				<asIdentifiedEntity code="DE0l.00.010.00" codeSystem="SD.4.10" codeSystemName="就诊机构.门诊号标识号"/>
+				<!--患者服务编号-->
+				<asIdentifiedEntity code="DE999999999999" displayName="建档机构代码.患者服务编号"/>
+				<!--患者所在地行政区划-->
+				<asServiceDeliveryLocation classCode="SDLOC">
+					<location classCode="PLC" determinerCode="INSTANCE">
+						<code code="DE02.01.038.00" displayName="行政区划"/>
+					</location>
+				</asServiceDeliveryLocation>
+			</patient>
+		</patientRole>
+	</recordTarget>
+	<!--文档作者-->
+	<author typeCode="AUT" contextControlCode="OP">
+		<!--文档创建时间-->
+		<time xsi:type="TS" value="20120804"/>
+		<!--接诊医师-->
+		<!--ASSIGNED属性表示表达角色是由某个具有合法登记注册的人或机构扮演-->
+		<assignedAuthor classCode="ASSIGNED">
+			<!--接诊医师姓名-->
+			<assignedAuthorChoice>
+				<assignedPerson>
+					<code code="DE02.01.039.00" displayName="接诊医师"/>
+					<name literal="接诊医师姓名">接诊医师姓名</name>
+					<assignedPersonCode>
+						<code code="DE99999999999" displayName="接诊医师代码"/>
+					</assignedPersonCode>
+				</assignedPerson>
+			</assignedAuthorChoice>
+			<!--接诊科室-->
+			<representedOrganization>
+				<code code="DE08.10.026.00" displayName="就诊科室代码"/>
+				<name literal="就诊科室名称">就诊科室</name>
+				<assignedOrganizationCode>
+					<code code="DE999999999999" displayName="就诊科室代码"/>
+				</assignedOrganizationCode>
+			</representedOrganization>
+		</assignedAuthor>
+	</author>
+	<!--文档上报机构-->
+	<author typeCode="AUT" contextControlCode="OP">
+		<assignedAuthor classCode="ASSIGNED">
+			<assignedAuthoringDevice classCode="DEV" determinerCode="INSTANCE">
+				<code code="DE99999999999999" extension="上报系统"/>
+			</assignedAuthoringDevice>
+			<!--ORG属性表示由人类组成的合法的社会团体-->
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<code code="DE08.10.013.00" displayName="上报机构名称"/>
+				<name literal="人民医院"></name>
+				<assignedOrganizationCode>
+					<code code="DE08.10.052.00" codeSystem="" codeSystemName="上报机构代码"/>
+				</assignedOrganizationCode>
+				<addr use="WP">
+					<streetName partType="DE02.01.009.05" literal="西直门外大街"></streetName>
+				</addr>
+			</representedOrganization>
+		</assignedAuthor>
+	</author>
+	<!--CDA文档体部分-->
+	<!--症状章节-->
+	<component>
+		<structuredBody>
+			<!--病症记录章节-->
+			<component>
+				<section>
+					<code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROBLEM LIST"/>
+					<!--text属性表示人读部分-->
+					<text/>
+					<entry>
+						<asDisease>
+							<!-- 条目：症状代码：个体的症状在特定编码体系中的代码-->
+							<asDiseaseCode>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.01.116.00" displayName="症状代码"/>
+									<value xsi:type="SC" code="05" codeSystem="SD.11.4.1" codeSystemName="症状代码表" displayName="胸痛"/>
+								</observation>
+							</asDiseaseCode>
+							<!--病症开始时间-->
+							<asDiseaseStartDate>
+								<observation classCode="OBS" moodCode="ENV">
+									<code code="DE04.01.114.00" displayName="开始日期"/>
+									<value xsi:type="TS" value="2012-08-07"/>
+								</observation>
+							</asDiseaseStartDate>
+							<!--症状持续时间-->
+							<asDiseaseTime>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.01.115.00" displayName="症状持续时间"/>
+									<value xsi:type="TS" value="1" unit="天"/>
+								</observation>
+							</asDiseaseTime>
+						</asDisease>
+					</entry>
+				</section>
+			</component>
+			<!--检查章节-->
+			<component>
+				<section>
+					<code code="" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" display="STARDIES SUMMARY"/>
+					<text/>
+					<entry>
+						<asExamination>
+							<!--检查项目-->
+							<asExaminationItem>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="" displayName=""/>
+									<text>检查项目描述</text>
+								</observation>
+							</asExaminationItem>
+							<!--检查结果-->
+							<asExaminationResult>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="" disPlayName=""/>
+									<text>检查结果描述</text>
+								</observation>
+							</asExaminationResult>
+						</asExamination>
+					</entry>
+				</section>
+			</component>
+			<!--诊断记录章节-->
+			<component>
+				<section>
+					<code code="" codeSystem="" codeSystemName="" displayName="HOSPITAL ADMISSION DX"/>
+					<text/>
+					<entry>
+						<asDiagnose>
+							<!--诊断名称-->
+							<asDiagnoseName>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="" displayName="诊断名称"/>
+									<text/>
+									<effectiveTime value="2012-08-07"/>
+								</observation>
+							</asDiagnoseName>
+							<!--诊断代码-->
+							<asDiagnoseCode>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="" displayName="诊断代码"/>
+									<value xsi:type="CD" code="" codeSystem="SD.11.4.3" codeSytemName="诊断代码表(ICD-10)"/>
+								</observation>
+							</asDiagnoseCode>
+						</asDiagnose>
+					</entry>
+				</section>
+			</component>
+			<!--用药章节-->
+			<component>
+				<section>
+					<code code="" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HISTORY OF MEDICATION USE"/>
+					<text/>
+					<entry>
+						<substanceAdministration classCode="SBADM" moodCode="EVN">
+							<text/>
+							<!--人读部分-->
+							<routeCode code="1" codeSystem="SD.11.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+							<!--用药剂量-单次 -->
+							<doseQuantity value="20" unit="mg"/>
+							<!--用药频率 -->
+							<rateQuantity value="3" unit="日"/>
+							<!--加规格-->
+							<consumable>
+								<manufacturedProduct>
+									<manufacturedLabeledDrug>
+										<!--药品名称 -->
+										<code code="" displayName="药品编码"/>
+										<name>氢氯噻臻</name>
+									</manufacturedLabeledDrug>
+								</manufacturedProduct>
+							</consumable>
+							<!--条目关联 这些场景在语义上使文档条目链接到同一份文档中的其它条目或者外部文档的对象 COMP表示类型为组成部分-->
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE06.00.027.00" displayName="用药观察"/>
+									<value xsi:type="CD" code="1" codeSystem="SD.11.2.12" codeSystemName="服药依从性代码表" displayName="规律"/>
+								</observation>
+							</entryRelationship>
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE06.00.129.00" displayName="药物不良反应标志"/>
+									<!--用药副作用-文本-->
+									<text>发烧，腿疼等不良反应描述</text>
+									<precondition>
+										<criterion>
+											<!--用药副作用标志 value="true"表示有-->
+											<value xsi:type="BL" value="true"/>
+										</criterion>
+									</precondition>
+								</observation>
+							</entryRelationship>
+						</substanceAdministration>
+					</entry>
+				</section>
+			</component>
+			<!--手术操作章节-->
+			<component>
+				<section>
+					<code code="" codeSystem="2.16.840.1.113883.6.1" displayName="HISTORY OF PROCEDURES"/>
+					<text/>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<procedure classCode="PROC" moodCode="EVN">
+							<code code="0003" codeSystem="SD.11.4.6" codeSystemName="手术(操作)代码表(ICD-9-CM)" displayName="左臂"/>
+							<!--手术日期-->
+							<effectiveTime xsi:type="TS" value="2012-08-20"/>
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" mooodCode="EVN">
+									<code code="DE06.00.074.00" displayName="麻醉方法名称"/>
+									<text>全身麻醉</text>
+								</observation>
+							</entryRelationship>
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE06.00.073.00" displayName="麻醉方法代码"/>
+									<value code="1" codeSystem="SD.11.1.159" codeSystemName="麻醉方法代码表" xsi:type="CD" displayName="全身麻醉"/>
+								</observation>
+							</entryRelationship>
+							<entryRelationship typeCode="COMP">
+								<!--INFRM属性(inform)表示传递信息和理解主题的行动-->
+								<act classCode="INFRM" moodCode="AOT" negationID="false">
+									<code code="" codeSystem="" displayName=""/>
+									<!--手术操作者信息-->
+									<proformer>
+										<time xsi:type="TS" value="2012-08-20"/>
+										<assignedEntity>
+											<assignedPerson>
+												<code code="DE9999999999999" displayName="手术医生"/>
+												<name literal="张医师">张医师</name>
+												<assignedPersonCode>
+													<code code="DE999999999999" displayName="手术医生代码"/>
+												</assignedPersonCode>
+											</assignedPerson>
+										</assignedEntity>
+									</proformer>
+								</act>
+							</entryRelationship>
+						</procedure>
+					</entry>
+				</section>
+			</component>
+			<!--转诊章节-->
+			<component>
+				<section>
+					<code code="18776-1" codeSystem="2.16.840.1.113883.6.1" codeSytemName="referal" displauName="LOINC"/>
+					<text/>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- 转诊标志-->
+							<code code="DE06.00.174.00" displayName="转诊标志"/>
+							<value xsi:type="BL" value="true"/>
+							<!--条目关联 这些场景在语义上使文档条目链接到同一份文档中的其它条目(通过entryRelationship类)或者外部文档的对象 CAUS表示类型为原因-->
+							<entryRelationship typeCode="CAUS" negationID="false">
+								<act classCode="INFRM" moodCode="APT" negationID="false">
+									<code code="DE06.00.177.00" displayName="转诊原因"/>
+									<text>转诊原因：呼吸困难，病情加重</text>
+									<!--转诊执行人-->
+									<performer>
+										<time xsi:type="TS" value="2012-08-07"/>
+										<assignedEntity>
+											<assignedPerson>
+												<code code="DE99999999999999" displayName="接诊医生"/>
+												<name literal="马医生">马医生</name>
+												<assignedPersonCode>
+													<code code="DE9999999999999" displayName="接诊医师代码"/>
+												</assignedPersonCode>
+											</assignedPerson>
+											<representedOrganization>
+												<code code="DE08.10.026.00" displayName="转入科室名称"/>
+												<name literal="内科">内科</name>
+												<asOrganizationPartOf>
+													<wholeOrganization>
+														<name literal="妇幼保健院">妇幼保健院</name>
+														<code code="DE08.10.013.00" displayName="转入机构名称"/>
+													</wholeOrganization>
+												</asOrganizationPartOf>
+											</representedOrganization>
+										</assignedEntity>
+									</performer>
+								</act>
+							</entryRelationship>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--费用章节-->
+			<component>
+				<section>
+					<code displayName="费用" nullFlavor="UNK"/>
+					<text/>
+					<entry>
+						<asMedicalFee>
+							<asMedicalFeeName>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE07.00.003.00" displayName="门诊费用分类名称"/>
+									<text>西药</text>
+								</observation>
+							</asMedicalFeeName>
+							<asMedicalFeeCode>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE07.00.002.00" displayName="门诊费用分类代码"/>
+									<value xsi:type="CD" code="01" codeSystem="SD.11.1.196" codeSystemName="门诊分类代码表" displayName="西药"/>
+								</observation>
+							</asMedicalFeeCode>
+							<asMedicalPaymentCode>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE07.00.007.00" displayName="医疗费用支付方式代码"/>
+									<!--医疗费用结算方式代码 CD表示概念说明-->
+									<value xsi:type="CD" code="01"  codeSystem="SD.11.1.197" codeSysemName="医疗费用来源类别代码表" displayName="城镇职工基本医疗保险"/>
+								</observation>
+							</asMedicalPaymentCode>
+							<asMedicalPaymentType>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE07.00.006.00" displayName="住院费用结算方式代码"/>
+									<!--医疗费用结算方式代码 MO表示数据类型为货币金额-->
+									<value xsi:type="MO" code="01" codeSystem="SD.11.1.198" codeSystemName="医疗费用结算方式代码" currency="RMB" displayName="现金"/>
+									<value xsi:type="MO" value="4000" currency="RMB"/>
+								</observation>
+							</asMedicalPaymentType>
+						</asMedicalFee>
+					</entry>
+				</section>
+			</component>
+			<!--死亡章节-->
+			<component>
+				<section>
+					<code code="" codeSystem="" codeSystemName=""/>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<!--死亡原因-->
+							<code code="DE05.0l.06l.00" displayName="直接死亡原因"/>
+							<!--死亡时间-->
+							<effectiveTime xsi:type="TS" value="2012-08-07"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+		</structuredBody>
+	</component>
+</ClinicalDocument>

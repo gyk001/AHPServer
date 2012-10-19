@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:n3="http://www.w3.org/1999/xhtml" xmlns:n1="urn:hl7-org:v3" xmlns:n2="urn:hl7-org:v3/meta/voc" xmlns:voc="urn:hl7-org:v3/voc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	
+	<!--对于字典表的处理 在需要字典表转换的地方添加 codeSystem="表名"-->
+	<!--  Format Date 
+		 outputs a date in Month Day, Year form
+		 e.g., 19991207  ==> 1999年12月7日
+	-->
+	<!--日期格式转换 必须输入四位年，如果日期是两位，输出可能不正常-->
+ <xsl:template name="formatDate">
+  <xsl:param name="date" select="''"/>
+  <xsl:param name="srcformat" select="'yyyy-MM-dd'"/>
+  <xsl:param name="desformat" select="'yyyy年MM月dd日 HH:mm:ss'"/>
+  <!--<xsl:param name="desformat1" select="'yyyy年MM月dd日 HH:mm:ss'"/>-->
+  <xsl:variable name="SrcFormat">
+   <xsl:choose>
+    <xsl:when test="string-length(srcformat) &gt; 7">
+     <xsl:value-of select="srcformat"/>
+    </xsl:when>
+    <xsl:otherwise>yyyy-MM-dd</xsl:otherwise>
+   </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="DesFormat">
+   <xsl:choose>
+    <xsl:when test="string-length(desformat) &gt; 7">
+     <xsl:value-of select="desformat"/>
+    </xsl:when>
+    <xsl:otherwise>yyyy年MM月dd日</xsl:otherwise>
+   </xsl:choose>
+  </xsl:variable>
+  <!--分别获取年月日-->
+  <xsl:variable name="year">
+   <xsl:choose>
+    <xsl:when test="string-length($DesFormat) - string-length(translate($DesFormat, 'y','')) &gt; 4 ">
+     <xsl:value-of select="number(substring($date, string-length(substring-before($SrcFormat, 'y')) + 1, string-length($SrcFormat) - string-length(translate($SrcFormat,'y',''))))"/>
+    </xsl:when>
+    <xsl:otherwise>
+     <xsl:value-of select="substring($date, string-length(substring-before($SrcFormat, 'y')) + 1, string-length($SrcFormat) - string-length(translate($SrcFormat,'y','')))"/>
+    </xsl:otherwise>
+   </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="month">
+   <xsl:choose>
+    <xsl:when test="string-length($DesFormat) - string-length(translate($DesFormat, 'M','')) = 1 ">
+     <xsl:value-of select="number(substring($date, string-length(substring-before($SrcFormat, 'M')) + 1, string-length($SrcFormat) - string-length(translate($SrcFormat,'M',''))))"/>
+    </xsl:when>
+    <xsl:otherwise>
+     <xsl:value-of select="substring($date, string-length(substring-before($SrcFormat, 'M')) + 1, string-length($SrcFormat) - string-length(translate($SrcFormat,'M','')))"/>
+    </xsl:otherwise>
+   </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="day">
+   <xsl:choose>
+    <xsl:when test="string-length($DesFormat) - string-length(translate($DesFormat, 'M','')) = 1 ">
+     <xsl:value-of select="number(substring($date, string-length(substring-before($SrcFormat, 'd')) + 1, string-length($SrcFormat) - string-length(translate($SrcFormat,'d',''))))"/>
+    </xsl:when>
+    <xsl:otherwise>
+     <xsl:value-of select="substring($date, string-length(substring-before($SrcFormat, 'd')) + 1, string-length($SrcFormat) - string-length(translate($SrcFormat,'d','')))"/>
+    </xsl:otherwise>
+   </xsl:choose>
+  </xsl:variable>
+  <!--获得时分秒-->
+   <xsl:variable name="hour">
+   <xsl:choose>
+   <!--如何value包含 ： 冒号则取值-->
+    <xsl:when test="contains($date,':')">
+     <xsl:value-of select="substring($date,string-length(translate($DesFormat,':','')))"/>
+    </xsl:when>
+    <xsl:otherwise>
+	  <!--无时分秒-->
+    </xsl:otherwise>
+   </xsl:choose>
+  </xsl:variable>
+  <!-- 判断 如果年不等于 空串 则显示 -->
+<xsl:if test="$year != ''">
+  <!--分别替换年月日-->
+  <xsl:variable name="d1" select="concat(substring-before($DesFormat, 'y'), $year, substring($DesFormat, string-length(substring-before($DesFormat, 'y')) + string-length($DesFormat) - string-length(translate($DesFormat, 'y','')) + 1 ))"/>
+  <xsl:variable name="d2" select="concat(substring-before($d1, 'M'), $month, substring($d1, string-length(substring-before($d1, 'M')) +  string-length($d1) - string-length(translate($d1, 'M','')) + 1 ))"/>
+  <xsl:value-of select="concat(substring-before($d2, 'd'), $day, substring($d2, string-length(substring-before($d2, 'd')) + string-length($d2) - string-length(translate($d2, 'd','')) + 1),$hour)"/>
+</xsl:if>
+ </xsl:template>
+	
+	<!--身份证号等证件号分割-->
+	<xsl:template name="IdSplit">
+	  <xsl:param name="id" select="'HR13800138000'"/>
+	  <!--判断字符串是否以字母开头-->
+	  <xsl:choose>
+	   <!--如何value包含 ： 冒号则取值-->
+		<xsl:when test="starts-with($id,'HR')">
+		 <xsl:value-of select="substring-after($id, 'HR')"/>
+		</xsl:when>
+		<xsl:when test="starts-with($id,'ID')">
+		 <xsl:value-of select="substring-after($id, 'ID')"/>
+		</xsl:when>
+		<xsl:otherwise>
+		  <xsl:value-of select="$id"/>
+		</xsl:otherwise>
+	  </xsl:choose>
+	</xsl:template>
+	<!--字典表变量参数定义-->
+	<xsl:variable name="tableWidth">width:100%</xsl:variable>
+	<xsl:variable name="border">0</xsl:variable>
+	<xsl:variable name="className">test</xsl:variable>
+	<!--定义字典表取值-->
+	<!--生理性别代码表-->
+	<xsl:variable name="GBT2261.1">GBT2261.1</xsl:variable>
+	<!--婚姻状况代码表-->
+	<xsl:variable name="GBT2261.2">GBT2261.2</xsl:variable>
+	<!--民族类别代码表-->
+	<xsl:variable name="GB3304">GB3304</xsl:variable>
+	<!--学历代码表-->
+	<xsl:variable name="GBT4658">GBT4658</xsl:variable>
+	<!--职业类别代码表-->
+	<xsl:variable name="GBT6565">GBT6565</xsl:variable>
+	<!--家庭关系代码表-->
+	<xsl:variable name="GBT4761">GBT4761</xsl:variable>
+	<!--血缘关系代码表-->
+	<xsl:variable name="CV02.01.201">CV02.01.201</xsl:variable>
+	<!--行政区划代码表-->
+	<xsl:variable name="GBT2260">GBT2260</xsl:variable>
+	<!--ABO血型代码表-->
+	<xsl:variable name="CV04.50.005">CV04.50.005</xsl:variable>
+	<!--Rh血型代码表暂无-->
+	<!--症状代码表-->
+	<xsl:variable name="ICD10R">ICD10R</xsl:variable>
+	<!--口唇外观代码表-->
+	<xsl:variable name="CV04.10.007">CV04.10.007</xsl:variable>
+	<!--齿列类别代码表-->
+	<xsl:variable name="CV04.10.010">CV04.10.010</xsl:variable>
+	<!--咽部检查结果代码表暂无-->
+	<!--巩膜检查结果代码表-->
+	<xsl:variable name="CV04.10.006">CV04.10.006</xsl:variable>
+	<!--听力检查结果代码表暂无-->
+	<!--运动状态代码表暂无-->
+	<!--心率类别代码表暂无-->
+	<!--足背动脉搏动代码表-->
+	<xsl:variable name="CV04.10.015">CV04.10.015</xsl:variable>
+	<!--皮肤检查结果代码表-->
+	<xsl:variable name="CV04.10.004">CV04.10.004</xsl:variable>
+	<!--淋巴结检查结果代码表-->
+	<xsl:variable name="CV04.10.011">CV04.10.011</xsl:variable>
+	<!--下肢水肿检查结果代码表-->
+	<xsl:variable name="CV04.10.014">CV04.10.014</xsl:variable>
+	<!--肛门指诊检查结果代码表-->
+	<xsl:variable name="CV04.10.013">CV04.10.013</xsl:variable>
+	<!--乳腺检查结果代码表-->
+	<xsl:variable name="CV04.10.012">CV04.10.012</xsl:variable>
+	<!--尿实验窒定性检测结果代码表-->
+	<xsl:variable name="CV04.50.015">CV04.50.015</xsl:variable>
+	<!--阴道分泌物检查结果代码表-->
+	<xsl:variable name="CV04.50.019">CV04.50.019</xsl:variable>
+	<!--阴道分泌物清洁度代码表-->
+	<xsl:variable name="CV04.50.010">CV04.50.010</xsl:variable>	
+	<!--梅毒血清学试验结果代码表暂无-->
+	<!--HIV抗体检测结果代码表暂无-->
+	<!--中医体质代码表-->
+	<xsl:variable name="CV05.01.005">CV05.01.005</xsl:variable>	
+	<!--中医体质分类判定结果代码表暂无-->
+	<!--用药途径代码表-->
+	<xsl:variable name="CV06.00.102">CV06.00.102</xsl:variable>
+	<!--既往常见病史代码表-->
+	<xsl:variable name="CV02.10.005">CV02.10.005</xsl:variable>
+	<!--疫苗名称代码表-->
+	<xsl:variable name="CV08.50.001">CV08.50.001</xsl:variable>
+	<!--手术/操作代码表-->
+	<xsl:variable name="ICD9CM">ICD9CM</xsl:variable>
+	<!--麻醉方法代码表-->
+	<xsl:variable name="CV06.00.103">CV06.00.103</xsl:variable>
+	<!--职业病危害因素类别代码表-->
+	<xsl:variable name="CV03.00.203">CV03.00.203</xsl:variable>
+	<!--身体活动频率代码表-->	
+	<xsl:variable name="CV03.00.111">CV03.00.111</xsl:variable>
+	<!--饮食习惯代码表-->
+	<xsl:variable name="CV03.00.107">CV03.00.107</xsl:variable>
+	<!--饮酒频率代码表-->
+	<xsl:variable name="CV03.00.104">CV03.00.104</xsl:variable>
+	<!--饮酒种类代码表-->
+	<xsl:variable name="CV03.00.105">CV03.00.105</xsl:variable>
+	<!--老年人健康状态自我评估代码表-->
+	<xsl:variable name="CV04.01.013">CV04.01.013</xsl:variable>
+	<!--老年人生活自理能力自我评估代码-->
+	<xsl:variable name="CV04.01.014">CV04.01.014</xsl:variable>
+	<!--认知功能粗筛代码表暂无-->
+	<!--情感状态粗筛代码表暂无-->
+	<!--健康指导代码表暂无-->
+	<!--危险因素控制建议代码表-->
+	<xsl:variable name="CV06.00.218">CV06.00.218</xsl:variable>
+	<!--既往患病种类代码表-->
+	<xsl:variable name="CV02.10.006">CV02.10.006</xsl:variable>
+	<!--门诊费用分类代码表-->
+	<xsl:variable name="CV07.10.001">CV07.10.001</xsl:variable>
+	<!--医疗费用来源类别代码表-->
+	<xsl:variable name="CV07.10.003">CV07.10.003</xsl:variable>
+	<!--医疗费用结算方式代码表-->
+	<xsl:variable name="CV07.10.004">CV07.10.004</xsl:variable>
+	<!--随访方式代码表-->
+	<xsl:variable name="CV06.00.207">CV06.00.207</xsl:variable>
+	<!--摄盐量分级代码表暂无-->
+	<!--心理调整评价结果代码表暂无-->
+	<!--随访评估结果代码表-->
+	<xsl:variable name="CV05.10.012">CV05.10.012</xsl:variable>
+	<!--精神症状代码表-->
+	<xsl:variable name="CV04.01.009">CV04.01.009</xsl:variable>
+	<!--既往门诊治疗情况代码表暂无-->
+	<!--病情转归代码表-->
+	<xsl:variable name="CV05.10.010">CV05.10.010</xsl:variable>
+	<!--患重性精神疾病对家庭社会的影响代码表-->
+	<xsl:variable name="CV03.00.112">CV03.00.112</xsl:variable>
+	<!--重性精神疾病名称代码表-->
+	<xsl:variable name="CV05.01.036">CV05.01.036</xsl:variable>
+	<!--重性精神疾病患者危险性分级代码表-->
+	<xsl:variable name="CV05.10.013">CV05.10.013</xsl:variable>
+	<!--自知力评价结果代码表暂无-->
+	<!--睡眠情况代码表暂无-->
+	<!--饮食情况代码表暂无-->
+	<!--社会功能情况代码表-->
+	<xsl:variable name="CV05.10.003">CV05.10.003</xsl:variable>
+	<!--社会功能情况评价代码表暂无-->
+	<!--关锁情况代码表暂无-->
+	<!--患者住院情况代码表暂无-->
+	<!--精神康复措施代码表-->
+	<!--服药依存性代码表暂无-->
+	<xsl:variable name="CV06.00.209">CV06.00.209</xsl:variable>
+</xsl:stylesheet>

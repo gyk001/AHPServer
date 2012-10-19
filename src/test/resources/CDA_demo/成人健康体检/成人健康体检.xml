@@ -1,0 +1,2154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="F:\工作\HL7 - v3ballot_fullsite_2009may\html\infrastructure\cda\CDA.xsd">
+	<!--地域代码 "CN" 代表中国-->
+	<realmCode code="CN"/>
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_MT000040"/>
+	<templateId xsi:type="II" root="SD.10.1" assigningAuthorityName="成人健康体检" extension="DT20120002V1"/>
+	<id root="SD.1.2" extension="D2011000001" displayable="true" xsi:type="II"/>
+	<!--文档类别代码-->
+	<code code="B0002" codeSystem="SD.6.3" codeSystemName="卫生信息共享文档分类编码系统" displayName="成人健康体检"/>
+	<title>成人健康体检</title>
+	<!--文档生效时间 [1..1]-->
+	<effectiveTime value="2011-10-29"/>
+	<!--文档密级 默认值 [1..1] -->
+	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="一般保密级别"/>
+	<!--文档语言 [1..1] 默认值 code="zh-cn" 含义：中文字符编码-->
+	<languageCode code="zh-cn"/>
+	<versionNumber value="2" xsi:type="INT"/>
+	<!--文档记录对象-->
+	<recordTarget typeCode="RCT" contextControlCode="OP">
+		<patientRole classCode="PAT">
+			<!--健康档案标识号-->
+			<id root="SD.4.1" extension="HR201102113366666"/>
+			<addr use="H">
+				<houseNumber partType="DE02.01.009.06" literal="xx号xx小区xx栋xx单元xx号">xx号xx小区xx栋xx单元xx号</houseNumber>
+				<streetName partType="DE02.01.009.05" literal="中山大道">中山大道</streetName>
+				<county partType="DE02.01.009.03" literal="天河区">天河区</county>
+				<city partType="DE02.01.009.02" literal="广州市">广州市</city>
+				<state partType="DE02.01.009.01" literal="广东省">广东省</state>
+				<postalCode partType="DE02.01.047.00" literal="510000">510000</postalCode>
+			</addr>
+			<!--患者通信地址 包括邮箱和电话-->
+			<telecom>
+				<code code="DE02.01.010.00" displayName="电话号码"/>
+				<value value="010-87815102"/>
+				<asTelecomType>
+					<code code="DE02.01.011.00" displayName="电话类别"/>
+					<value>电话类别</value>
+				</asTelecomType>
+			</telecom>
+			<telecom code="DE02.01.012.00" displayName="邮箱" value="niming@163.com"/>
+			<!--患者详细信息-->
+			<patient classCode="PSN" determinerCode="INSTANCE">
+				<!--患者标识号，可以是身份证，护照，军官证等-->
+				<id root="SD.4.2" extension="ID420106201101011919"/>
+				<name use="ALL" literal="姓名">李明</name>
+				<administrativeGenderCode code="1" codeSystem="SD.11.3.4" codeSystemName="生理性别代码表（GB/T 2261.1）"/>
+				<birthTime xsi:type="TS" value="2008-01-01"/>
+				<maritalStatusCode code="10" displayName="未婚" codeSystem="SD.11.3.5" codeSystemName="婚姻状况代码表（GB/T 2261.2）"/>
+				<ethnicGroupCode code="01" displayName="汉族" codeSystem="SD.11.3.3" codeSystemName="民族类别代码表（GB 3304）"/>
+				<birthplace>
+					<place classCode="PLC" determinerCode="INSTANCE">
+						<addr>
+							<city partType="DE02.01.009.02" literal="广州市">广州市</city>
+						</addr>
+					</place>
+				</birthplace>
+				<occupationCode>
+					<code code="DE02.01.052.00" displayName="职业类别代码"/>
+					<value code="010" codeSystem="SD.11.3.7" codeSystemName="职业类别代码表（GB/T 6565）" displayName="高等学校教师"/>
+				</occupationCode>
+				<!--扩展节点，医疗保险号，国籍等-->
+				<!--患者学历-->
+				<asEducationLevelCode classCode="EDLEV">
+					<code code="DE02.01.041.00" displayName="学历代码"/>
+					<value code="17" codeSystem="SD.11.3.6" codeSystemName="学历代码表(GB/T 4658)" displayName="研究生班毕业"/>
+				</asEducationLevelCode>
+				<!--患者医疗保险号-->
+				<asMedicalInsuranceCode code="DE99999999999999" codeSystem="SD.4.14" displayName="医保卡号标识" nullFlavor="UNK"/>
+				<!--患者国籍-->
+				<asNationality classCode="CIT">
+					<code code="DE02.Ol.015.00" displayName="中国"/>
+				</asNationality>
+				<!--患者所在地行政区划-->
+				<asServiceDeliveryLocation classCode="SDLOC">
+					<location classCode="PLC" determinerCode="INSTANCE">
+						<code code="DE02.01.038.00" displayName="行政区划"/>
+					</location>
+				</asServiceDeliveryLocation>
+			</patient>
+		</patientRole>
+	</recordTarget>
+	<!--文档作者-->
+	<author typeCode="AUT" contextControlCode="OP">
+		<!--文档创建时间-->
+		<time xsi:type="TS" value="2012-08-04"/>
+		<!--检查医师-->
+		<!--ASSIGNED属性表示表达角色是由某个具有合法登记注册的人或机构扮演-->
+		<assignedAuthor classCode="ASSIGNED">
+			<!--检查医师姓名-->
+			<assignedAuthorChoice>
+				<assignedPerson>
+					<code code="DEO2.01.039.00" codeSytem="" codeSystemName="检查人员"/>
+					<name literal="检查人员姓名">检查人员姓名</name>
+					<assignedPersonCode>
+						<code code="DE999999999999" codeSystem="" codeSystemName="检查人员代码"/>
+					</assignedPersonCode>
+				</assignedPerson>
+			</assignedAuthorChoice>
+			<!--检查科室-->
+			<representedOrganization>
+				<code code="DE08.10.026.00" displayName="检查科室代码"/>
+				<name literal="检查科室名称">检查科室</name>
+				<addr use="WP">
+					<city partType="DE02.01.009.02" literal="北京市">北京市</city>
+				</addr>
+				<assignedOrganizationCode>
+					<code code="DE9999999999999999" displayName="检查科室代码"/>
+				</assignedOrganizationCode>
+			</representedOrganization>
+		</assignedAuthor>
+	</author>
+	<!--文档上报机构-->
+	<author typeCode="AUT" contextControlCode="OP">
+		<assignedAuthor classCode="ASSIGNED">
+			<assignedAuthoringDevice classCode="DEV" determinerCode="INSTANCE">
+				<code code="" extension="上报系统"/>
+			</assignedAuthoringDevice>
+			<!--ORG属性表示由人类组成的合法的社会团体-->
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<code code="DE08.10.013.00" displayName="上报机构"/>
+				<name literal="人民医院"></name>
+				<assignedOrganizationIdent>
+					<code code="DE08.10.052.00" displayName="上报机构代码"/>
+				</assignedOrganizationIdent>
+				<addr use="WP">
+					<streetName partType="DE02.01.009.05" literal="西直门外大街"></streetName>
+				</addr>
+			</representedOrganization>
+		</assignedAuthor>
+	</author>
+	<custodian typeCode="CST">
+		<assignedCustodian classCode="ASSIGNED">
+			<representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="SD.4.5" extension="EHR管理机构编号"/>
+				<name literal="市卫生局健康档案管理中心"></name>
+				<telecom>
+					<code code="DE02.01.010.00" displayName="电话号码"/>
+					<value value="010-87815102"/>
+					<asTelecomType>
+						<code code="DE02.01.011.00" displayName="电话类别"/>
+						<value>电话类别</value>
+					</asTelecomType>
+				</telecom>
+				<addr>
+					<streetName partType="DE02.01.009.05" literal="西直门外大街"></streetName>
+				</addr>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	<!--文档头关联文档-->
+	<relatedDocument typeCode="APND">
+		<parentDocument classCode="DOCCLIN" moodCode="EVN">
+			<id root="SD.1.2" extension="D2011000000"/>
+			<setId xsi:type="II" root="1.2.345.6789.33" extension="S001"/>
+			<versionNumber value="1"/>
+		</parentDocument>
+	</relatedDocument>
+	<!--文档体部分-->
+	<component>
+		<!--结构化文档体-->
+		<structuredBody>
+			<!--症状章节-->
+			<component>
+				<section>
+					<code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROBLEM LIST"/>
+					<!-- 条目：症状代码：个体的症状在特定编码体系中的代码-->
+					<text/>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.01.116.00" displayName="症状代码"/>
+							<value xsi:type="CD" code="A04.5" codeSystem="SD.11.4.1" codeSystemName="症状代码表（ICD-10 R）" displayName="弯曲菌肠炎"/>
+						</observation>
+					</entry>
+					<!-- 条目：症状名称：个体出现的临床主要症状的名称-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.01.118.00" displayName="症状名称"/>
+							<text>症状名称描述</text>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--生命体征章节-->
+			<component>
+				<section>
+					<code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="VITAL SIGNS"/>
+					<text/>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE9999999999999" displayName="检查医师"/>
+									<name literal="张医师">张医师</name>
+									<assignedPersonCode>
+										<code code="DE99999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE9999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.167.00" displayName="身高"/>
+							<value xsi:type="PQ" value="170" unit="cm"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.188.00" displayName="体重"/>
+							<value xsi:type="PQ" value="60" unit="kg"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE9999999999" displayName="体重指数"/>
+							<value type:xsi="PQ" value="" unit=""/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.218.00" displayName="腰围"/>
+							<value xsi:type="PQ" value="29" unit="cm"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.218.00" displayName="臀围"/>
+							<value xsi:type="PQ" value="32" unit="cm"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+						<code code="DE99999999999" displayName="腰臀围比例"/>
+						<value type:xsi="" value="" unit=""/>
+					</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE05.10.075.00" displayName="体质指数"/>
+							<value xsi:type="PQ" value="23" unit="Kg/m2"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.186.00" displayName="体温"/>
+							<value xsi:type="PQ" value="36" unit="℃"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE99999999999" displayName="皮肤巩膜检查结果类别代码"/>
+							<value type:xsi="" value="" unit=""/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.118.00" displayName="脉率"/>
+							<value xsi:type="PQ" value="70" unit="次/min"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.082.00" displayName="呼吸频次"/>
+							<value xsi:type="PQ" value="83" unit="次/min"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.174.00" displayName="左侧收缩压"/>
+							<value xsi:type="PQ" value="120" unit="mmHg"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.176.00" displayName="右侧收缩压"/>
+							<value xsi:type="PQ" value="120" unit="mmHg"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.174.00" displayName="左侧舒张压"/>
+							<value xsi:type="PQ" value="60" unit="mmHg"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.176.00" displayName="右侧舒张压"/>
+							<value xsi:type="PQ" value="60" unit="mmHg"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.206.00" displayName="心率"/>
+							<value xsi:type="PQ" value="78" unit="次/min"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE99999999999" displayName="一秒钟用力呼气量"/>
+							<value xsi:type="PQ" value="78" unit="ml"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE99999999999" displayName="一秒钟用力呼气量/最大肺活量比值"/>
+							<value xsi:type="PQ" value="10" unit="%"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE99999999999" displayName="六分钟步行距离"/>
+							<value xsi:type="PQ" value="100" unit="m"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--口腔、咽喉和牙齿章节-->
+			<component>
+				<section>
+					<code code="10201-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="EMOUTH and THROAT and TEETH"/>
+					<text/>
+					<!--检查医生、检查科室-->
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE99999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.106.00" displayName="口唇外观检查结果代码"/>
+							<value xsi:type="CE" code="1" codeSystem="SD.11.1.61" codeSystemName="口唇外观代码表" displayName="红润"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="" displayName="口唇紫绀标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.016.00" displayName="齿列类别代码"/>
+							<value xsi:type="CE" code="1" codeSystem="SD.11.1.64" codeSystemName="齿列类别代码表" displayName="正常"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.017.00" displayName="齿列描述"/>
+							<text>齿列描述</text>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.214.00" displayName="咽部检查结果代码"/>
+							<value xsi:type="CE" code="1" codeSystem="SD.11.2.6" codeSystemName="咽部检查结果代码表" displayName="无充血"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.01.032.00" displayName="咳嗽标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.01.033.00" displayName="咳痰标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE9999999999999" displayName="哮鸣音种类代码"/>
+							<value/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--眼章节-->
+			<component>
+				<section>
+					<code code="10197-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Physical findings of Eye"/>
+					<text/>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE99999999999999" displayName="检查医师"/>
+									<name literal="王医师">王医师</name>
+									<assignedPersonCode>
+										<code code="DE999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE99999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.116.00" displayName="左眼裸眼远视力值"/>
+							<value xsi:type="PQ" value="2.0"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.098.00" displayName="左眼矫正远视力值"/>
+							<value xsi:type="PQ" value="2.0"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.098.00" displayName="右眼矫正远视力值"/>
+							<value xsi:type="PQ" value="2.0"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.50.110.00" displayName="眼底检查结果异常标志"/>
+							<value xsi:type="BL" value="true"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.215.00" displayName="眼底检查结果异常描述"/>
+							<text>眼底检查结果异常描述</text>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.075.00" displayName="巩膜检查结果代码"/>
+							<value xsi:type="CE" code="1" codeSystem="SD.11.1.60" codeSystemName="巩膜检查结果代码表" displayName="正常"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--耳章节-->
+			<component>
+				<section>
+					<code code="10195-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="EAR"/>
+					<text>自由文本</text>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE99999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE99999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.190.00" displayName="听力检测结果代码"/>
+							<value xsi:type="CE" code="1" codeSystem="SD.11.2.7" codeSystemName="听力检测结果代码表" displayName="听见"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--胸部章节-->
+			<component>
+				<section>
+					<code code="" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="EAR"/>
+					<text/>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE999999999999999" displayName="检查医师"/>
+									<name literal="王医师">王医师</name>
+									<assignedPersonCode>
+										<code code="DE9999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE99999999999999" displayName="胸廓类别代码"/>
+							<value/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--腹部章节-->
+			<component>
+				<section>
+					<code code="10191-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="ABDOMEN"/>
+					<text>自由文本</text>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE9999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE99999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.048.00" displayName="腹部压痛标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.049.00" displayName="腹部压痛描述"/>
+							<text>腹部压痛描述</text>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.044.00" displayName="腹部包块标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.045.00" displayName="腹部包块描述"/>
+							<text>腹部包块描述</text>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.050.00" displayName="腹部移动性浊音标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.051.00" displayName="腹部移动性浊音描述"/>
+							<text>腹部移动性浊音描述</text>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.054.00" displayName="肝大标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.055.00" displayName="肝大描述"/>
+							<text>肝大描述</text>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.138.00" displayName="脾大标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.139.00" displayName="脾大描述"/>
+							<text>脾大描述</text>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.168.00" displayName="肾区叩痛标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--功能检查章节-->
+			<component>
+				<section>
+					<code code="46006-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Physical functioning and structural problems"/>
+					<text>自由文本</text>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="" displayName="检查医师"/>
+									<name literal="马医师">马医师</name>
+									<assignedPersonCode>
+										<code code="DE99999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE05.10.106.00" displayName="运动功能状态代码"/>
+							<value xsi:type="CE" code="1" codeSystem="SD.11.2.8" codeSystemName="运动功能状态代码表" displayName="可顺利完成"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--心脏章节-->
+			<component>
+				<section>
+					<code code="10200-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HEART"/>
+					<text>自由文本</text>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE9999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.205.00" displayName="心律类别代码"/>
+							<value xsi:type="CE" code="1" codeSystem="SD.11.2.9" codeSystemName="心律类别代码表" displayName="心律齐"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.209.00" displayName="心脏杂音标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.210.00" displayName="心脏杂音描述"/>
+							<text>心脏杂音描述</text>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--血管章节-->
+			<component>
+				<section>
+					<code code="10208-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="VESSELS"/>
+					<text>自由文本</text>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE99999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE99999999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.238.00" displayName="足背动脉搏动代码"/>
+							<value xsi:type="CE" code="1" codeSystem="SD.11.1.69" codeSystemName="足背动脉搏动代码表" displayName="未触及"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="" displayName="颈静脉怒张标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--呼吸系统章节-->
+			<component>
+				<section>
+					<code code="11412-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="RESPIRATORY SYSTEM"/>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE99999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.034.00" displayName="肺部异常呼吸音标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.032.00" displayName="肺部异常呼吸音描述"/>
+							<text>肺部异常呼吸音描述</text>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.034.00" displayName="肺部罗音标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.032.00" displayName="肺部罗音描述"/>
+							<text>肺部罗音描述</text>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.191.00" displayName="桶状胸标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE99999999999" displayName="呼吸困难症状类别代码"/>
+							<value/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--皮肤系统章节-->
+			<component>
+				<section>
+					<code code="29302-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="INTEGUMENTARY SYSTEM"/>
+					<text>自由文本</text>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE99999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.129.00" displayName="皮肤检查结果代码"/>
+							<value xsi:type="CE" code="1" codeSystem="SD.11.1.58" codeSystemName="皮肤检查结果代码表" displayName="正常"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--淋巴系统章节-->
+			<component>
+				<section>
+					<code code="11447-0" displayName="HEMATOLOGIC+LYMPHATIC+IMMUNOLOGICSYSTEM" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<text>自由文本</text>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE9999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE9999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.113.00" displayName="淋巴结检查结果代码"/>
+							<value xsi:type="CE" code="1" codeSystem="SD.11.1.65" codeSystemName="淋巴结检查结果代码表" displayName="未触及"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.114.00" displayName="淋巴结检查结果描述"/>
+							<text>淋巴结检查结果描述</text>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--四肢章节-->
+			<component>
+				<section>
+					<code code="10196-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="EXTREMITIES"/>
+					<text>自由文本</text>、
+				<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE99999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE99999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE9999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.201.00" displayName="下肢水肿检查结果代码"/>
+							<value xsi:type="CE" code="1" codeSystem="SD.11.1.68" codeSystemName="下肢水肿检查结果代码表" displayName="无下肢水肿"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--直肠章节-->
+			<component>
+				<section>
+					<code code="10205-3" displayName="RECTUM" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<text>自由文本</text>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE9999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE9999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE9999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.064.00" displayName="肛门指诊检查结果类别代码"/>
+							<value xsi:type="CE" code="1" codeSystem="SD.11.1.67" codeSystemName="肛门指诊检查结果代码表" displayName="未及异常"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.lO.240.00" displayName="肛门指诊检查结果异常描述"/>
+							<text>肛门指诊检查结果异常描述</text>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--前列腺章节-->
+			<component>
+				<section>
+					<code code="" displayName="" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<text>自由文本</text>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE999999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE9999999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE9999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE99999999999" displayName="前列腺异常标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE99999999999" displayName="前列腺异常描述"/>
+							<text>前列腺异常描述</text>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--乳腺章节-->
+			<component>
+				<section>
+					<code code="10193-1" displayName=" Breasts" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<text>自由文本</text>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE99999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.159.00" displayName="乳腺检查结果代码"/>
+							<value xsi:type="CE" code="1" codeSystem="SD.11.1.66" codeSystemName="乳腺检查结果代码表" displayName="未见异常"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--生殖器章节-->
+			<component>
+				<section>
+					<code code="11400-9" codeSystem="2.16.840.1.113883.6.1" displayName="GENITALIA" codeSystemName="LOINC"/>
+					<text>自由文本</text>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE9999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.187.00" displayName="外阴异常标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.198.00" displayName="外阴异常描述"/>
+							<text>外阴异常描述</text>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.223.00" displayName="阴道异常标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.224.00" displayName="阴道异常描述"/>
+							<text>阴道异常描述</text>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.070.00" displayName="宫颈异常标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.071.00" displayName="宫颈异常描述"/>
+							<text>宫颈异常描述</text>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.072.00" displayName="宫体异常标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.073.00" displayName="宫体异常描述"/>
+							<text>宫体异常描述</text>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.041.00" displayName="附件异常标志"/>
+							<value xsi:type="BL" value="false"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.042.00" displayName="附件异常描述"/>
+							<text>附件异常描述</text>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--实验室检查章节-->
+			<component>
+				<section>
+					<code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="STUDIES SUMMARY"/>
+					<text/>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE9999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- 血常规 -->
+						<organizer classCode="BATTERY" moodCode="EVN">
+							<statusCode/>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 血氧饱和度 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE99999999999999999" displayName="血氧饱和度"/>
+									<value xsi:type="PQ" value="20" unit="%"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 血红蛋白 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.091.00" displayName="血红蛋白"/>
+									<value xsi:type="PQ" value="10" unit="g/L"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 白细胞 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.015.00" displayName="白细胞"/>
+									<value xsi:type="PQ" value="20" unit="10/L"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 血小板 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.108.00" displayName="血小板"/>
+									<value xsi:type="PQ" value="50" unit="10/L"/>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- 尿常规-->
+						<organizer classCode="BATTERY" moodCode="EVN">
+							<statusCode nullFlavor="UNK"/>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 尿比重 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.046.00" displayName="尿比重"/>
+									<value xsi:type="PQ" value="2" unit="%"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 尿蛋白 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.050.00" displayName="尿蛋白定性检测结果代码"/>
+									<value xsi:type="PQ" code="" codeSystem="SD.11.1.95" codeSystemName="尿实验窒定性检测结果代码表"/>
+								</observation>
+							</component>
+							<component>
+								<!-- 尿蛋白定量检测值 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.049.00" displayName="尿蛋白定量检测值"/>
+									<value xsi:type="PQ" value="11" unit="mg/24h"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 尿糖 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.062.00" displayName="尿糖定性检测结果代码"/>
+									<value xsi:type="PQ" value="" codeSystem="SD.11.1.95" codeSystemName="尿实验窒定性检测结果代码表"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 尿酮体 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.063.00" displayName="尿酮体定性检测结果代"/>
+									<value xsi:type="PQ" value="" codeSystem="SD.11.1.95" codeSystemName="尿实验窒定性检测结果代码表"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 尿潜血 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.057.00" displayName="尿潜血检测结果代"/>
+									<value xsi:type="PQ" value="" codeSystem="SD.11.1.95" codeSystemName="尿实验窒定性检测结果代码表"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 尿液酸碱度-->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.066.00" displayName="尿液酸碱度"/>
+									<value xsi:type="PQ" value="" codeSystem="SD.11.1.95" codeSystemName="尿实验窒定性检测结果代码表"/>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- 肝功能 -->
+						<organizer classCode="BATTERY" moodCode="EVN">
+							<statusCode nullFlavor="UNK"/>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 血清谷丙转氨酶 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.099.00" displayName="血清谷丙转氨酶值"/>
+									<value xsi:type="PQ" value="10" unit="U/L"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 血清谷草转氨酶 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.127.00" displayName="血清谷草转氨酶值"/>
+									<value xsi:type="PQ" value="20" unit="U/L"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 白蛋白 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.013.00" displayName="白蛋白浓度"/>
+									<value xsi:type="PQ" value="22" unit="g/L"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 总胆红素 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.126.00" displayName="总胆红素值"/>
+									<value xsi:type="PQ" value="21" unit="mol/L"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 结合胆红素 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.034.00" displayName="结合胆红素值"/>
+									<value xsi:type="PQ" value="12" unit="mol/L"/>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- 肾功能 -->
+						<organizer classCode="BATTERY" moodCode="EVN">
+							<statusCode nullFlavor="UNK"/>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 血清肌酐 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.092.00" displayName="血肌酐值"/>
+									<value xsi:type="PQ" value="10" unit="mol/L"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 血尿素氮 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.095.00" displayName="血尿素氮检查值"/>
+									<value xsi:type="PQ" value="12" unit="mmol/L"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 血钾浓度 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.093.00" displayName="血钾浓度"/>
+									<value xsi:type="PQ" value="22" unit="mmol/L"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 血钠浓度 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.094.00" displayName="血钠浓度"/>
+									<value xsi:type="PQ" value="43" unit="mmol/L"/>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- 血脂 -->
+						<organizer classCode="BATTERY" moodCode="EVN">
+							<statusCode nullFlavor="UNK"/>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 总胆固醇 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.125.00" displayName="总胆固醇值"/>
+									<value xsi:type="PQ" value="50" unit="mmol/L"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 甘油三酯 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.025.00" displayName="甘油三酯值"/>
+									<value xsi:type="PQ" value="34" unit="mmol/L"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 血清低密度酯蛋白胆固醇 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.097.00" displayName="血清低密度酯蛋白胆固醇检测值"/>
+									<value xsi:type="PQ" value="55" unit="mmol/L"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 血清高密度酯蛋白胆固醇 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.098.00" displayName="血清高密度酯蛋白胆固醇检测值"/>
+									<value xsi:type="PQ" value="87" unit="mmol/L"/>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- 乙型肝炎五项 -->
+						<organizer classCode="BATTERY" moodCode="EVN">
+							<statusCode nullFlavor="UNK"/>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 乙型肝炎表面抗原 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.115.00" displayName="乙型肝炎表面抗原检测结果代码"/>
+									<value xsi:type="CD" codeSystem="SD.11.2.10" codeSystemName="乙肝病毒定性检测结果分类代码表"/>
+									<!-- 阴性、阳性 -->
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 乙型肝炎表面抗体 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.116.00" displayName="乙型肝炎表面抗体测查结果代码"/>
+									<value xsi:type="CD" codeSystem="SD.11.2.10" codeSystemName="乙肝病毒定性检测结果分类代码表"/>
+									<!-- 阴性、阳性 -->
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 乙型肝炎e抗原 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.114.00" displayName="乙型肝炎e抗原测查结果代码"/>
+									<value xsi:type="CD" codeSystem="SD.11.2.10" codeSystemName="乙肝病毒定性检测结果分类代码表"/>
+									<!-- 阴性、阳性 -->
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 乙型肝炎e抗体 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.113.00" displayName="乙型肝炎e抗体测查结果代码"/>
+									<value xsi:type="CD" codeSystem="SD.11.2.10" codeSystemName="乙肝病毒定性检测结果分类代码表"/>
+									<!-- 阴性、阳性 -->
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 乙型肝炎核心抗体 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.117.00" displayName="乙型肝炎核心抗体测查结果代码"/>
+									<value xsi:type="CD" codeSystem="SD.11.2.10" codeSystemName="乙肝病毒定性检测结果分类代码表"/>
+									<!-- 阴性、阳性 -->
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- 血型-->
+						<organizer classCode="BATTERY" moodCode="EVN">
+							<statusCode nullFlavor="UNK"/>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- ABO血型 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.001.00" displayName="ABO血型代码"/>
+									<value xsi:type="CD" code="2" codeSystem="SD.11.1.85" codeSystemName="ABO血型代码表" displayName="B型"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- Rh血型 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.010.00" displayName="Rh血型代码"/>
+									<value xsi:type="CD" code="1" codeSystem="SD.11.2.1" codeSystemName="Rh血型代码表"/>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- 阴道分泌物-->
+						<organizer classCode="BATTERY" moodCode="EVN">
+							<statusCode nullFlavor="UNK"/>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 阴道分泌物 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.129.00" displayName="阴道分泌物检查结果代码"/>
+									<value xsi:type="CD" code="1" codeSystem="SD.11.1.99" codeSystemName="阴道分泌物检查结果代码表"/>
+									<value xsi:type="ED" mediaType="text/plain">解释</value>
+									<!-- 可以填写其他值 -->
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<!-- 阴道清洁度 -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.50.118.00" displayName="阴道分泌物清洁度检查结果代码"/>
+									<value xsi:type="CD" code="2" codeSystem="SD.11.1.90" codeSystemName="阴道分泌物清洁度代码表"/>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- 空腹血糖 -->
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.50.037.00" displayName="空腹血糖值"/>
+							<value xsi:type="PQ" value="10" unit="mmol/L"/>
+						</observation>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- 餐后两小时血糖 -->
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.50.019.00" displayName="餐后两小时血糖值"/>
+							<value xsi:type="PQ" value="11" unit="%"/>
+						</observation>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- 梅毒血清学试验 -->
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.50.041.00" displayName="梅毒血清学试验结果代码"/>
+							<value xsi:type="CD" codeSystem="SD.11.2.18" codeSystemName="梅毒血清学试验结果代码表"/>
+							<!-- 阴性、阳性 -->
+						</observation>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- HIV抗体检测 -->
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.50.009.00" displayName="HIV抗体检测检查结果"/>
+							<value xsi:type="CD" codeSystem="SD.11.2.19" codeSystemName="HIV抗体检测结果代码表"/>
+							<!-- 阴性、阳性 -->
+						</observation>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- 甲胎蛋白值 -->
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.50.032.00" displayName="甲胎蛋白值"/>
+							<value xsi:type="PQ" value="23" unit="μg/L"/>
+						</observation>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- 癌胚抗原浓度值 -->
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.50.011.00" displayName="癌胚抗原浓度值"/>
+							<value xsi:type="PQ" value="23" unit="μg/L"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!-- 辅助检查章节 -->
+			<component>
+				<section>
+					<code nullFlavor="UNK"/>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE9999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE9999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<!-- 胸部X线 -->
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.30.045.00" displayName="胸部X线检查结果"/>
+							<value xsi:type="BL" value="true"/>
+							<!-- 正常、异常 -->
+							<value xsi:type="ED" mediaType="text/plain"/>
+						</observation>
+					</entry>
+					<entry>
+						<!-- 心电图 -->
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.30.043.00" displayName="心电图检查结果"/>
+							<value xsi:type="BL" value="true"/>
+							<!-- 正常、异常 -->
+						</observation>
+					</entry>
+					<entry>
+						<!-- B超 -->
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.30.002.00" displayName="B超检查结果"/>
+							<value xsi:type="BL" value="true"/>
+							<!-- 正常、异常 -->
+						</observation>
+					</entry>
+					<entry>
+						<!-- 宫颈涂片 -->
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.10.070.00" displayName="宫颈涂片检查结果"/>
+							<value xsi:type="BL" value="true"/>
+							<!-- 正常、异常 -->
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!-- 诊断记录章节 -->
+			<component>
+				<section>
+					<code code="46241-6" displayName="HOSPITAL ADMISSION DX" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<text/>
+					<entry>
+					
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE99999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE99999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE99999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+						</entry>
+					
+					<!--条目：现存主要健康问题代码：曾经出现或一直存在，并影响目前身体健康状况的疾病代码-->
+					<entry>
+					<asDiagnose>
+					<asDiagnoseCode>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE080.00" displayName="现存主要健康问题代码"/>
+							<value xsi:type="CD" code="2" codeSystem="SD.11.4.5" codeSystemName="疾病代码表（ICD-10）"/>
+						</observation>
+					</asDiagnoseCode>
+					
+					<!--条目：中医体质辨识-->
+					<asTMC>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE05.01.065.00" displayName="中医体质分类代码"/>
+							<value code="1" displayName="平和质" codeSystem="SD.11.1.104" codeSystemName="中医体质分类代码表" xsi:type="CD"/>
+						</observation>
+					</asTMC>
+					<!--条目： 中医体质分类判定结果-->
+					<asTMCResult>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code=" DE05.01.073.00" displayName="中医体质分类判定结果代码"/>
+							<value code="2" codeSystem="SD.11.2.11" codeSystemName="中医体质分类判定结果代码表" displayName="倾向是" xsi:type="CD"/>
+						</observation>
+					</asTMCResult>
+					</asDiagnose>
+					</entry>
+				</section>
+			</component>
+			<!--用药章节 -->
+			<component>
+				<section>
+					<code code="10160-0" codeSystem="2.16.840.1.113883.6.1" displayName="HISTORY OF MEDICATION USE" codeSystemName="LOINC"/>
+					<text/>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE999999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE9999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE999999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<substanceAdministration classCode="SBADM" moodCode="EVN">
+							<text/>
+							<routeCode code="1" codeSystem="SD.11.1.158" codeSystemName="用药途径代码表"/>
+							<!--用药剂量-单次 -->
+							<doseQuantity value="20" unit="mg"/>
+							<!--用药频率 -->
+							<rateQuantity value="3" unit="日"/>
+							<consumable>
+								<manufacturedProduct>
+									<manufacturedLabeledDrug>
+										<!--药品名称 -->
+										<code/>
+										<name>氢氯噻臻</name>
+									</manufacturedLabeledDrug>
+								</manufacturedProduct>
+							</consumable>
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE06.00.027.00" displayName="用药观察"/>
+									<!--服药依从性-代码 1 表示规律-->
+									<value code="1" codeSystem="SD.11.2.12" codeSystemName="服药依从性代码表" xsi:type="CD"/>
+								</observation>
+							</entryRelationship>
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE06.00.129.00" displayName="药物不良反应标志"/>
+									<!--用药副作用-文本-->
+									<text>发烧，腿疼等不良反应描述</text>
+									<precondition>
+										<criterion>
+											<!--用药副作用标志 value="true"表示有-->
+											<value xsi:type="BL" value="true"/>
+										</criterion>
+									</precondition>
+								</observation>
+							</entryRelationship>
+						</substanceAdministration>
+					</entry>
+				</section>
+			</component>
+			<!--家族史章节-->
+			<component>
+				<section>
+					<code code="10157-6" displayName="HISTORY OF FAMILY MEMBER DISEASES " codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<title>家族史</title>
+					<text/>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE9999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE99999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE99999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<organizer classCode="CLUSTER" moodCode="EVN">
+							<code nullFlavor="UNK"/>
+							<statusCode nullFlavor="UNK"/>
+							<subject typeCode="SBJ">
+								<relatedSubject classCode="PRS">
+									<code code="10" displayName="配偶" codeSystem="SD.11.3.8" codeSystemName=" GB/T 4761家庭关系代码"/>
+									<subject>
+										<administrativeGenderCode code="2" displayName="女性" codeSystem="SD.11.3.4" codeSystemName=" GB/T 2261.1-2003人的性别代码"/>
+									</subject>
+								</relatedSubject>
+							</subject>
+							<component typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE02.10.095.50" displayName="既往常见疾病种类代码"/>
+									<value xsi:type="CD" code="1" displayName="高血压" codeSystem="SD.11.1.12" codeSystemName=" 既往常见疾病种类代码表"/>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+				</section>
+			</component>
+			<!--住院史章节-->
+			<component>
+				<section>
+					<code code="11336-5" codeSystem="2.16.840.1.113883.6.1" displayName="HISTORY OF HOSPITALIZATIONS" codeSystemName="LOINC"/>
+					<text/>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE999999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE99999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE999999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<encounter classCode="ENC" moodCode="EVN">
+							<code codeSystem="1.2.2.3.5.4.56" code="12312312"/>
+							<code code="DE01.00.004.00" displayName="住院史"/>
+							<effectiveTime>
+								<low value="2011-11-23"/>
+								<high value="2012-02-31"/>
+							</effectiveTime>
+							<performer>
+								<assignedEntity>
+									<code codeSystem="1.2.2.3.5.4.56"/>
+									<representedOrganization>
+										<name>住院医疗机构</name>
+									</representedOrganization>
+								</assignedEntity>
+							</performer>
+							<entryRelationship typeCode="CAUS">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE05.10.053.00" displayName="住院原因"/>
+									<value>住院原因</value>
+								</observation>
+							</entryRelationship>
+						</encounter>
+					</entry>
+				</section>
+			</component>
+			<!--非免疫规划预防接种史章节-->
+			<component>
+				<section>
+					<code code="11369-6" codeSystem="2.16.840.1.113883.6.1" displayName="HISTORY OF IMMUNIZATIONS" codeSystemName="LOINC"/>
+					<text/>
+					<entry>
+						<performer>
+							<!--接种时间-->
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE999999999999999" displayName="接种医师"/>
+									<name literal="李医师"></name>
+									<assignedPersonCode>
+										<code code="DE999999999999999" displayName="接种医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="接种科室名称"/>
+									<name literal="接种科室名称"></name>
+									<assignedOrganizationCode>
+										<code code="DE999999999999999999" displayName="接种科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<substanceAdministration classCode="SBADM" moodCode="EVN">
+							<code code="IMMUNIZ" displayName="immunization" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
+							<text/>
+							<statusCode code="completed"/>
+							<!--免疫剂次-->
+							<repeatNumber value="2"/>
+							<!--接种部位-->
+							<approachSiteCode code="0003" displayName="左臂" codeSystem="1.2.156.1.3.5201.23" codeSystemName="手术/操作体表部位代码"/>
+							<consumable>
+								<manufacturedProduct>
+									<manufacturedMaterial classCode="MMAT">
+										<!--疫苗编码-->
+										<code code="" displayName="卡介苗" codeSystem="SD.11.1.210" codeSystemName="疫苗名称代码表"/>
+										<name>疫苗名称</name>
+										<lotNumberText>疫苗批次</lotNumberText>
+									</manufacturedMaterial>
+									<manufacturerOrganization>
+										<name>疫苗的生产厂家</name>
+									</manufacturerOrganization>
+								</manufacturedProduct>
+							</consumable>
+						</substanceAdministration>
+					</entry>
+					
+				</section>
+			</component>
+			<!--职业暴露史章节-->
+			<component>
+				<section>
+					<code code="10161-8" codeSystem="2.16.840.1.113883.6.1" displayName="HISTORY OF OCCUPATIONAL EXPOSURE" codeSystemName="LOINC"/>
+					<text/>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE999999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE9999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<asOccupationExposure>
+							<asOccupationExposureSymbo>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE03.00.089.00" displayName="职业暴露标志"/>
+									<value xsi:type="BL" value="true"/>
+								</observation>
+							</asOccupationExposureSymbo>
+							<asOccupationExposureType>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE03.00.091.00" displayName="职业暴露危险因素种类代码"/>
+									<value xsi:type="CE" code="3" displayName="毒物" codeSystem="SD.11.1.31" codeSystemName=" 职业病危害因素类别代码表"/>
+								</observation>
+							</asOccupationExposureType>
+						</asOccupationExposure>
+					</entry>
+					<entry>
+						<asOccupationExposure>
+							<asOccupationExposureSymbo>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE03.00.089.00" displayName="职业暴露标志"/>
+									<value xsi:type="BL" value="true"/>
+								</observation>
+							</asOccupationExposureSymbo>
+							<asOccupationExposureType>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE03.00.091.00" displayName="职业暴露危险因素种类代码"/>
+									<value xsi:type="CE" code="4" displayName="毒物" codeSystem="SD.11.1.31" codeSystemName=" 职业病危害因素类别代码表"/>
+								</observation>
+							</asOccupationExposureType>
+						</asOccupationExposure>
+					</entry>
+				</section>
+			</component>
+			<!--生活方式章节-->
+			<component>
+				<section>
+					<code nullFlavor="UNK" displayName="生活方式"/>
+					<text/>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE99999999999999" displayName="检查医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE999999999999999" displayName="检查医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="检查科室名称"/>
+									<name literal="检查科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE9999999999999999" displayName="检查科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.087.00" displayName="锻炼频率"/>
+							<value xsi:type="CD" code="2" codeSystem="SD.11.1.23" codeSystemName="身体活动频率代码表"/>
+						</observation>
+					</entry>
+					<!--每次锻炼时间（数据元）-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.088.00" displayName="每次锻炼时间"/>
+							<value xsi:type="TS" value="30" unit="min"/>
+						</observation>
+					</entry>
+					<!--坚持锻炼时间（数据元）-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.024.00" displayName="坚持锻炼时间"/>
+							<value xsi:type="PQ" value="6" unit="年"/>
+						</observation>
+					</entry>
+					<!--锻炼方式（数据元）-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.086.00" displayName="锻炼方式"/>
+							<text>锻炼方式</text>
+						</observation>
+					</entry>
+					<!--饮食习惯（数据元）-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.081.00" displayName="饮食习惯"/>
+							<value xsi:type="CD" code="1" codeSystem="SD.11.1.19" codeSystemName="饮食习惯代码表"/>
+						</observation>
+					</entry>
+					<!--吸烟状况（数据元）-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.073.00" displayName="吸烟状况"/>
+							<text>吸烟状况</text>
+						</observation>
+					</entry>
+					<!--日吸烟量（数据元）-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.053.00" displayName="日吸烟量"/>
+							<value xsi:type="PQ" unit="支" value="1"/>
+						</observation>
+					</entry>
+					<!--开始吸烟年龄（岁）（数据元）-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.036.00" displayName="开始吸烟年龄（岁）"/>
+							<value xsi:type="PQ" unit="岁" value="19"/>
+						</observation>
+					</entry>
+					<!--戒烟年龄（岁）（数据元）-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.032.00" displayName="开始吸烟年龄（岁）"/>
+							<value xsi:type="PQ" unit="岁" value="39"/>
+						</observation>
+					</entry>
+					<!--饮酒频率（数据元）-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.076.00" displayName="饮酒频率"/>
+							<value xsi:type="CD" code="2" codeSystem="SD.11.1.16" codeSystemName="饮酒频率代码表"/>
+						</observation>
+					</entry>
+					<!--日饮酒量-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.054.00" displayName=" 日饮酒量（两）"/>
+							<value xsi:type="PQ" unit="两" value="2"/>
+						</observation>
+					</entry>
+					<!-- 开始饮酒年龄（岁）-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.037.00" displayName="开始饮酒年龄（岁）"/>
+							<value xsi:type="PQ" unit="岁" value="23"/>
+						</observation>
+					</entry>
+					<!--醉酒标志 -->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.098.00" displayName="醉酒标志"/>
+							<value xsi:type="BL" value="true"/>
+						</observation>
+					</entry>
+					<!--饮酒种类（数据元）-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.078.00" displayName="饮酒种类"/>
+							<value xsi:type="CD" code="2" codeSystem="SD.11.1.17" codeSystemName="饮酒种类代码表"/>
+						</observation>
+					</entry>
+					<!--戒酒标志 -->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.030.00" displayName="戒酒标志"/>
+							<value xsi:type="BL" value="true"/>
+						</observation>
+					</entry>
+					<!--戒酒年龄（岁）-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.031.00" displayName=" 戒酒年龄（岁）"/>
+							<value xsi:type="PQ" unit="岁" value="30"/>
+						</observation>
+					</entry>
+					<!--生活质量-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE9999999999" displayName="SGRQ 评分值"/>
+							<value literal="SGRQ 评分"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--健康评估章节-->
+			<component>
+				<section>
+					<code code="X-ASSESS" displayName="ASSESSMENTS" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<text/>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE99999999999999" displayName="评估人员"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE999999999999999" displayName="评估人员代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE999999999" displayName="评估机构名称"/>
+									<name literal="评估机构名称">评估机构名称</name>
+									<assignedOrganizationCode>
+										<code code="DE99999999" displayName="评估机构代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+						<asHealthAssessment>
+						<!--条目：健康状态评估 [一般针对老年人]-->
+						<asHealthAssessmentStatus>
+							<observation classCode="OBS" moodCode="EVN">
+								<code code="DE04.01.036.00" displayName="老年人健康状态自我评估" xsi:type="CE"></code>
+								<value code="1" displayName="满意" codeSystem="SD.11.1.53" codeSystemName="老年人健康状态自我评估代码" xsi:type="CD"/>
+							</observation>
+						</asHealthAssessmentStatus>
+						<!--条目：生活自理能力评估 [一般针对老年人]-->
+						<asLivingSkill>
+							<observation classCode="OBS" moodCode="EVN">
+								<code code="DE05.10.043.00" displayName="老年人生活自理能力评估"/>
+								<value code="2" displayName="轻度依赖" codeSystem="SD.11.1.54" codeSystemName="老年人生活自理能力自我评估代码" xsi:type="CD"/>
+							</observation>
+						</asLivingSkill>
+						<!--条目：认知功能评估 [一般针对老年人]-->
+						<asAcknowledge>
+							<observation classCode="OBS" moodCode="EVN">
+								<code code="DE05.10.041.00" displayName="老年人认知状态粗筛结果分类"/>
+								<value code="1" displayName="粗筛阴性" codeSystem="SD.11.2.3" codeSystemName="认知状态粗筛结果分类代码" xsi:type="CD"/>
+								<!--条目：认知功能评分-->
+								<entryRelationship typeCode="COMP">
+									<observation classCode="OBS" moodCode="EVN">
+										<code code="DE05.10.042.00" displayName="老年人认知功能评分"/>
+										<value value="2" xsi:type="INT"/>
+									</observation>
+								</entryRelationship>
+							</observation>
+						</asAcknowledge>
+						<!--条目：情感抑郁评估 [一般针对老年人]-->
+						<asEmotionalDistress>
+							<observation classCode="OBS" moodCode="EVN">
+								<code code="DE05.10.040.00" displayName="老年人情感状态粗筛结果"/>
+								<value code="1" displayName="粗筛阴性" codeSystem="SD.11.2.4" codeSystemName="情感状态粗筛结果代码" xsi:type="CD"/>
+								<!--条目：情感抑郁评分-->
+								<entryRelationship typeCode="COMP">
+									<observation classCode="OBS" moodCode="EVN">
+										<code code="DE05.10.044.00" displayName="老年人抑郁评分"/>
+										<value value="10" xsi:type="INT"/>
+									</observation>
+								</entryRelationship>
+							</observation>
+						</asEmotionalDistress>
+					</asHealthAssessment>
+					</entry>
+				</section>
+			</component>
+			<!--健康指导章节-->
+			<component>
+				<section>
+					<code code="18776-5" codeSystem="2.16.840.1.113883.6.1" displayName="TREATMENT PLAN" codeSystemName="LOINC"/>
+					<text/>
+					<entry>
+						<performer>
+							<time xsi:type="TS" value="2012-08-04"/>
+							<assignedEntity>
+								<assignedPerson>
+									<code code="DE9999999999999999" displayName="指导医师"/>
+									<name literal="李医师">李医师</name>
+									<assignedPersonCode>
+										<code code="DE9999999999999999" displayName="指导医师代码"/>
+									</assignedPersonCode>
+								</assignedPerson>
+								<representedOrganization>
+									<code code="DE08.10.026.00" displayName="指导科室名称"/>
+									<name literal="指导科室名称">检查科室名称</name>
+									<assignedOrganizationCode>
+										<code code="DE999999999999999999" displayName="指导科室代码"/>
+									</assignedOrganizationCode>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+					</entry>
+					<entry>
+					<asHealthGuidance>
+						<asHealthGuidanceCode>
+							<observation classCode="OBS" moodCode="DEF">
+								<code code="DE06.00.051.00" displayName="健康指导"/>
+								<value code="1" codeSystem="SD.11.2.13" codeSystemName="健康指导代码表" xsi:type="CD"/>
+							</observation>
+						</asHealthGuidanceCode>
+						<asRiskFactors>
+							<observation classCode="OBS" moodCode="DEF">
+								<code code="DE06.00.114.00" displayName="危险因素控制"/>
+								<value code="6" codeSystem="SD.11.1.194" codeSystemName="危险因素控制建议代码表" xsi:type="CD"/>
+							</observation>
+						</asRiskFactors>
+					</asHealthGuidance>
+					</entry>
+				</section>
+			</component>
+			<!--体检结果-->
+			<component>
+				<section>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE05.10.072.00" displayName="体检结果"/>
+							<value literal="体检结果说明"></value>
+						</observation>
+					</entry>
+				</section>
+			</component>
+		</structuredBody>
+	</component>
+</ClinicalDocument>

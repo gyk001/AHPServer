@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="F:\工作\HL7 - v3ballot_fullsite_2009may\html\infrastructure\cda\CDA.xsd">
+	<!--地域代码 "CN" 代表中国-->
+	<realmCode code="CN"/>
+	<!--文档信息模型类别-->
+	<!--root="2.16.840.1.113883.1.3" 表示HL7 注册模型的编码系统OID ，extension="POCD_HD000040" 表示相应编码系统下的CDA R2 采用的临床文档架构信息模型是POCD_HD0000400-->
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_MT000040"/>
+	<!--文档模板-->
+	<templateId xsi:type="II" root="SD.10.1" assigningAuthorityName="高血压患者随访服务" extension="DT20120008V1"/>
+	<!--文档编号 [1..1] -->
+	<id root="SD.1.1.4" displayName="疾病管理" extension="D2011000001" displayable="true" xsi:type="II"/>
+	<!--文档类别代码-->
+	<code code="A010401" codeSystem="SD.6.3" codeSystemName="卫生信息共享文档分类编码系统" displayName="高血压患者随访服务"/>
+	<title>高血压患者随访服务</title>
+	<!--文档生效时间 [1..1]-->
+	<effectiveTime xsi:type="TS" value="2012-09-11 15:48:23"/>
+	<!--文档密级 默认值 [1..1] -->
+	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="一般保密级别"/>
+	<!--文档语言 [1..1] 默认值 code="zh-cn" 含义：中文字符编码-->
+	<languageCode code="zh-cn"/>
+	<!--文档版本号-->
+	<versionNumber value="2" xsi:type="INT"/>
+	<!--文档记录对象-->
+	<recordTarget typeCode="RCT" contextControlCode="OP">
+		<patientRole classCode="PAT">
+			<id root="唯一标识" extension="唯一标识"/>
+			<!--患者住址 通过use属性区别住址类型，如use="H"表示家庭住址，use="WP"表示工作地址-->
+			<addr use="H">
+				<houseNumber partType="DE02.01.009.06" literal="xx号xx小区xx栋xx单元xx号">xx号xx小区xx栋xx单元xx号</houseNumber>
+				<streetName partType="DE02.01.009.05" literal="中山大道">中山大道</streetName>
+				<county partType="DE02.01.009.03" literal="天河区">天河区</county>
+				<city partType="DE02.01.009.02" literal="广州市">广州市</city>
+				<state partType="DE02.01.009.01" literal="广东省">广东省</state>
+				<postalCode partType="DE02.01.047.00" literal="510000">510000</postalCode>
+			</addr>
+			<!--患者通信地址 包括邮箱和电话-->
+			<telecom>
+				<code code="DE02.01.010.00" displayName="电话号码"/>
+				<value value="020-87815102"/>
+				<asTelecomType>
+					<code code="DE02.01.011.00" displayName="电话类别"/>
+					<value>电话类别</value>
+				</asTelecomType>
+			</telecom>
+			<telecom code="DE02.Ol.012.00" displayName="邮箱" value="niming@163.com" />
+			<!--患者详细信息 包括身份证，姓名，性别，出生日期，婚姻状况等-->
+			<patient classCode="PSN" determinerCode="INSTANCE">
+				<!--患者标识号，可以是身份证，护照，军官证等-->
+				<id root="SD.4.2" extension="ID420106201101011919"/>
+				<name literal="贾小明">贾小明</name>
+				<!--患者性别-->
+				<administrativeGenderCode code="1" displayName="男性" codeSystem="SD.11.3.4" codeSystemName="生理性别代码表（GB/T 2261.1）"/>
+				<!--患者出生日期-->
+				<birthTime xsi:type="TS" value="1964-01-01"/>
+				<!--患者婚姻状况-->
+				<maritalStatusCode code="10" displayName="未婚" codeSystem="SD.11.3.5" codeSystemName="婚姻状况代码表（GB/T 2261.2）"/>
+				<!--患者民族类别-->
+				<ethnicGroupCode code="15" displayName="土家族" codeSystem="SD.11.3.3" codeSystemName="民族类别代码表（GB 3304）"/>
+				<!--扩展节点，医疗保险号，国籍等-->
+				<asEducationLevelCode classCode="EDLEV">
+					<code code="DE02.01.041.00" displayName="学历代码"/>
+					<value code="17" codeSystem="SD.11.3.6" codeSystemName="学历代码表(GB/T 4658)" displayName="研究生班毕业"/>
+				</asEducationLevelCode>
+				<!--患者医疗保险号-->
+				<asMedicalInsuranceCode code="DE9999999999999" codeSystem="SD.4.14" displayName="医保卡号标识" nullFlavor="UNK"/>
+				<!--患者国籍-->
+				<asNationality classCode="CIT">
+					<code code="DE02.Ol.015.00" displayName="中国"/>
+				</asNationality>
+				<!--患者职业-->
+				<occupationCode>
+					<code code="DE02.01.052.00" displayName="职业类别代码"/>
+					<value code="010" codeSystem="SD.11.3.7" codeSystemName="职业类别代码表（GB/T 6565）" displayName="高等学校教师"/>
+				</occupationCode>
+				<!--患者所在地行政区划-->
+				<asServiceDeliveryLocation classCode="SDLOC">
+					<location classCode="PLC" determinerCode="INSTANCE">
+						<code code="DE02.01.038.00" displayName="行政区划"/>
+					</location>
+				</asServiceDeliveryLocation>
+			</patient>
+		</patientRole>
+	</recordTarget>
+	<!--文档作者-->
+	<author typeCode="AUT" contextControlCode="OP">
+		<!--文档创建时间-->
+		<time xsi:type="TS" value="20120904"/>
+		<assignedAuthor classCode="ASSIGNED">
+			<!--随访人员-->
+			<assignedAuthorChoice>
+				<assignedPerson>
+					<code code="DE9999999999999" displayName="登记医师"/>
+					<name literal="登记医师姓名" >登记医师姓名</name>
+					<assignedPersonCode>
+						<code code="DE9999999999999" displayName="登记医师代码"/>
+					</assignedPersonCode>
+				</assignedPerson>
+			</assignedAuthorChoice>
+			<!--随访医生科室-->
+			<representedOrganization>
+				<code code="DE9999999999999" displayName="登记医生科室"/>
+				<name literal="登记医生科室名称">登记医生科室</name>
+				<assignedOrganizationCode>
+					<code code="DE9999999999999" displayName="登记医生科室代码"/>
+				</assignedOrganizationCode>
+			</representedOrganization>
+		</assignedAuthor>
+	</author>
+	<!--文档上报机构-->
+	<author type="AUT" contextControlCode="OP">
+		<assignedAuthor classCode="ASSIGNED"> 
+			<assignedAuthoringDevice classCode="DEV" determinerCode="INSTANCE"> 
+				<code code="DE9999999999999" extension="上报系统"/> 
+			</assignedAuthoringDevice> 
+			<!--ORG属性表示有人类组成的合法的社会团体-->
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE"> 
+				<code code="DE9999999999999" displayName="上报机构"/> 
+				<name literal="人民医院"></name>
+				<!--use="WP"表示地址为工作单位地址-->
+				<addr use="WP">
+					<streetName partType="DE02.01.009.05" literal="西直门外大街"></streetName>
+				</addr>
+			</representedOrganization> 
+		</assignedAuthor> 
+	</author>
+	<!--文档管理机构-->
+	<custodian typeCode="CST">
+		<assignedCustodian classCode="ASSIGNED">
+			<representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+				<!--SD.4.5表示医疗卫生管理机构标识-->
+				<code root="SD.4.5" extension="EHR管理机构编号"/>
+				<name literal="卫生局健康档案管理中心">卫生局健康档案管理中心</name>
+				<telecom>
+					<code code="DE02.01.010.00" displayName="电话号码"/>
+					<value value="020-87815102"/>
+					<asTelecomType>
+						<code code="DE02.01.011.00" displayName="电话类别"/>
+						<value>电话类别</value>
+					</asTelecomType>
+				</telecom>
+				<addr>
+					<city partType="DE02.01.009.02" literal="北京市">北京市</city>
+				</addr>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	<!--文档体-->
+	<component>
+		<structuredBody>
+		<!--知情同意章节-->
+			<component>
+				<section>
+					<code code="34895-3" displayName="EDUCATION NOTE" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<text/>
+					<!-- 条目：知情同意管理标志：标识个体是否签署知情同意书-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE06.00.155.00" displayName="知情同意管理标志"/>
+							<value xsi:type="BL" value="true"></value>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE02.01.039.00" displayName="知情同意签字人姓名"/>
+							<value>王鹏</value>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE06.00.156.00" displayName="知情同意签字日期"/>
+							<effectiveTime xsi:type="TS" value="2012-09-19"></effectiveTime>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!-- 重性精神病患者健康史章节 -->
+			<component>
+				<section>
+					<code nullFlavor="UNK" displayName="重性精神病患者健康史"></code>
+					<text/>
+					<entry>
+						<asSMIpatientHealth>
+							<asSMIStartDate>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE02.10.089.00" displayName="首次发病时间" />
+									<effectiveTime xsi:type="TS" value="2012-09-11" />
+								</observation>
+							</asSMIStartDate>
+							<asSMISymptom>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.01.030.00" displayName="既往主要症状" />
+									<value xsi:type="CE" code="1" codeSystem="SD.11.1.49" codeSystemName="精神症状代码表" />
+								</observation>
+							</asSMISymptom>
+							<asSMITreatmentCondition>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code=" DE02.10.036.00" displayName="既往治疗情况" />
+									<value xsi:type="CE" code="3" displayName="连续门诊治疗" codeSystem="SD.11.2.29" codeSystemName="既往门诊治疗情况代码表" />
+								</observation>
+							</asSMITreatmentCondition>
+						
+						<asSMITreatmentResult>
+							<observation classCode="OBS" moodCode="EVN">
+								<code code=" DE02.10.037.00" displayName="既往治疗效果" />
+								<value xsi:type="CE" code="1" displayName="痊愈" codeSystem="SD.11.1.148" codeSystemName="病情转归代码表" />
+							</observation>
+						</asSMITreatmentResult>
+					</asSMIpatientHealth>
+					</entry>
+				</section>
+			</component>
+			<!-- 主要健康问题章节-->
+			<component>
+				<section>
+					<code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROBLEM LIST"/>
+					<text/>
+					<!-- 条目：精神症状代码：患者社会功能情况类别代码-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE04.01.030.00" displayName="精神症状代码"/>
+							<value xsi:type="CD" code="01" codeSystem="SD.11.1.49" codeSystemName="精神症状代码表" displayName="幻觉"></value>
+						</observation>
+					</entry>
+					<!-- 条目：患病对家庭社会的影响类别代码：患者社会功能情况类别代码-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.023.00" displayName="患病对家庭社会的影响类别代码"/>
+							<value xsi:type="CD" code="1" codeSystem="SD.11.1.24" codeSystemName="患重性精神疾病对家庭社会的影响代码表" displayName="轻度滋事"></value>
+						</observation>
+					</entry>
+					<!-- 条目：患病对家庭社会的影响次数：患者社会功能情况类别代码-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.022.00" displayName="患病对家庭社会的影响次数"/>
+							<value xsi:type="INT" value="3" ></value>
+						</observation>
+					</entry>
+					<!-- 条目：关锁情况代码：患者社会功能情况类别代码-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE03.00.017.00" displayName="关锁情况代码"/>
+							<value xsi:type="CD" code="1" codeSystem="SD.11.2.30" codeSystemName="关锁情况代码表"></value>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!-- 诊断记录章节 -->
+			<component>
+				<section>
+					<code code="46241-6" displayName="HOSPITAL ADMISSION DX" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<text/>
+					<entry>
+						<observation classCode="OBS" moodCode="DEF" >
+							<code code="DE05.01.071.00" displayName="重性精神疾病名称代码"></code>
+							<effectiveTime value="2012-09-11"></effectiveTime>
+							<value xsi:type="CD" code="1" displayName="精神分裂症" codeSystem="SD.11.1.135" codeSystemName="重性精神疾病名称代码表" />
+							<performer>
+								<assignedEntity>
+									<representedOrganization>
+										<code code="DE08.10.026.00" displayName="确诊医疗机构名称"/>
+										<name literal="北大六院">北大六院</name>
+										<assignedOrganizationCode>
+											<code code="DE99999999999" displayName="确诊医疗机构代码"/>
+										</assignedOrganizationCode>
+									</representedOrganization>
+								</assignedEntity>
+							</performer>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!-- 随访评估章节 -->
+			<component>
+				<section>
+					<code code="X-ASSESS" displayName="ASSESSMENTS" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<text/>
+					<!--条目：重性精神病随访评估[仅适用于重性精神病人群]-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="DE05.10.118.00" displayName="重性精神疾病患者随访评价"/>
+							<value  xsi:type="CD" code="1" displayName="基本稳定" codeSystem="SD.11.1.150" codeSystemName="随访评价结果代码"/>
+							<!--条目：异常-->
+							<entryRelationship typeCode="RSON">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE06.00.071.00" displayName="随访患病情况"/>
+									<text>随访患病异常文本描述……</text>
+								</observation>
+							</entryRelationship>
+						</observation>
+					</entry>
+				</section>
+			</component>
+		</structuredBody>
+	</component>
+</ClinicalDocument>
