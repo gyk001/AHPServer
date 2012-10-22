@@ -3,6 +3,7 @@ package cn.com.sinosoft.ie.ahp.server.service.impl;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Map;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -13,9 +14,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import cn.com.sinosoft.ie.ahp.server.db.DBManager;
+import cn.com.sinosoft.ie.ahp.server.service.BizPluginHandler;
 import cn.com.sinosoft.ie.ahp.server.service.BizResult;
 import cn.com.sinosoft.ie.ahp.server.service.BizResultCode;
-import cn.com.sinosoft.ie.ahp.server.service.IBizService;
 import cn.com.sinosoft.ie.ahp.server.service.cda.MapperProvider;
 import cn.com.sinosoft.ie.ahp.server.util.XmlReaderUtil;
 
@@ -59,9 +60,11 @@ public class OutpatientServiceImplTest {
 	public void saveBizData(String demofiles) throws Exception {
 		String xml = XmlReaderUtil.loadTestXml(demoDir+demofiles);
 		assert (xml!=null && ! xml.isEmpty()):"加载示例xml文件错误";
-		IBizService  service = new OutpatientServiceImpl();
+		OutpatientServiceImpl  service = new OutpatientServiceImpl();
 		service.init();
-		for(int i=0;i<10;i++){
+		//随机数
+		service.setBizPluginHandler(new BizFieldpkRandomPluginHandler());
+		for(int i=0;i<10000;i++){
 			BizResult result = service.process(UUID.randomUUID().toString(), UUID.randomUUID().toString(), xml);
 			if (! BizResultCode.SUCCESS.equals(result.getCode())){
 				throw result.getException();
@@ -76,4 +79,49 @@ public class OutpatientServiceImplTest {
 	}
 
 
+}
+
+
+
+//将业务主键修改为随机的UUID，否则会主键重复无法插入
+class BizFieldpkRandomPluginHandler implements BizPluginHandler {
+	
+	@Override
+	public void beforSaveCda(String bizId, String ppId, String cdaContent,
+			Map<String, Object> bizData) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void beforSaveBizData(String bizId, String ppId, String cdaContent,
+			Map<String, Object> bizData) throws Exception {
+		if(bizData!=null){
+			if(bizData.containsKey("FIELD_PK")){
+				bizData.put("FIELD_PK", UUID.randomUUID().toString());
+			}
+			//if(bizData.containsKey(""))
+		}
+	}
+	
+	@Override
+	public void beforReturnResult(String bizId, String ppId, String cdaContent,
+			Map<String, Object> bizData, BizResult result) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void beforParseCda(String bizId, String ppId, String cdaContent)
+			throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void beforCommitAll(String bizId, String ppId, String cdaContent,
+			Map<String, Object> bizData) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 }

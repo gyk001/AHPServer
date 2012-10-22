@@ -19,7 +19,7 @@ public abstract class AbstractBizService implements IBizService {
 			.getLogger(AbstractBizService.class);
 	// 初始化标志
 	private volatile boolean init = false;
-
+	private BizPluginHandler handler = null;
 	/**
 	 * 初始化
 	 */
@@ -37,6 +37,7 @@ public abstract class AbstractBizService implements IBizService {
 	public BizResult process(String bizId, String ppId, String cdaContent) {
 		// 构建返回结果对象
 		BizResult result = new BizResult(bizId, ppId);
+		Map<String, Object> bizData = null;
 		try {
 			if (!init) {
 				Exception e = new IllegalStateException("未初始化!");
@@ -44,9 +45,10 @@ public abstract class AbstractBizService implements IBizService {
 				result.setMsg(e.getLocalizedMessage());
 				throw e;				
 			}
-
-			Map<String, Object> bizData = null;
 			try {
+				if(handler!=null){
+					handler.beforParseCda(bizId, ppId, cdaContent);
+				}
 				// 解析CDA为业务对象
 				bizData = MapperCdaParser.parserCDA(cdaContent);
 			} catch (Exception e) {
@@ -68,6 +70,9 @@ public abstract class AbstractBizService implements IBizService {
 				throw e;
 			}
 			try {
+				if(handler!=null){
+					handler.beforSaveBizData(bizId, ppId, cdaContent, bizData);
+				}
 				// 插入业务数据
 				saveBizData(conn, bizData, ppId, bizId);
 			} catch (Exception e) {
@@ -76,6 +81,9 @@ public abstract class AbstractBizService implements IBizService {
 				throw e;
 			}
 			try {
+				if(handler!=null){
+					handler.beforSaveCda(bizId, ppId, cdaContent, bizData);
+				}
 				// 插入CDA
 				saveCDA(conn, bizData, ppId, bizId);
 			} catch (Exception e) {
@@ -84,6 +92,9 @@ public abstract class AbstractBizService implements IBizService {
 				throw e;
 			}
 			try {
+				if(handler!=null){
+					handler.beforCommitAll(bizId, ppId, cdaContent, bizData);
+				}
 				// 提交事务
 				conn.commit();
 			} catch (Exception e) {
@@ -96,14 +107,23 @@ public abstract class AbstractBizService implements IBizService {
 			result.setException(ee);
 			logger.warn("接收数据异常,bizId:[" + bizId + "],ppId:[" + ppId + "]",
 					ee);
+			if(handler!=null){
+				handler.beforReturnResult(bizId, ppId, cdaContent, bizData, result);
+			}
 			return result;
 		} finally {
 			DBManager.closeConnection();
 		}
 		result.setCode(BizResultCode.SUCCESS);
 		result.setMsg("OK");
+		if(handler!=null){
+			handler.beforReturnResult(bizId, ppId, cdaContent, bizData, result);
+		}
 		return result;
 
+	}
+	public void setBizPluginHandler(BizPluginHandler handler){
+		this.handler = handler;
 	}
 
 	/**
