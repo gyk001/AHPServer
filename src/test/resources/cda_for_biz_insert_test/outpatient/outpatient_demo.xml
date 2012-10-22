@@ -1,0 +1,257 @@
+<ClinicalDocument classCode="DOCCLIN" moodCode="EVN">
+	<realmCode code="CN"/>
+	<typeId root="1.3.6.1.4.1.19376.1.5.3.1.3.9" extension="POCD_HD000040"/>
+	<templateId root="1.3.6.1.4.1.19376.1.5.3.1" extension="RCMR_MT050101UV01"/>
+	<id root="唯一标识ID" extension="10"/>
+	<statusCode code="active" codeSystem="2.16.840.1.113883.5.14"/>
+	<!--"就诊日期时间"-->
+	<effectiveTime meta_id="HR42.02.101" value="2011-6-9 0:00:00"/>
+	<!--"上报日期"-->
+	<activityTime meta_id="HR99.01.162" literal="2012-4-12 0:00:00" />
+	<languageCode code="zh-CN"/>
+	<versionNumber value="1"/>
+	<recordTarget typeCode="RCT">
+		<patientRole classCode="PAT">
+			<id root="唯一标识ID" extension="唯一标识"/>
+			<code code="HR02.01.002" codeSystem="codeSystem.Role"/>
+			<patient classCode="PSN" determinerCode="INSTANCE">
+			 <!--姓名-->
+				<name literal="葛春林" use="ALL"/>
+				<playerOrScoper>player</playerOrScoper>
+				    <!--性别代码-->
+				<administrativeGenderCode codeSystem="HR02.02.001" code="1" />
+				 <!--出生日期-->
+				<birthTime meta_id="HR30.00.001" value="1900-1-1 0:00:00"/>
+				<asIdentifiedEntity classCode="IDENT">
+				 <!--标识号号码-->
+					<id root="HR01.00.002.02" extension="11"/>
+					   <!--标识号类别-->
+					<code codeSystem="HR01.00.002.01" code="99" />
+					<playerOrScoperRole>playerRole</playerOrScoperRole>
+				</asIdentifiedEntity>
+					<asIdentifiedEntity classCode="IDENT"> 
+                   	<!--健康档案号-->
+					<id root="HR01.00.001" extension=""/> 
+					<playerOrScoperRole>playerRole</playerOrScoperRole> 
+				</asIdentifiedEntity> 
+				<asIdentifiedEntity classCode="IDENT">
+				    <!--"医疗保险号码"-->
+					<id root="HR99.01.111" extension="24001637"/>
+				       <!--"医疗保险类别" -->
+					<code codeSystem="HR02.09.001.02" code="9"  />
+					<playerOrScoperRole>playerRole</playerOrScoperRole>
+				</asIdentifiedEntity> 
+				<asIdentifiedEntity classCode="IDENT">
+				<!--"就诊机构代码. 门诊号"-->
+					<id root="HR01.00.009" extension="" />
+					<playerOrScoperRole>playerRole</playerOrScoperRole>
+				</asIdentifiedEntity>
+				<asIdentifiedEntity classCode="IDENT">
+				<!--"建档机构代码. 医疗服务编号"-->
+					<id root="HR99.01.156" extension=""/>
+					<playerOrScoperRole>playerRole</playerOrScoperRole>
+				</asIdentifiedEntity>
+			</patient>
+		</patientRole>
+	</recordTarget>
+	<author typeCode="AUT"> 
+		<assignedAuthor classCode="ASSIGNED"> 
+			<id root="唯一标识ID" extension="唯一标识"/> 
+			<assignedAuthoringDevice classCode="DEV" determinerCode="INSTANCE"> 
+			<!--上报系统-->
+				<id root="HR99.01.166" extension="北京体育大学社区卫生服务中心（北京体育大学医院）"/> 
+				<playerOrScoper>player</playerOrScoper> 
+			</assignedAuthoringDevice> 
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE"> 
+			<!--上报机构-->
+				<id root="HR99.01.165" extension="802028486"/> 
+				<playerOrScoper>scoper</playerOrScoper> 
+			</representedOrganization> 
+		</assignedAuthor> 
+	</author> 
+	<referrer typeCode="REF"> 
+		<associatedEntity classCode="EMP"> 
+			<id root="唯一标识ID" extension="唯一标识"/> 
+			<code code="HR22.01.100" codeSystem="codeSystem.Role"/> 
+			<employeeassociatedPerson classCode="PSN" determinerCode="INSTANCE"> 
+			<!--服务者姓名-->
+				<name literal="唐一虹" use="ALL"/> 
+				<playerOrScoper>player</playerOrScoper> 
+				<associatedPersonIdent classCode="IDENT">
+				<!--就诊机构代码. 服务者代码-->
+					<id root="HR99.01.072" extension=""/> 
+					<playerOrScoperRole>playerRole</playerOrScoperRole> 
+				</associatedPersonIdent> 
+			</employeeassociatedPerson> 
+			<employerscopingOrganization classCode="ORG" determinerCode="INSTANCE"> 
+			<!--就诊机构代码-->
+				<id root="HR99.01.073" extension="802028486"/> 
+				<playerOrScoper>scoper</playerOrScoper> 
+				<scopingOrganizationPart classCode="PART"> 
+					<id root="唯一标识ID" extension="唯一标识"/> 
+					<code code="HR21.01.027" codeSystem="codeSystem.Role"/> 
+					<playerOrScoperRole>scoperRole</playerOrScoperRole> 
+					<partscopingOrganizationDept classCode="ORG" determinerCode="INSTANCE"> 
+					<!--就诊机构代码. 就诊患者就医科室代码-->
+						<id root="HR99.01.119" extension=""/> 
+						<!--就诊患者就医科室名称-->
+						<name literal="" use="ALL"/> 
+						<playerOrScoper>player</playerOrScoper> 
+					</partscopingOrganizationDept> 
+				</scopingOrganizationPart> 
+			</employerscopingOrganization> 
+		</associatedEntity> 
+	</referrer> 
+	<component typeCode="COMP"> 
+		<structuredBody classCode="DOCBODY" moodCode="EVN"> 
+			<component typeCode="COMP"> 
+				<section classCode="DOCSECT" moodCode="EVN"> 
+					<component typeCode="COMP"> 
+						<askObservationEvent classCode="OBS" moodCode="EVN"> 
+							<id root="唯一标识ID" extension="唯一标识"/> 
+							<!--"门诊标志"-->
+							<value meta_id="HR99.01.114" literal="" /> 
+						</askObservationEvent> 
+					</component> 
+					<component typeCode="COMP"> 
+						<askObservationEvent classCode="OBS" moodCode="EVN"> 
+							<id root="唯一标识ID" extension="唯一标识"/> 
+							<!--发病日期时间-->
+							<value meta_id="HR42.02.112" literal=""/> 
+						</askObservationEvent> 
+					</component> 
+					<component typeCode="COMP"> 
+						<askObservationEvent classCode="OBS" moodCode="EVN"> 
+							<id root="唯一标识ID" extension="唯一标识"/> 
+							<!--"就诊原因"-->
+							<value meta_id="HR99.01.094" literal="高血压," /> 
+						</askObservationEvent> 
+					</component> 
+					<component typeCode="COMP"> 
+						<askObservationEvent classCode="OBS" moodCode="EVN"> 
+							<id root="唯一标识ID" extension="唯一标识"/> 
+							<!--"主诉"-->
+							<value meta_id="HR51.01.037" literal="" />
+						</askObservationEvent> 
+					</component> 
+					<component typeCode="COMP"> 
+						<askObservationEvent classCode="OBS" moodCode="EVN"> 
+							<id root="唯一标识ID" extension="唯一标识"/> 
+							<!--过敏史-->
+							<value meta_id="HR51.01.003" literal="" /> 
+						</askObservationEvent> 
+					</component> 
+				</section> 
+			</component> 
+			
+			<!--clinDrugRecList开始  -->
+			<component typeCode="COMP"> 
+				<section classCode="DOCSECT" moodCode="EVN"> 
+					<component typeCode="COMP"> 
+						<substanceAdministration classCode="SBADM" moodCode="EVN"> 
+						<!--clindrugrec主键-->
+							<id root="唯一标识ID" clindrugrec="17"/> 
+							<effectiveTime> 
+								<!--"开处方时间"-->
+								<low meta_id="HR99.01.097" value=""/> 
+								<!--用药停止日期时间-->
+								<high meta_id="HR42.02.114" value=""/> 
+							</effectiveTime> 
+							<!--药物使用-途径代码-->
+							<routeCode codeSystem="HR52.01.037.05" code="口服" /> 
+							<!--药物使用-剂量单位 药物使用-次剂量   -->
+							<doseQuantity code="HR52.01.037.02"  unit="5.0000" meta_id="HR52.01.037.03" value="5.0000"/> 
+							<!--药物使用-频率-->
+							<rateQuantity meta_id="HR52.01.037.01" value="1/日"/> 
+							<subject typeCode="SBJ"> 
+								<content classCode="CONT"> 
+									<id root="唯一标识ID" extension="唯一标识"/> 
+									<container classCode="CONT" determinerCode="INSTANCE"> 
+									<!--就诊机构代码.处方编号-->
+										<id root="HR99.01.096" extension=""/> 
+										<playerOrScoper>scoper</playerOrScoper> 
+									</container> 
+								</content> 
+							</subject> 
+							<consumable typeCode="CSM"> 
+								<manufacturedProduct classCode="MANU"> 
+									<id root="唯一标识ID" extension="唯一标识"/> 
+									<code code="HR53.01.002" codeSystem="codeSystem.Role"/>
+									<quantity type="HR99.01.123" literal="4" meta_id="HR99.01.122" unit="盒"/> 
+									<manufacturedLabeledDrug classCode="MMAT" determinerCode="INSTANCE"> 
+											<!--药物代码-->
+										<id root="HR99.01.120" extension=""/> 
+										<!--药物类型-->
+										<code codeSystem="HR53.01.008" code="" /> 
+										<!--药物名称-->
+										<name meta_id="HR53.01.002" literal="苯磺酸氨氯地平片"  use="ALL"/> 
+										<playerOrScoper>player</playerOrScoper> 
+										<!--药物剂型代码-->
+										<formCode codeSystem="HR53.01.003" code="" /> 
+										<DRUG_MED_CODE root="HR99.01.120" DRUG_MED_CODE=""/> 
+										<DRUG_COST root="HR99.01.120" DRUG_COST=""/> 
+										
+									</manufacturedLabeledDrug> 
+								</manufacturedProduct> 
+							</consumable> 
+							<performer typeCode="PRF"> 
+								<prescribeEmploy classCode="EMP"> 
+									<id root="唯一标识ID" extension="唯一标识"/> 
+									<code code="HR99.01.098" codeSystem="codeSystem.Role"/> 
+									<employeePrescribePerson classCode="PSN" determinerCode="INSTANCE"> 
+									<!--开处方医生-->
+										<name literal="" use="ALL"/> 
+										<playerOrScoper>player</playerOrScoper> 
+										<asPrescribePersonIdentified classCode="IDENT"> 
+										<!--就诊机构代码.开处方医生代码-->
+											<id root="HR99.01.099" extension=""/> 
+											<playerOrScoperRole>playerRole</playerOrScoperRole> 
+										</asPrescribePersonIdentified> 
+									</employeePrescribePerson> 
+								</prescribeEmploy> 
+							</performer> 
+							<component typeCode="COMP"> 
+								<drugObservationDetail classCode="OBS" moodCode="EVN"> 
+									<id root="唯一标识ID" extension="唯一标识"/> 
+									<!--用药天数-->
+									<value meta_id="HR42.02.113" literal="28" /> 
+								</drugObservationDetail> 
+							</component>
+						</substanceAdministration> 
+					</component> 
+				</section> 
+			</component> 
+      <!--clinDrugRecList结束-->
+			
+			
+	<!--clinFrameTList开始   -->
+      <!--clinFrameTList结束-->
+			
+	<!--clinDiagRecList开始 -->
+      <!--clinDiagRecList结束-->
+			
+			
+			<!--clinOpRecoList开始 -->
+      <!--clinOpRecoList结束-->
+			
+				<!--clinTransfuList开始  -->
+      <!--clinTransfuList结束-->
+			
+	<!--clinCostList开始  -->
+      <!--clinCostList结束-->
+			
+			<!--clinRadRecList开始  -->
+      <!--clinOpRecoList结束--> 
+	
+			
+			<!--clinDeathList开始  -->
+      <!--clinDeathList结束-->
+					
+	<!--clinTraRecList开始  -->
+      <!--clinTraRecList结束-->
+		</structuredBody> 
+	</component>
+	  <!--上报机构所在地区-->
+    <DMaddrtype root="" DMaddrtype=""/>
+    <useridcreate root="" useridcreate="唐一虹"/>
+</ClinicalDocument>

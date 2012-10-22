@@ -85,6 +85,18 @@
 			<version>1.4.2</version>
 			<classifier>license</classifier>
 		</dependency>
+		<!-- QueryHelper依赖 -->
+		<dependency>
+			<groupId>commons-dbutils</groupId>
+			<artifactId>commons-dbutils</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<!-- DataUtil依赖 -->
+		<dependency>
+			<groupId>org.jodd</groupId>
+			<artifactId>jodd</artifactId>
+			<version>3.2.6</version>
+		</dependency>
 		<!-- 读取配置文件依赖 -->
 		<dependency>
 			<groupId>commons-configuration</groupId>

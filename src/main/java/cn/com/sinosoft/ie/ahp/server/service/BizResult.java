@@ -5,7 +5,7 @@ public class BizResult {
 	private String msg;
 	private String bizId;
 	private String ppId;
-
+	private Exception exception;
 	
 	
 	public BizResult() {
@@ -48,6 +48,14 @@ public class BizResult {
 
 	public void setPpId(String ppId) {
 		this.ppId = ppId;
+	}
+
+	public Exception getException() {
+		return exception;
+	}
+
+	public void setException(Exception exception) {
+		this.exception = exception;
 	}
 
 	@Override

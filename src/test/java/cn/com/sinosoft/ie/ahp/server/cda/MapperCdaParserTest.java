@@ -1,10 +1,7 @@
 package cn.com.sinosoft.ie.ahp.server.cda;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -13,14 +10,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import cn.com.sinosoft.ie.ahp.server.service.cda.MapperCdaParser;
 import cn.com.sinosoft.ie.ahp.server.service.cda.MapperProvider;
-import cn.com.sinosoft.ie.ahp.server.utils.XmlParserTest;
+import cn.com.sinosoft.ie.ahp.server.util.XmlReaderUtil;
 
 import com.sinosoft.ie.ahp.server.parser.CdaParser;
 import com.sinosoft.ie.ahp.server.spi.ClassConfig;
@@ -65,7 +60,7 @@ public class MapperCdaParserTest {
 	 */
 	@Test(dataProvider="cda-demos")
 	public void parserCDA(String demo) throws Exception {
-		String xmlContent = loadTestXml(demoDir+demo);
+		String xmlContent = XmlReaderUtil.loadTestXml(demoDir+demo);
 		//新解析器的解析结果
 		Map<String, Object> old = MapperCdaParser.parserCDA(xmlContent);
 		//旧解析器的解析结果
@@ -92,32 +87,4 @@ public class MapperCdaParserTest {
 		}
 	}
 	
-	
-	
-	/**
-	 * 返回demoFile的文件内容为字符串
-	 * @param demoFile
-	 * @return
-	 * @throws IOException
-	 */
-	private String loadTestXml(String demoFile) throws IOException{
-		logger.trace("load xml {}",demoFile);
-		//样例xml
-		InputStream input = this.getClass().getResourceAsStream(demoFile);
-
-		BufferedReader bf = new BufferedReader(new InputStreamReader(input));
-		StringBuilder sb = new StringBuilder();
-		String content = "";
-		while (content != null) {
-			content = bf.readLine();
-			if (content == null) {
-				break;
-			}
-			sb.append(content.trim()).append(
-					System.getProperty("line.separator"));
-		}
-
-		bf.close();
-		return sb.toString();
-	}
 }

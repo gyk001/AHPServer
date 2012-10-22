@@ -2,6 +2,7 @@ package cn.com.sinosoft.ie.ahp.server.service;
 
 public enum BizResultCode {
 	SUCCESS, /* 成功 */
+	SYS_ERROR,    /*系统或程序错误*/
 	CDA_PARSE_ERROR, /* CDA解析错误 */
 	DATA_SAVE_ERROR, /* 保存业务数据错误 */
 	CDA_SAVE_ERROR, /* 保存CDA错误 */
