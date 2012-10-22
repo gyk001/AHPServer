@@ -9,6 +9,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import cn.com.sinosoft.ie.ahp.server.service.cda.MapperProvider;
+
 import com.sinosoft.ie.ahp.server.spi.ClassConfig;
 import com.sinosoft.ie.ahp.server.spi.ClassMapInfo;
 

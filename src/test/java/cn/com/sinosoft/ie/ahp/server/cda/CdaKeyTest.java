@@ -1,7 +1,9 @@
 package cn.com.sinosoft.ie.ahp.server.cda;
 
-import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import cn.com.sinosoft.ie.ahp.server.service.cda.TypeVersionCdaKey;
 
 public class CdaKeyTest {
 
@@ -15,8 +17,8 @@ public class CdaKeyTest {
 
   @Test(dataProvider="con")
   public void CdaKey(String bizType, String version) {
-	  CdaKey key1 = new CdaKey(bizType, version);
-	  CdaKey key2 = new CdaKey(bizType, version);
+	  TypeVersionCdaKey key1 = new TypeVersionCdaKey(bizType, version);
+	  TypeVersionCdaKey key2 = new TypeVersionCdaKey(bizType, version);
 	  assert key1.equals(key2):"键值不相等";
   }
 }

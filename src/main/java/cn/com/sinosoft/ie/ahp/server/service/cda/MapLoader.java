@@ -1,4 +1,4 @@
-package cn.com.sinosoft.ie.ahp.server.cda;
+package cn.com.sinosoft.ie.ahp.server.service.cda;
 
 import java.io.File;
 import java.io.InputStream;

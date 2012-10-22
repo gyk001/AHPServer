@@ -18,6 +18,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import cn.com.sinosoft.ie.ahp.server.service.cda.MapperCdaParser;
+import cn.com.sinosoft.ie.ahp.server.service.cda.MapperProvider;
 import cn.com.sinosoft.ie.ahp.server.utils.XmlParserTest;
 
 import com.sinosoft.ie.ahp.server.parser.CdaParser;
