@@ -1,4 +1,4 @@
-package com.sinosoft.ie.ahp.server.processer;
+package cn.com.sinosoft.ie.ahp.server.processer;
 
 import com.sinosoft.ie.ahp.msg.ReturnCode;
 

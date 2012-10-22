@@ -7,8 +7,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sinosoft.ie.ahp.server.db.DBManager;
-import com.sinosoft.ie.ahp.server.monitor.MonitorThread;
+import cn.com.sinosoft.ie.ahp.server.db.DBManager;
+import cn.com.sinosoft.ie.ahp.server.monitor.MonitorThread;
 
 /**
  * @author GuoYukun (<a href="gyk001@gmail.com">Gyk001@gmail.com</a>)

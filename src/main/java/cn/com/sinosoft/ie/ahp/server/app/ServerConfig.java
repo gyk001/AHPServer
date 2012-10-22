@@ -13,9 +13,8 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sinosoft.ie.ahp.server.monitor.MonitorConfig;
-import com.sinosoft.ie.ahp.server.mq.SingleQueueConfig;
-import com.sinosoft.ie.ahp.server.processer.ICdaProcesser;
+import cn.com.sinosoft.ie.ahp.server.monitor.MonitorConfig;
+import cn.com.sinosoft.ie.ahp.server.processer.ICdaProcesser;
 
 /**
  * @author GuoYukun (<a href="gyk001@gmail.com">Gyk001@gmail.com</a>)

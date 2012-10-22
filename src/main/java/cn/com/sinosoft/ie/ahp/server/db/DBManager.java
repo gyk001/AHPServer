@@ -1,4 +1,4 @@
-package com.sinosoft.ie.ahp.server.db;
+package cn.com.sinosoft.ie.ahp.server.db;
 
 
 import java.lang.reflect.InvocationHandler;

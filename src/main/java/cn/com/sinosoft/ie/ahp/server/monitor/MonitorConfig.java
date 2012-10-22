@@ -1,4 +1,4 @@
-package com.sinosoft.ie.ahp.server.monitor;
+package cn.com.sinosoft.ie.ahp.server.monitor;
 
 /**
  * @author 郭玉昆(<a href="mailto:gyk001@gmail.com">gyk001@gmail.com</a>)

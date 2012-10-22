@@ -1,4 +1,4 @@
-package com.sinosoft.ie.ahp.server.monitor;
+package cn.com.sinosoft.ie.ahp.server.monitor;
 
 import java.io.IOException;
 import java.util.HashMap;
