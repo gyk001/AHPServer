@@ -3,16 +3,16 @@ package cn.com.sinosoft.ie.ahp.server.app;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import cn.com.sinosoft.ie.ahp.server.mq.MQException;
+import cn.com.sinosoft.ie.ahp.server.mq.MQHelper;
+import cn.com.sinosoft.ie.ahp.server.mq.SimpleMQHelper;
+import cn.com.sinosoft.ie.ahp.server.mq.SingleQueueConfig;
 import cn.com.sinosoft.ie.ahp.server.processer.CdaProcessException;
 import cn.com.sinosoft.ie.ahp.server.processer.ICdaProcesser;
 
 import com.sinosoft.ie.ahp.msg.ClientProperties;
 import com.sinosoft.ie.ahp.msg.ReceiveMessage;
 import com.sinosoft.ie.ahp.msg.ReturnCode;
-import com.sinosoft.ie.ahp.server.mq.MQException;
-import com.sinosoft.ie.ahp.server.mq.MQHelper;
-import com.sinosoft.ie.ahp.server.mq.SimpleMQHelper;
-import com.sinosoft.ie.ahp.server.mq.SingleQueueConfig;
 
 /**
  * @author GuoYukun (<a href="gyk001@gmail.com">Gyk001@gmail.com</a>)

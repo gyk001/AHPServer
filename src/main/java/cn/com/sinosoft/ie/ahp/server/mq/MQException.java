@@ -1,4 +1,4 @@
-package com.sinosoft.ie.ahp.server.mq;
+package cn.com.sinosoft.ie.ahp.server.mq;
 
 /**
  * @author GuoYukun (<a href="gyk001@gmail.com">Gyk001@gmail.com</a>)

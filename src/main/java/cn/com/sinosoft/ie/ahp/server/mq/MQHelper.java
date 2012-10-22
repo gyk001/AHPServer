@@ -1,4 +1,4 @@
-package com.sinosoft.ie.ahp.server.mq;
+package cn.com.sinosoft.ie.ahp.server.mq;
 
 import java.io.IOException;
 
