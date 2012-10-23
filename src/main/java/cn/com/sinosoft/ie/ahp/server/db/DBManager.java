@@ -42,8 +42,9 @@ public class DBManager {
 	 * 初始化连接池
 	 * @param props
 	 * @param show_sql
+	 * @throws Exception 
 	 */
-	 public final static void initDataSource(Properties dbProperties) {
+	 public final static void initDataSource(Properties dbProperties) throws Exception {
 		try {
 			if(dbProperties == null){
 				dbProperties = new Properties();
@@ -74,7 +75,8 @@ public class DBManager {
 		//	log.info("Connected to {} {}", mdm.getDatabaseProductName() , mdm.getDatabaseProductVersion());
 			closeConnection();
 		} catch (Exception e) {
-			log.error("数据源初始化失败",e);
+			throw e;
+			//log.error("数据源初始化失败",e);
 		}
 	}
 	

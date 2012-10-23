@@ -2,7 +2,9 @@ package cn.com.sinosoft.ie.ahp.server.service.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.Map;
 import java.util.UUID;
 
@@ -12,6 +14,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import com.sinosoft.ie.ahp.util.AESUtil;
 
 import cn.com.sinosoft.ie.ahp.server.db.DBManager;
 import cn.com.sinosoft.ie.ahp.server.service.BizPluginHandler;
@@ -27,7 +31,7 @@ public class OutpatientServiceImplTest {
 			"outpatient"+File.separator;
 
 	@BeforeClass
-	public void beforeClass() throws IOException {
+	public void beforeClass() throws Exception {
 		// 新解析器需要初始化这个
 		MapperProvider.init();
 		DBManager.initDataSource(null);
@@ -38,6 +42,14 @@ public class OutpatientServiceImplTest {
 		MapperProvider.destory();
 	}
 	
+	/*
+	@Test
+	@SuppressWarnings("unused")  
+    public void testDns() throws UnknownHostException { 
+		String dom = "www.hdhkm.net";
+        InetAddress[] addresses = InetAddress.getAllByName(dom);  
+    } 
+	*/
 	@DataProvider(name = "outpatient-demos")
 	public Object[][] dataValues() {
 		URL url =OutpatientServiceImplTest.class.getResource(demoDir);
@@ -53,17 +65,21 @@ public class OutpatientServiceImplTest {
 	}
 
 	/**
-	 * 插入一万次
+	 * 插入一万次<br/>
+	 * 不插入CDA： HPTEST： 507s |  EHRRUN：675s  <br/>
+	 * 插入CDA：   HPTEST： 758s |  EHRRUN：877s  <br/>
+	 * 
+	 *
 	 * @throws Exception 
 	 */
-	@Test(dataProvider="outpatient-demos")
+	@Test(dataProvider="outpatient-demos",enabled=false)
 	public void saveBizData(String demofiles) throws Exception {
 		String xml = XmlReaderUtil.loadTestXml(demoDir+demofiles);
 		assert (xml!=null && ! xml.isEmpty()):"加载示例xml文件错误";
 		OutpatientServiceImpl  service = new OutpatientServiceImpl();
 		service.init();
 		//随机数
-		service.setBizPluginHandler(new BizFieldpkRandomPluginHandler());
+		service.addBizPluginHandler(new BizFieldpkRandomPluginHandler());
 		for(int i=0;i<10000;i++){
 			BizResult result = service.process(UUID.randomUUID().toString(), UUID.randomUUID().toString(), xml);
 			if (! BizResultCode.SUCCESS.equals(result.getCode())){
@@ -72,7 +88,18 @@ public class OutpatientServiceImplTest {
 		}
 		service.destory();
 	}
-
+	
+	@Test(dataProvider="outpatient-demos",enabled=true)
+	public void testAESCrypt(String demofiles) throws Exception {
+		String xml = XmlReaderUtil.loadTestXml(demoDir+demofiles);
+		assert (xml!=null && ! xml.isEmpty()):"加载示例xml文件错误";
+		String key = AESUtil.getSecretKey();
+		byte[] encr = AESUtil.encrypt(xml.getBytes(), key);
+		byte[] decr =AESUtil.decrypt(encr, key);
+		String dexml = new String(decr);
+		assert xml.equals(dexml):"解密后和元数据不一致";
+	}
+	
 	@Test(enabled=false)
 	public void saveCDA() {
 		throw new RuntimeException("Test not implemented");

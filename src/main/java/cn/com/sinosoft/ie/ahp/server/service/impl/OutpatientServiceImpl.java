@@ -55,8 +55,7 @@ public class OutpatientServiceImpl extends AbstractBizService {
 	private static final String TBL_ABSTRACT = "UDP_R_VIEWER_EHR_ABSTRACT";
 
 	@Override
-	protected void saveBizData(Connection conn, Map<String, Object> bizData,
-			String patientPersonId, String bussinessId) throws Exception {
+	protected void saveBizData(Connection conn, String bizId, String ppId, Map<String, Object> bizData) throws Exception {
 		//患者
 		bizData.remove(PATIENT_KEY);
 		//门急诊症状
@@ -90,36 +89,28 @@ public class OutpatientServiceImpl extends AbstractBizService {
 		//门诊信息
 		insertOutPatient(conn,bizData);
 		//门急诊症状
-		insertChildrenSimply(conn, clinFrameTList, TBL_CLIN_FRAME_T, TBL_OUT_PATIENT, patientPersonId);
+		insertChildrenSimply(conn, clinFrameTList, TBL_CLIN_FRAME_T, TBL_OUT_PATIENT, ppId);
 		//门急诊诊疗手术记录
-		insertChildrenSimply(conn, clinOpList, TBL_CLIN_OP, TBL_OUT_PATIENT, patientPersonId);
+		insertChildrenSimply(conn, clinOpList, TBL_CLIN_OP, TBL_OUT_PATIENT, ppId);
 		//门急诊诊疗放射治疗记录
-		insertChildrenSimply(conn, clinRadList, TBL_CLIN_RAD, TBL_OUT_PATIENT, patientPersonId);
+		insertChildrenSimply(conn, clinRadList, TBL_CLIN_RAD, TBL_OUT_PATIENT, ppId);
 		//门急诊诊疗用药记录
-		insertChildrenSimply(conn, clinDrugTList, TBL_CLIN_DRUG, TBL_OUT_PATIENT, patientPersonId);
+		insertChildrenSimply(conn, clinDrugTList, TBL_CLIN_DRUG, TBL_OUT_PATIENT, ppId);
 		//门急诊诊疗诊断记录
-		insertChildrenSimply(conn, clinDiagList, TBL_CLIN_DIAG, TBL_OUT_PATIENT, patientPersonId);
+		insertChildrenSimply(conn, clinDiagList, TBL_CLIN_DIAG, TBL_OUT_PATIENT, ppId);
 		//门急诊诊疗费用结算
-		insertChildrenSimply(conn, clinCostList, TBL_CLIN_COST, TBL_OUT_PATIENT, patientPersonId);
+		insertChildrenSimply(conn, clinCostList, TBL_CLIN_COST, TBL_OUT_PATIENT, ppId);
 		//门急诊诊疗输血记录
-		insertChildrenSimply(conn, clinTransfuList, TBL_CLIN_TRANSFU, TBL_OUT_PATIENT, patientPersonId);
+		insertChildrenSimply(conn, clinTransfuList, TBL_CLIN_TRANSFU, TBL_OUT_PATIENT, ppId);
 		//门急诊诊疗死亡记录
-		insertChildrenSimply(conn, clinDeathList, TBL_CLIN_DEATH, TBL_OUT_PATIENT, patientPersonId);
+		insertChildrenSimply(conn, clinDeathList, TBL_CLIN_DEATH, TBL_OUT_PATIENT, ppId);
 		//门急诊诊疗转诊记录-
-		insertChildrenSimply(conn, clinTraList, TBL_CLIN_TRA, TBL_OUT_PATIENT, patientPersonId);
+		insertChildrenSimply(conn, clinTraList, TBL_CLIN_TRA, TBL_OUT_PATIENT, ppId);
 		
-		insertAbstract(conn,patientPersonId, bizData, bussinessId, clinDrugTList, clinFrameTList, clinDiagList);
+		insertAbstract(conn,ppId, bizData, ppId, clinDrugTList, clinFrameTList, clinDiagList);
 
 
 	}
-
-	@Override
-	protected void saveCDA(Connection conn, Map<String, Object> map,
-			String patientPersonId, String bussinessId) throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-	
 	
 	private void insertOutPatient(Connection conn, Map<String, Object> outPatient) throws CdaProcessException{
 		StringBuffer columns = new StringBuffer();

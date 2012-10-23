@@ -62,7 +62,7 @@ public class MapperCdaParserTest {
 	public void parserCDA(String demo) throws Exception {
 		String xmlContent = XmlReaderUtil.loadTestXml(demoDir+demo);
 		//新解析器的解析结果
-		Map<String, Object> old = MapperCdaParser.parserCDA(xmlContent);
+		Map<String, Object> old = MapperCdaParser.parserCDA(xmlContent,null);
 		//旧解析器的解析结果
 		Map<String, Object> newMap = CdaParser.parserCDA(xmlContent);
 		
