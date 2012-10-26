@@ -8,4 +8,8 @@ public interface BizPluginHandler {
 	public void beforSaveCda(String bizId, String ppId, String cdaContent, Map<String,Object> bizData) throws Exception;
 	public void beforCommitAll(String bizId, String ppId, String cdaContent, Map<String,Object> bizData) throws Exception;
 	public void beforReturnResult(String bizId, String ppId, String cdaContent, Map<String,Object> bizData,BizResult result) ;
+	@Override
+	public boolean equals(Object obj);
+	@Override
+	public int hashCode();
 }

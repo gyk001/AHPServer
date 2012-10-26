@@ -1,6 +1,9 @@
 package cn.com.sinosoft.ie.ahp.server.service;
 
-public class BizResult {
+import java.io.Serializable;
+
+public class BizResult implements Serializable {
+	private static final long serialVersionUID = 4244387545292602048L;
 	private BizResultCode code;
 	private String msg;
 	private String bizId;

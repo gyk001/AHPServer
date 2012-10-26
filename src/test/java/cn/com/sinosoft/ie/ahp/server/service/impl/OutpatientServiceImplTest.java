@@ -1,10 +1,7 @@
 package cn.com.sinosoft.ie.ahp.server.service.impl;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.InetAddress;
 import java.net.URL;
-import java.net.UnknownHostException;
 import java.util.Map;
 import java.util.UUID;
 
@@ -15,14 +12,14 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.sinosoft.ie.ahp.util.AESUtil;
-
 import cn.com.sinosoft.ie.ahp.server.db.DBManager;
 import cn.com.sinosoft.ie.ahp.server.service.BizPluginHandler;
 import cn.com.sinosoft.ie.ahp.server.service.BizResult;
 import cn.com.sinosoft.ie.ahp.server.service.BizResultCode;
 import cn.com.sinosoft.ie.ahp.server.service.cda.MapperProvider;
 import cn.com.sinosoft.ie.ahp.server.util.XmlReaderUtil;
+
+import com.sinosoft.ie.ahp.util.AESUtil;
 
 public class OutpatientServiceImplTest {
 	@SuppressWarnings("unused")
@@ -88,6 +85,9 @@ public class OutpatientServiceImplTest {
 		}
 		service.destory();
 	}
+	
+	
+	
 	
 	@Test(dataProvider="outpatient-demos",enabled=true)
 	public void testAESCrypt(String demofiles) throws Exception {

@@ -1,10 +1,8 @@
 package cn.com.sinosoft.ie.ahp.server.app;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Properties;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.configuration.Configuration;
@@ -14,7 +12,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cn.com.sinosoft.ie.ahp.server.monitor.MonitorConfig;
-import cn.com.sinosoft.ie.ahp.server.processer.ICdaProcesser;
+import cn.com.sinosoft.ie.ahp.server.mq.SingleQueueConfig;
+import cn.com.sinosoft.ie.ahp.server.worker.WorkerConfig;
+
+import com.sinosoft.ie.ahp.msg.MsgType;
 
 /**
  * @author GuoYukun (<a href="gyk001@gmail.com">Gyk001@gmail.com</a>)
@@ -24,93 +25,146 @@ import cn.com.sinosoft.ie.ahp.server.processer.ICdaProcesser;
 public class ServerConfig {
 	private static final Logger logger = LoggerFactory
 			.getLogger(ServerConfig.class);
-	
-    //private Map<String,SingleQueueConfig> mqs = new HashMap<String, SingleQueueConfig>();
+	// MQ配置
+    private Map<String,SingleQueueConfig> mqs = new HashMap<String, SingleQueueConfig>();
     // 工作线程配置
-   // private Map<String,WorkerConfig> workersConfigMap = new HashMap<String,WorkerConfig>();
+    private Map<String,WorkerConfig> workersConfigMap = new HashMap<String,WorkerConfig>();
     // 监控配置
-    private static MonitorConfig monitorConfig;
+    private MonitorConfig monitorConfig;
+    
+    
+	public Map<String, SingleQueueConfig> getMqs() {
+		return mqs;
+	}
+
+
+	public void setMqs(Map<String, SingleQueueConfig> mqs) {
+		this.mqs = mqs;
+	}
+
+	
+	public Map<String, WorkerConfig> getWorkersConfigMap() {
+		return workersConfigMap;
+	}
+
+	public void setWorkersConfigMap(Map<String, WorkerConfig> workersConfigMap) {
+		this.workersConfigMap = workersConfigMap;
+	}
 
 	
 	
-	
-	public static MonitorConfig getMonitorConfig() {
+	public MonitorConfig getMonitorConfig() {
 		return monitorConfig;
 	}
 
+	public void setMonitorConfig(MonitorConfig monitorConfig) {
+		this.monitorConfig = monitorConfig;
+	}
 
-	//工作线程数
-	private int workerThreadCount ;
-	private Integer mqMaxMsgCount;
-	private String mqIp ;
-	private int mqPort;
-	private String mqUsername;
-	private String mqPassword;
-	private String mqBizQueue;
-	private String mqBizExchange;
-	private String mqBizRoutingKey;
-	private String mqResultQueue;
-	private String mqResultExchange;
-	private String mqResultRoutingKey;
-
-    
-	
-	
-	//发送队列
-	public final static String SENDQUEUE = "APHSEND_Q";
-	//接收队列
-	public final static String RECEIVEQUEUE = "APHRECEIVE_Q";
-	//处理类的类名和msgType的对应关系
-	private Properties processerProps;
-	//处理类实例和msgType的对应关系
-	private Map<String,ICdaProcesser> cdaProcessers ;
-	
-	public ICdaProcesser getCdaProcesser(String msgType){
-		//处理类类名
-		String processerClaz = processerProps.getProperty(msgType);
-		ICdaProcesser processer = cdaProcessers.get(processerClaz);
-		if(processer == null){
-			synchronized (this) {
-				try {
-					processer = (ICdaProcesser) Class.forName(processerClaz).newInstance();
-					cdaProcessers.put(processerClaz, processer);
-				} catch (Exception ignore) {
-					logger.warn("get CDAProcesser exception !",ignore);
-				}
+	private SingleQueueConfig makeMQConfig(String mqName, Configuration config, SingleQueueConfig defaultMQConf){
+		SingleQueueConfig mqConfig = null;
+		if(defaultMQConf==null){
+			mqConfig = new SingleQueueConfig();
+		}else{
+			try {
+				mqConfig =(SingleQueueConfig)BeanUtils.cloneBean(defaultMQConf);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
-		return processer;
+		Iterator<String> mqKeys = config.getKeys();
+		while(mqKeys.hasNext()){
+			String mqKey = mqKeys.next();
+			if(mqKey!=null && ! mqKey.isEmpty()){
+				try {
+					BeanUtils.copyProperty(mqConfig, mqKey, config.getProperty(mqKey));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}	
+		mqConfig.setName(mqName);
+		return mqConfig;
 	}
-	
-	public void init() throws IOException{
-		//TODO:根据配置文件初始化
-		this.workerThreadCount=2;
-		// 加载连接配置
-		Properties p = new Properties();
-		p.load(ClassLoader
-				.getSystemResourceAsStream("config.properties"));
-		this.mqIp = p.getProperty("mq.ip");
-		this.mqPort = Integer.valueOf( p.getProperty("mq.port","63333") );
+	private WorkerConfig makeWorkerConfig(String workerName,Configuration config, WorkerConfig defaultWorkerConf) throws ConfigException{
+		WorkerConfig workerConfig= null;
+		if(defaultWorkerConf==null){
+			workerConfig = new WorkerConfig();
+		}else{
+			try {
+				workerConfig = (WorkerConfig)BeanUtils.cloneBean(defaultWorkerConf);
+			} catch (Exception e) {
+				throw new ConfigException("clone defaultWorkerConf error!", e);
+			}
+		}
 		
-		this.mqUsername = p.getProperty("mq.username");
-		this.mqPassword = p.getProperty("mq.password");
-		this.workerThreadCount = Integer.valueOf( p.getProperty("worker.thread","1"));
-		this.mqMaxMsgCount = Integer.valueOf( p.getProperty("mq.maxMsgCount","1000"));
-		this.mqBizExchange = p.getProperty("mq.bizExchange");
-		this.mqBizQueue = p.getProperty("mq.bizQueue");
-		this.mqBizRoutingKey = p.getProperty("mq.bizRoutingKey");
-		this.mqResultExchange = p.getProperty("mq.resultExchange");
-		this.mqResultQueue = p.getProperty("mq.resultQueue");
-		this.mqResultRoutingKey = p.getProperty("mq.resultRoutingKey");
-		
-		// 监控配置
-		this.monitorConfig = new MonitorConfig();
+		Iterator<String> wcKeys = config.getKeys();
+		while(wcKeys.hasNext()){
+			String wcKey = wcKeys.next();
+			if(wcKeys!=null && ! wcKey.isEmpty()){
+				if(wcKey.equals("mqBiz")){
+					String mqName = config.getString(wcKey);
+					if( mqName==null || mqName.isEmpty()){
+						throw new ConfigException(workerName+"'s "+wcKey +" is not set!");
+					}
+					workerConfig.setMqBizConfig(this.mqs.get(mqName));
+				}else if(wcKey.equals("mqResult")){
+					String mqName = config.getString(wcKey);
+					if( mqName==null || mqName.isEmpty()){
+						throw new ConfigException(workerName+"'s "+wcKey +" is not set!");
+					}
+					workerConfig.setMqResultConfig(this.mqs.get(mqName));
+				}else{
+					try {
+						BeanUtils.copyProperty(workerConfig, wcKey, config.getProperty(wcKey));
+					} catch (Exception e) {
+						throw new ConfigException(workerName+"'s "+wcKey+" set error!", e);
+					}
+				}
+			}
+		}	
+		workerConfig.setNamePrefix(workerName);
+		//workerConfig.setAhpConfig(this);
+		return workerConfig;
+	}
+	public void init() throws Exception{
+		//加载配置文件
 		Configuration config = null;
 		try {
-			config = new PropertiesConfiguration("config.properties");
+			config = new PropertiesConfiguration("server.properties");
 		} catch (ConfigurationException e) {
-			throw new IOException(e);
+			throw e;
 		}
+		//mq配置
+		Configuration mqBaseConf = config.subset("mqbase");
+		SingleQueueConfig mqBaseConfig = makeMQConfig("base", mqBaseConf, null);
+		logger.debug("mq base conf: {}",mqBaseConfig);
+		this.mqs.put("base", mqBaseConfig);
+		String[] mqNames = config.getStringArray("mq.enable");
+		for (int i = 0; i < mqNames.length; i++) {
+			Configuration mqConf = config.subset("mq."+mqNames[i]);
+			SingleQueueConfig mqConfig = makeMQConfig(mqNames[i], mqConf, mqBaseConfig);
+			logger.debug("mq {} conf: {}", mqNames[i], mqConfig);
+			this.mqs.put(mqNames[i], mqConfig);
+		}
+		//worker配置
+		Configuration workerBaseConf = config.subset("workerbase");
+		WorkerConfig workerBaseConfig = makeWorkerConfig("base", workerBaseConf, null);
+		logger.debug("worker base conf:{}",workerBaseConfig);
+		this.workersConfigMap.put("base", workerBaseConfig);
+		String[] workerNames = config.getStringArray("worker.enable");
+		for (int i = 0; i < workerNames.length; i++) {
+			Configuration workerConf = config.subset("worker."+workerNames[i]);
+			WorkerConfig workerConfig = makeWorkerConfig(workerNames[i], workerConf, workerBaseConfig);
+			logger.debug("worker {} conf:{}", workerNames[i], workerConfig);
+			this.workersConfigMap.put(workerNames[i], workerConfig);
+			
+		}
+/*		
+		// 监控配置
+		this.monitorConfig = new MonitorConfig();
 		Configuration monitorConf = config.subset("monitor");
 		Iterator<String> monitorKeys = monitorConf.getKeys();
 		while(monitorKeys.hasNext()){
@@ -124,70 +178,9 @@ public class ServerConfig {
 				}
 			}
 		}	
+		*/
 		
-		this.processerProps = new Properties();
-		this.processerProps.load( ClassLoader.getSystemResourceAsStream("processer.properties"));
-		this.cdaProcessers = new HashMap<String,ICdaProcesser>();
 	}
 
-	public int getWorkerThreadCount(){
-		return this.workerThreadCount;
-	}
-
-	public String getMqIp() {
-		return mqIp;
-	}
-
-	public int getMqPort() {
-		return mqPort;
-	}
-
-	public String getMqUsername() {
-		return mqUsername;
-	}
-
-	public String getMqPassword() {
-		return mqPassword;
-	}
-
-	public static String getSendqueue() {
-		return SENDQUEUE;
-	}
-
-	public static String getReceivequeue() {
-		return RECEIVEQUEUE;
-	}
-
-	public Map<String, ICdaProcesser> getCdaProcessers() {
-		return cdaProcessers;
-	}
-
-	public Integer getMqMaxMsgCount() {
-		return mqMaxMsgCount;
-	}
-
-	public String getMqBizQueue() {
-		return mqBizQueue;
-	}
-
-	public String getMqBizExchange() {
-		return mqBizExchange;
-	}
-
-	public String getMqBizRoutingKey() {
-		return mqBizRoutingKey;
-	}
-
-	public String getMqResultQueue() {
-		return mqResultQueue;
-	}
-
-	public String getMqResultExchange() {
-		return mqResultExchange;
-	}
-
-	public String getMqResultRoutingKey() {
-		return mqResultRoutingKey;
-	}
 
 }

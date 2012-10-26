@@ -34,7 +34,7 @@ public class SimpleMQHelper {
 	}
 
 	
-	public void openMQ(boolean canReceive) throws MQException {
+	public void openMQ() throws MQException {
 		try {
 			conn = getConnection(false);
 			// 队列通道
@@ -46,7 +46,7 @@ public class SimpleMQHelper {
 			channel.queueBind(config.getQueueName(), config.getExchangeName(), config.getRoutingKey());
 			//接收的最大消息数量,防止接收过多内存溢出
 			channel.basicQos( config.getMaxMsgCount() ); 
-			if(canReceive){
+			if(config.isForReceive()){
 				consumer = new QueueingConsumer(channel);
 				channel.basicConsume(config.getQueueName(), false, consumer);
 			}

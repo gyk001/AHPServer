@@ -1,6 +1,5 @@
 package cn.com.sinosoft.ie.ahp.server.app;
 
-import java.io.PrintStream;
 import java.util.Date;
 import java.util.List;
 
@@ -24,14 +23,4 @@ public final class ServerStatus {
 	//处理失败的消息总数
     //
 
-	public static void printStatus(PrintStream ps){
-		ps.append(" ============== AHPStatus ==================\n");
-		ps.append(" Start from ").append( startupTime.toString());
-		ps.append("  ,Now time is ").append(new Date().toString());
-		ps.append("\nThread\tTotal\tSuccess\tError\tProssess\tSend\n");
-		for (Thread t: workerThreads) {
-			WorkerThread wt = (WorkerThread) t;
-			ps.append(wt.getMsgState(false)).append("\n");
-		}
-	}
 }

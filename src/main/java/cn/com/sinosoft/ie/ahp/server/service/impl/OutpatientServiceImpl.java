@@ -12,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cn.com.sinosoft.ie.ahp.server.db.QueryHelper;
-import cn.com.sinosoft.ie.ahp.server.processer.CdaProcessException;
 import cn.com.sinosoft.ie.ahp.server.service.AbstractBizService;
 import cn.com.sinosoft.ie.ahp.server.service.SqlMakeUtil;
 
@@ -24,6 +23,7 @@ import com.sinosoft.ie.ahp.server.util.OrgUtil;
  * @version 2012-10-22
  */
 public class OutpatientServiceImpl extends AbstractBizService {
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(OutpatientServiceImpl.class);
 	//门诊
 	private static final String TBL_OUT_PATIENT = "UDP_R_VIEWER_OUT_PATIENT_R";
@@ -112,7 +112,7 @@ public class OutpatientServiceImpl extends AbstractBizService {
 
 	}
 	
-	private void insertOutPatient(Connection conn, Map<String, Object> outPatient) throws CdaProcessException{
+	private void insertOutPatient(Connection conn, Map<String, Object> outPatient) throws Exception{
 		StringBuffer columns = new StringBuffer();
 		StringBuffer values = new StringBuffer();
 		//处理构造sql所需的参数
@@ -129,14 +129,11 @@ public class OutpatientServiceImpl extends AbstractBizService {
 		try {
 			QueryHelper.insertSql(conn, sql.toString(), params.toArray());
 		} catch (Exception e) {
-			CdaProcessException cpe = new CdaProcessException(
-					"insert [OutPatient] exception！", e);
-			logger.error(cpe.getLocalizedMessage(), cpe);
-			throw cpe;
+			throw e;
 		}
 	}
 	
-	private void insertAbstract(Connection conn, String patientPersonId,Map<String, Object> outPatient,String bussinessId,Collection<Map<String, Object>> clinDrugTList,Collection<Map<String, Object>> clinFrameTList,Collection<Map<String, Object>> clinDiagList) throws CdaProcessException {
+	private void insertAbstract(Connection conn, String patientPersonId,Map<String, Object> outPatient,String bussinessId,Collection<Map<String, Object>> clinDrugTList,Collection<Map<String, Object>> clinFrameTList,Collection<Map<String, Object>> clinDiagList) throws Exception {
 		String columns = "FIELD_PK,FIELD_PK_FK,ORGCODE,ORGNAME,DEPTCODE,DEPTNAME,SERVERNAME,ABST,LINKID,REGDATE,ABSTYPE";
 		String values = "?,?,?,?,?,?,?,?,?,?,?";
 		List<Object> params = new ArrayList<Object>(11);
@@ -208,10 +205,7 @@ public class OutpatientServiceImpl extends AbstractBizService {
 			try {
 				QueryHelper.insertSql(conn, sql.toString(), params.toArray());
 			} catch (Exception e) {
-				CdaProcessException cpe = new CdaProcessException(
-						"insert [OutPatient Abstract] exception！", e);
-				logger.error(cpe.getLocalizedMessage(), cpe);
-				throw cpe;
+				throw e;
 			}
 	}
 

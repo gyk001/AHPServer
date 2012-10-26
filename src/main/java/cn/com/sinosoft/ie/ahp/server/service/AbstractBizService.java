@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 
 import cn.com.sinosoft.ie.ahp.server.db.DBManager;
 import cn.com.sinosoft.ie.ahp.server.db.QueryHelper;
-import cn.com.sinosoft.ie.ahp.server.processer.CdaProcessException;
 import cn.com.sinosoft.ie.ahp.server.service.cda.MapperCdaParser;
 
 public abstract class AbstractBizService implements IBizService {
@@ -172,7 +171,7 @@ public abstract class AbstractBizService implements IBizService {
 
 	protected void saveCDA(Connection conn, String bizId, String ppId,
 			String cdaContent, Map<String, Object> bizData,
-			Map<String, Object> extObj) throws CdaProcessException {
+			Map<String, Object> extObj) throws Exception {
 		logger.debug("saveCDA...");
 		/*
 		 * FILED_PK 主键 CREATE_DATE DD_IS_SORTING '2' ORG_CODE 来源机构码 CDA_TYPE
@@ -194,9 +193,7 @@ public abstract class AbstractBizService implements IBizService {
 		try {
 			QueryHelper.insertSql(conn, sql.toString(), params.toArray());
 		} catch (Exception e) {
-			CdaProcessException cpe = new CdaProcessException(
-					"insert cda exception!", e);
-			throw cpe;
+			throw e;
 		}
 	}
 
@@ -217,7 +214,7 @@ public abstract class AbstractBizService implements IBizService {
 	 */
 	protected final void insertChildrenSimply(Connection conn,
 			Collection<Map<String, Object>> children, String tableName,
-			String parentMapKey, String fk) throws CdaProcessException {
+			String parentMapKey, String fk) throws Exception {
 		for (Map<String, Object> child : children) {
 			// 移除父表元素
 			if (parentMapKey != null && !"".equals(parentMapKey)) {
@@ -244,11 +241,7 @@ public abstract class AbstractBizService implements IBizService {
 			try {
 				QueryHelper.insertSql(conn, sql.toString(), params.toArray());
 			} catch (Exception e) {
-				CdaProcessException cpe = new CdaProcessException(
-						"insertChildrenSimply exception！tableName:" + tableName
-								+ ";fk:" + fk, e);
-				// logger.error(cpe.getLocalizedMessage(), cpe);
-				throw cpe;
+				throw e;
 			}
 		}
 	}

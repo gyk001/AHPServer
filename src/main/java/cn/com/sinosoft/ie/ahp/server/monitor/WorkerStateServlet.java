@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
-import cn.com.sinosoft.ie.ahp.server.app.ServerConfig;
-
 /**
  * @author 郭玉昆(<a href="mailto:gyk001@gmail.com">gyk001@gmail.com</a>)
  * @version 2012-7-6
@@ -20,7 +18,8 @@ import cn.com.sinosoft.ie.ahp.server.app.ServerConfig;
  */
 public class WorkerStateServlet extends HttpServlet {
 	private static final long serialVersionUID = 8351341713686390590L;
-	private static final String uriPrefix = "/"+ServerConfig.getMonitorConfig().getContextPath()+"/ac/";
+	//TODO:监控路径
+	private static final String uriPrefix = "/";//+ServerConfig.getMonitorConfig().getContextPath()+"/ac/";
 	private static final ObjectMapper jsonMapper = new ObjectMapper();
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
