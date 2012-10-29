@@ -8,6 +8,7 @@
 		<project.build.sourceLevel>1.6</project.build.sourceLevel>
 		<project.build.targetLevel>1.6</project.build.targetLevel>
 		<project.dependcy.hpcommonVersion>0.0.6-SNAPSHOT</project.dependcy.hpcommonVersion>
+		<project.build.runnableDir>${project.build.directory}/${project.artifactId}</project.build.runnableDir>
 		<repo.guo.path>http://114.110.8.114:8083/nexus</repo.guo.path>
 	</properties>
 	<repositories>
@@ -133,14 +134,6 @@
 			<version>6.1.1</version>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.jodd</groupId>
-			<artifactId>jodd</artifactId>
-			<version>3.2.6</version>
-			<scope>test</scope>
-		</dependency>
-
 	</dependencies>
 	<distributionManagement>
 		<repository>
@@ -159,14 +152,36 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
 				<configuration>
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
+				<executions>
+					<execution>
+						<id>copyAHPClientRes</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.runnableDir}/bin/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources/</directory>
+									<excludes>
+										<exclude>*</exclude>
+									</excludes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
 				<configuration>
 					<source>${project.build.sourceLevel}</source>
 					<target>${project.build.targetLevel}</target>
@@ -191,11 +206,16 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3.2</version>
 				<configuration>
 					<archive>
 						<!-- 不打包pom文件 -->
 						<addMavenDescriptor>false</addMavenDescriptor>
 					</archive>
+					<excludes>
+						<excludes>mapper/**</excludes>
+						<excludes>web/**</excludes>
+					</excludes>
 				</configuration>
 			</plugin>
 			<!-- 执行命令：mvn package appassembler:assemble，会自动生成jar包 -->
@@ -204,9 +224,11 @@
 				<artifactId>appassembler-maven-plugin</artifactId>
 				<version>1.1.1</version>
 				<configuration>
+				<!-- 
 					<configurationDirectory>conf</configurationDirectory>
 					<configurationSourceDirectory>src/main/resources</configurationSourceDirectory>
 					<copyConfigurationDirectory>true</copyConfigurationDirectory>
+					-->
 					<includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>
 					<assembleDirectory>${project.build.directory}/${project.artifactId}</assembleDirectory>
 					<extraJvmArguments>-Xms128m -Xmx256m</extraJvmArguments>
@@ -220,7 +242,7 @@
 					<repositoryName>lib</repositoryName>
 					<programs>
 						<program>
-							<mainClass>com.sinosoft.ie.ahp.server.main.AHPServer</mainClass>
+							<mainClass>com.sinosoft.ie.ahp.server.app.AHPServer</mainClass>
 							<name>${project.artifactId}</name>
 						</program>
 					</programs>

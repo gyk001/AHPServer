@@ -162,7 +162,6 @@ public class ServerConfig {
 			this.workersConfigMap.put(workerNames[i], workerConfig);
 			
 		}
-/*		
 		// 监控配置
 		this.monitorConfig = new MonitorConfig();
 		Configuration monitorConf = config.subset("monitor");
@@ -178,7 +177,6 @@ public class ServerConfig {
 				}
 			}
 		}	
-		*/
 		
 	}
 

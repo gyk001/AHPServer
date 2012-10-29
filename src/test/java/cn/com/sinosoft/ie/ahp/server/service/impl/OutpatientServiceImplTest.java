@@ -89,7 +89,7 @@ public class OutpatientServiceImplTest {
 	
 	
 	
-	@Test(dataProvider="outpatient-demos",enabled=true)
+	@Test(dataProvider="outpatient-demos",enabled=false)
 	public void testAESCrypt(String demofiles) throws Exception {
 		String xml = XmlReaderUtil.loadTestXml(demoDir+demofiles);
 		assert (xml!=null && ! xml.isEmpty()):"加载示例xml文件错误";

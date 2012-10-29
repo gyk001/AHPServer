@@ -58,7 +58,7 @@ public class MapperCdaParserTest {
 	 * @param demo
 	 * @throws Exception
 	 */
-	@Test(dataProvider="cda-demos")
+	@Test(dataProvider="cda-demos",enabled=false)
 	public void parserCDA(String demo) throws Exception {
 		String xmlContent = XmlReaderUtil.loadTestXml(demoDir+demo);
 		//新解析器的解析结果

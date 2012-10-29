@@ -44,7 +44,7 @@ public class MapperProviderTest {
 	  };
 	 }
 
-	@Test(dataProvider="cda-type")
+	@Test(dataProvider="cda-type",enabled=false)
 	public void testGet(String msgType) {
 		//原来的配置
 		ClassMapInfo oldMap = ClassConfig.getClassMapInfo(msgType);

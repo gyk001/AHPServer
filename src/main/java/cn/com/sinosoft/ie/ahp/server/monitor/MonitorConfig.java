@@ -8,7 +8,6 @@ package cn.com.sinosoft.ie.ahp.server.monitor;
 public class MonitorConfig {
 	private int port;
 	private String contextPath;
-	private String webRoot;
 	
 	public int getPort() {
 		return port;
@@ -22,11 +21,4 @@ public class MonitorConfig {
 	public void setContextPath(String contextPath) {
 		this.contextPath = contextPath;
 	}
-	public String getWebRoot() {
-		return webRoot;
-	}
-	public void setWebRoot(String webRoot) {
-		this.webRoot = webRoot;
-	}
-	
 }

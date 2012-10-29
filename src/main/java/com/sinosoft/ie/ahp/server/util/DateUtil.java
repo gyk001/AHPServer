@@ -57,6 +57,7 @@ public class DateUtil {
 		jdt.loadFrom(c);
 		JdtFormatter fmt = new DefaultFormatter();
 		String s = fmt.convert(jdt,"YYYY-MM-DDThh:mm:ss");
+		
 		return s;
 	}
 }

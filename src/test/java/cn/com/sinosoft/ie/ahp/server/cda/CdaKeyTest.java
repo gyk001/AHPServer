@@ -15,7 +15,7 @@ public class CdaKeyTest {
     };
   }
 
-  @Test(dataProvider="con")
+  @Test(dataProvider="con",enabled=false)
   public void CdaKey(String bizType, String version) {
 	  TypeVersionCdaKey key1 = new TypeVersionCdaKey(bizType, version);
 	  TypeVersionCdaKey key2 = new TypeVersionCdaKey(bizType, version);

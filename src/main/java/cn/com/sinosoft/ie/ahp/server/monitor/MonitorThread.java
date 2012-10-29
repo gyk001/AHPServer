@@ -37,11 +37,13 @@ public class MonitorThread implements Runnable {
         // 获取工作者状态接口
         servletContext.addServlet(new ServletHolder(new WorkerStateServlet()),"/*");
  
+        String webRoot = getClass().getResource("/").getPath();
+        
         ContextHandlerCollection contexts = new ContextHandlerCollection();
         ResourceHandler rh = new ResourceHandler();
         rh.setDirectoriesListed(true);
         rh.setWelcomeFiles(new String[]{"index.html"});
-        contexts.addContext("/"+config.getContextPath(), config.getWebRoot()).setHandler(rh);
+        contexts.addContext("/"+config.getContextPath(), webRoot+"web").setHandler(rh);
         contexts.addContext("/"+config.getContextPath()+"/ac",".").setHandler(servletContext);
 		server = new Server(config.getPort());
         server.setHandler(contexts);
