@@ -32,7 +32,7 @@ public class MapperProvider {
 	 */
 	public static synchronized void init() {
 		if (init == false) {
-			URL url = MapperProvider.class.getResource("/ehcache.xml");
+			URL url = MapperProvider.class.getResource("/cfg/ehcache.xml");
 			manager = CacheManager.newInstance(url);
 			logger.debug("caches:{}", Arrays.asList(manager.getCacheNames()));
 			cache = manager.getCache(CDA_MAPPER_CACHE);

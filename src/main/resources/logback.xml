@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false"  scan="true" scanPeriod="30 seconds" >
+	<contextName>ahpserver</contextName>  
 	<substitutionProperty name="log.base" value="/tmp/logs/ahpServer" />
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
 		<withJansi>false</withJansi>

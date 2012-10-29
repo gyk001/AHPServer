@@ -215,6 +215,8 @@
 					<excludes>
 						<excludes>mapper/**</excludes>
 						<excludes>web/**</excludes>
+						<excludes>cfg/**</excludes>
+						<excludes>logback.xml</excludes>
 					</excludes>
 				</configuration>
 			</plugin>
@@ -242,7 +244,7 @@
 					<repositoryName>lib</repositoryName>
 					<programs>
 						<program>
-							<mainClass>com.sinosoft.ie.ahp.server.app.AHPServer</mainClass>
+							<mainClass>cn.com.sinosoft.ie.ahp.server.app.AHPServer</mainClass>
 							<name>${project.artifactId}</name>
 						</program>
 					</programs>

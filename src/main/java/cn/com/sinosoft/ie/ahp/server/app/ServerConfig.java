@@ -25,6 +25,7 @@ import com.sinosoft.ie.ahp.msg.MsgType;
 public class ServerConfig {
 	private static final Logger logger = LoggerFactory
 			.getLogger(ServerConfig.class);
+	private boolean init=false;
 	// MQ配置
     private Map<String,SingleQueueConfig> mqs = new HashMap<String, SingleQueueConfig>();
     // 工作线程配置
@@ -60,6 +61,16 @@ public class ServerConfig {
 	public void setMonitorConfig(MonitorConfig monitorConfig) {
 		this.monitorConfig = monitorConfig;
 	}
+
+	public boolean isInit() {
+		return init;
+	}
+
+
+	public void setInit(boolean init) {
+		this.init = init;
+	}
+
 
 	private SingleQueueConfig makeMQConfig(String mqName, Configuration config, SingleQueueConfig defaultMQConf){
 		SingleQueueConfig mqConfig = null;
@@ -130,10 +141,13 @@ public class ServerConfig {
 		return workerConfig;
 	}
 	public void init() throws Exception{
+		if(this.init){
+			return;
+		}
 		//加载配置文件
 		Configuration config = null;
 		try {
-			config = new PropertiesConfiguration("server.properties");
+			config = new PropertiesConfiguration("cfg/server.properties");
 		} catch (ConfigurationException e) {
 			throw e;
 		}

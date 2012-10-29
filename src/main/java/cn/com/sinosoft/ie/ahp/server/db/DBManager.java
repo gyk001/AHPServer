@@ -48,7 +48,7 @@ public class DBManager {
 		try {
 			if(dbProperties == null){
 				dbProperties = new Properties();
-				dbProperties.load(ClassLoader.getSystemResourceAsStream("db.properties"));
+				dbProperties.load(ClassLoader.getSystemResourceAsStream("cfg/db.properties"));
 			}
 			Properties cp_props = new Properties();
 			for(Object key : dbProperties.keySet()) {

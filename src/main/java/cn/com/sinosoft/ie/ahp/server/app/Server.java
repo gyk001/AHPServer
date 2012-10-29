@@ -16,8 +16,9 @@ public class Server {
 	
 	public ServerStatus start(ServerConfig serverConfig) throws Exception{
 		logger.info("server startup...");
-		serverConfig.init();
-		
+		if( ! serverConfig.isInit()){
+			serverConfig.init();
+		}
 		Map<String, WorkerConfig> workerConfigs = serverConfig.getWorkersConfigMap();
 		Iterator<Entry<String, WorkerConfig>> ite= workerConfigs.entrySet().iterator();
 		while(ite.hasNext()){

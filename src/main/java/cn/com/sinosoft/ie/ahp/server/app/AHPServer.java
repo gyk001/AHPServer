@@ -18,6 +18,7 @@ public class AHPServer {
 	private static Server server = new Server();
 	
 	public static void main(String[] args) throws Exception {
+		serverConfig.init();
 		//创建监控进程
 		Thread monitor = new Thread(new MonitorThread(serverConfig.getMonitorConfig()),"MT");
 	//	monitor.setDaemon(true);
@@ -25,7 +26,7 @@ public class AHPServer {
 		monitor.start();
 		
 		
-	//	server.start(serverConfig);
+		server.start(serverConfig);
 		
 	}
 
