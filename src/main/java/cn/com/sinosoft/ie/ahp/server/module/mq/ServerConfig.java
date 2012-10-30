@@ -1,4 +1,4 @@
-package cn.com.sinosoft.ie.ahp.server.app;
+package cn.com.sinosoft.ie.ahp.server.module.mq;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,11 +11,10 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import cn.com.sinosoft.ie.ahp.server.ConfigException;
 import cn.com.sinosoft.ie.ahp.server.monitor.MonitorConfig;
 import cn.com.sinosoft.ie.ahp.server.mq.SingleQueueConfig;
 import cn.com.sinosoft.ie.ahp.server.worker.WorkerConfig;
-
-import com.sinosoft.ie.ahp.msg.MsgType;
 
 /**
  * @author GuoYukun (<a href="gyk001@gmail.com">Gyk001@gmail.com</a>)

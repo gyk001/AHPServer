@@ -1,4 +1,4 @@
-package cn.com.sinosoft.ie.ahp.server.app;
+package cn.com.sinosoft.ie.ahp.server;
 
 public class ConfigException extends Exception {
 	private static final long serialVersionUID = 5832915334326906824L;

@@ -3,7 +3,7 @@ package cn.com.sinosoft.ie.ahp.server.worker;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 
-import cn.com.sinosoft.ie.ahp.server.app.ServerConfig;
+import cn.com.sinosoft.ie.ahp.server.ServerConfig;
 import cn.com.sinosoft.ie.ahp.server.mq.SingleQueueConfig;
 import cn.com.sinosoft.ie.ahp.server.service.BizPluginHandler;
 
