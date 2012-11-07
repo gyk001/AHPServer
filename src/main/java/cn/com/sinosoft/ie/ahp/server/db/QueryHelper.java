@@ -20,7 +20,7 @@ public class QueryHelper {
 	private static Logger logger = LoggerFactory.getLogger(QueryHelper.class);
 
 	// jdbc支持 getPreparedStatementMetaData 时使用 如果不支持如oracle 构造函数加true参数
-	private final static QueryRunner qr = new QueryRunner();
+	private final static QueryRunner qr = new QueryRunner(true);
 	
 	private final static MapListHandler mapListHandler = new MapListHandler();
 
